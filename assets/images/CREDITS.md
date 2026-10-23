@@ -11,7 +11,7 @@ as "Free to use under the Unsplash License" (not Unsplash+), then resized and co
 | `dest-maldives.jpg` | Rayyu Maldives ([@rayyu](https://unsplash.com/@rayyu)) | https://unsplash.com/photos/aerial-photography-of-resort-rooms-and-island-xPsFXsbXJRg |
 | `dest-turkey.jpg` | Alex Azabache ([@alexazabache](https://unsplash.com/@alexazabache)) | https://unsplash.com/photos/KGwK6n7rxSg |
 | `dest-bali.jpg` | Niklas Weiss ([@treesoftheplanet](https://unsplash.com/@treesoftheplanet)) | https://unsplash.com/photos/green-rice-field--2WlTWZLnRc |
-| `about-travel.jpg` | Global Residence Index ([@globalresidenceindex](https://unsplash.com/@globalresidenceindex)) | https://unsplash.com/photos/united-states-passport-on-world-map-Cg3fyYZMQ58 |
+| `about-travel.jpg` | Chris Lawton ([@chrislawton](https://unsplash.com/@chrislawton)) | https://unsplash.com/photos/black-and-gray-camera-on-open-map-yRf7ABVDddM |
 | `offer-placeholder.jpg` | Marissa Grootes ([@marissacristina](https://unsplash.com/@marissacristina)) | https://unsplash.com/photos/open-suitcase-with-travel-essentials-and-hat-TVllFyGaLEA |
 
 Logos (`logo-*.png`) and `favicon.png` are TA Tours brand assets.

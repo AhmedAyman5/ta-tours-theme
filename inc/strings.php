@@ -388,8 +388,8 @@ function ta_strings() {
 			'en' => "From carefully planned itineraries and seamless flight bookings to hotel reservations, guided tours and personal travel advice, we take care of every detail with precision — so all that's left for you is to pack your bag and enjoy the journey.",
 		),
 		'about_story_img_alt'       => array(
-			'ar' => 'جواز سفر موضوع على خريطة العالم',
-			'en' => 'A passport resting on a world map',
+			'ar' => 'كاميرا موضوعة على خريطة العالم',
+			'en' => 'A camera resting on a world map',
 		),
 
 		// About: key facts.
