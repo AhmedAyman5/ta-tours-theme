@@ -220,7 +220,7 @@ ta-tours/
 
 ## Deployment Checklist (reference)
 
-1. **Production:** install and activate **Polylang** → add **Arabic (default)** and **English** → URL modifications: language from the directory name, hide the default language in the URL → enable translation for the `offer` post type.
+1. **Production:** install and activate **Polylang** → add **Arabic (default)** and **English** → URL modifications: language from the directory name, hide the default language in the URL, front page URL contains the language code (`/en/`, not `/en/home-en/`; the Setup Tool also sets this) → enable translation for the `offer` post type.
 2. Zip the `ta-tours` folder (without `.git`) → **Appearance → Themes → Add New → Upload** → Activate.
 3. **Tools → TA Tours Setup** → Run setup.
 4. **Settings → Permalinks** → Save once.

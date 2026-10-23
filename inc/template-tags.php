@@ -212,6 +212,112 @@ function ta_nav_list( $class ) {
 }
 
 /**
+ * The six services: icon name and string keys (title key, text key = title key . '_text').
+ *
+ * @return array<string, array{icon: string, label: string}>
+ */
+function ta_services() {
+	return array(
+		'flights'    => array(
+			'icon'  => 'plane',
+			'label' => 'service_flights',
+		),
+		'planning'   => array(
+			'icon'  => 'map',
+			'label' => 'service_planning',
+		),
+		'tours'      => array(
+			'icon'  => 'compass',
+			'label' => 'service_tours',
+		),
+		'hotels'     => array(
+			'icon'  => 'bed',
+			'label' => 'service_hotels',
+		),
+		'consulting' => array(
+			'icon'  => 'bulb',
+			'label' => 'service_consulting',
+		),
+		'honeymoon'  => array(
+			'icon'  => 'heart',
+			'label' => 'service_honeymoon',
+		),
+	);
+}
+
+/**
+ * Popular destinations: image file and string keys (name key, plus '_text' and '_alt').
+ *
+ * @return array<string, array{image: string, label: string}>
+ */
+function ta_destinations() {
+	return array(
+		'maldives' => array(
+			'image' => 'dest-maldives.jpg',
+			'label' => 'dest_maldives',
+		),
+		'turkey'   => array(
+			'image' => 'dest-turkey.jpg',
+			'label' => 'dest_turkey',
+		),
+		'bali'     => array(
+			'image' => 'dest-bali.jpg',
+			'label' => 'dest_bali',
+		),
+	);
+}
+
+/**
+ * Print a section heading: eyebrow, h2, optional intro and optional "more" link.
+ *
+ * @param array $args {
+ *     @type string $id      ID of the h2 (for aria-labelledby).
+ *     @type string $eyebrow Small label above the title (unescaped).
+ *     @type string $title   Title (unescaped).
+ *     @type string $intro   Optional intro paragraph (unescaped).
+ *     @type string $url     Optional link URL.
+ *     @type string $link    Optional link label (unescaped).
+ *     @type bool   $center  Center the heading (no link column).
+ * }
+ * @return void
+ */
+function ta_section_head( array $args ) {
+	$args = wp_parse_args(
+		$args,
+		array(
+			'id'      => '',
+			'eyebrow' => '',
+			'title'   => '',
+			'intro'   => '',
+			'url'     => '',
+			'link'    => '',
+			'center'  => false,
+		)
+	);
+
+	$class = 'ta-section__head' . ( $args['center'] ? ' ta-section__head--center' : '' );
+	?>
+	<div class="<?php echo esc_attr( $class ); ?>" data-ta-reveal>
+		<div class="ta-section__heading">
+			<?php if ( $args['eyebrow'] ) : ?>
+				<p class="ta-eyebrow"><?php echo esc_html( $args['eyebrow'] ); ?></p>
+			<?php endif; ?>
+			<h2 class="ta-section__title" id="<?php echo esc_attr( $args['id'] ); ?>"><?php echo esc_html( $args['title'] ); ?></h2>
+			<?php if ( $args['intro'] ) : ?>
+				<p class="ta-section__intro"><?php echo esc_html( $args['intro'] ); ?></p>
+			<?php endif; ?>
+		</div>
+		<?php if ( $args['url'] && $args['link'] ) : ?>
+			<a class="ta-link-arrow" href="<?php echo esc_url( $args['url'] ); ?>">
+				<span><?php echo esc_html( $args['link'] ); ?></span>
+				<?php echo ta_icon( 'arrow', 'ta-icon--flip' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+			</a>
+		<?php endif; ?>
+	</div>
+	<?php
+}
+
+/**
  * Whether a theme image exists in assets/images/.
  *
  * @param string $file File name.
@@ -291,6 +397,15 @@ function ta_icon( $name, $class = '' ) {
 		'phone'    => '<path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M5 4h3.5l1.7 4.3-2.2 1.4a11 11 0 0 0 6.3 6.3l1.4-2.2L20 15.5V19a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z"/>',
 		'mail'     => '<g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5 12 13l8.5-6.5"/></g>',
 		'pin'      => '<g fill="none" stroke="currentColor" stroke-width="2"><path stroke-linejoin="round" d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></g>',
+		'plane'    => '<path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/>',
+		'map'      => '<g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3z"/><path d="M9 3v15M15 6v15"/></g>',
+		'compass'  => '<g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></g>',
+		'bed'      => '<g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8"/><path d="M4 10V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4M12 4v6M2 17h20"/></g>',
+		'bulb'     => '<g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6M10 22h4"/></g>',
+		'heart'    => '<path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/>',
+		'user'     => '<g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M16 11l2 2 4-4"/></g>',
+		'tag'      => '<g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.6 2.6A2 2 0 0 0 11.2 2H4a2 2 0 0 0-2 2v7.2a2 2 0 0 0 .6 1.4l8.7 8.7a2.4 2.4 0 0 0 3.4 0l6.6-6.6a2.4 2.4 0 0 0 0-3.4z"/><circle cx="7.5" cy="7.5" r="1" fill="currentColor"/></g>',
+		'shield'   => '<g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.6 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1.2 1.2 0 0 1 1.6 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M9 12l2 2 4-4"/></g>',
 	);
 
 	if ( ! isset( $icons[ $name ] ) ) {

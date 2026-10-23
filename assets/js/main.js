@@ -86,3 +86,66 @@
 		desktop.addListener( onBreakpoint );
 	}
 }() );
+
+/**
+ * Reveal on scroll: [data-ta-reveal] elements and the children of
+ * [data-ta-reveal-group] fade in once as they enter the viewport.
+ *
+ * Content is only hidden here, by JS, so it stays visible if the script fails.
+ * Skipped entirely when the user prefers reduced motion.
+ */
+( function () {
+	'use strict';
+
+	var reduce = window.matchMedia && window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches;
+
+	if ( reduce || ! ( 'IntersectionObserver' in window ) ) {
+		return;
+	}
+
+	var STAGGER = 90; // ms between items of a group.
+	var items = [];
+
+	Array.prototype.forEach.call( document.querySelectorAll( '[data-ta-reveal]' ), function ( el ) {
+		items.push( { el: el, delay: 0 } );
+	} );
+
+	Array.prototype.forEach.call( document.querySelectorAll( '[data-ta-reveal-group]' ), function ( group ) {
+		Array.prototype.forEach.call( group.children, function ( el, index ) {
+			items.push( { el: el, delay: Math.min( index, 5 ) * STAGGER } );
+		} );
+	} );
+
+	// Once the fade has finished, drop the helper classes so hover transitions are not delayed.
+	function cleanUp( event ) {
+		if ( event.target !== this || event.propertyName !== 'opacity' ) {
+			return;
+		}
+		this.classList.remove( 'ta-reveal', 'is-revealed' );
+		this.style.transitionDelay = '';
+		this.removeEventListener( 'transitionend', cleanUp );
+	}
+
+	var observer = new IntersectionObserver( function ( entries ) {
+		entries.forEach( function ( entry ) {
+			if ( entry.isIntersecting ) {
+				entry.target.classList.add( 'is-revealed' );
+				observer.unobserve( entry.target );
+			}
+		} );
+	}, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 } );
+
+	var viewport = window.innerHeight || document.documentElement.clientHeight;
+
+	items.forEach( function ( item ) {
+		// Already on screen at load: leave it alone (no flash of hidden content).
+		if ( item.el.getBoundingClientRect().top < viewport ) {
+			return;
+		}
+
+		item.el.classList.add( 'ta-reveal' );
+		item.el.style.transitionDelay = item.delay ? item.delay + 'ms' : '';
+		item.el.addEventListener( 'transitionend', cleanUp );
+		observer.observe( item.el );
+	} );
+}() );

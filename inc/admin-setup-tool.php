@@ -83,6 +83,34 @@ function ta_setup_clean_polylang_cache() {
 }
 
 /**
+ * Serve each language's front page at its language root (/en/ instead of /en/home-en/).
+ *
+ * Changes only the "redirect_lang" key of the Polylang option; every other key is saved unchanged.
+ *
+ * @return array{0: string, 1: string} Log row.
+ */
+function ta_setup_polylang_front_url() {
+	$options = get_option( 'polylang' );
+
+	if ( ! is_array( $options ) ) {
+		return array( 'error', __( 'Could not read the Polylang settings. In Languages → Settings → URL modifications, enable "The front page URL contains the language code instead of the page name or page id".', 'ta-tours' ) );
+	}
+
+	if ( ! empty( $options['redirect_lang'] ) ) {
+		return array( 'exists', __( 'Front page URLs already use the language code (/en/).', 'ta-tours' ) );
+	}
+
+	$options['redirect_lang'] = true;
+	update_option( 'polylang', $options );
+
+	// Polylang still holds the old value in memory for this request and may rebuild its
+	// languages cache with it, so clear that cache again once the request is over.
+	add_action( 'shutdown', 'ta_setup_clean_polylang_cache', 2000 );
+
+	return array( 'updated', __( 'Front page URLs now use the language code (/en/ instead of /en/home-en/).', 'ta-tours' ) );
+}
+
+/**
  * Run the setup steps.
  *
  * @return array{ok: bool, log: array<int, array{0: string, 1: string}>}
@@ -192,6 +220,8 @@ function ta_setup_run() {
 		}
 	}
 
+	$log[] = ta_setup_polylang_front_url();
+
 	// Step 4: permalinks.
 	global $wp_rewrite;
 	if ( '/%postname%/' === get_option( 'permalink_structure' ) ) {
@@ -240,7 +270,7 @@ function ta_setup_tool_render() {
 	<div class="wrap">
 		<h1><?php esc_html_e( 'TA Tours Setup', 'ta-tours' ); ?></h1>
 
-		<p><?php esc_html_e( 'Creates the site pages in Arabic and English, links their translations, sets the front page and permalinks. Safe to run many times — nothing is duplicated.', 'ta-tours' ); ?></p>
+		<p><?php esc_html_e( 'Creates the site pages in Arabic and English, links their translations, sets the front page (served at /en/ for English) and permalinks. Safe to run many times — nothing is duplicated.', 'ta-tours' ); ?></p>
 
 		<?php if ( $result ) : ?>
 			<div class="notice <?php echo $result['ok'] ? 'notice-success' : 'notice-error'; ?>">
