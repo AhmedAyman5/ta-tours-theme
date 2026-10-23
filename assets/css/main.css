@@ -100,6 +100,23 @@ html {
 	scroll-padding-block-start: calc(var(--ta-header-h) + 1rem);
 }
 
+/* Logged-in users: the admin bar pushes the sticky header down too. */
+html:has(body.admin-bar) {
+	scroll-padding-block-start: calc(var(--ta-header-h) + 32px + 1rem);
+}
+
+@media (max-width: 782px) {
+	html:has(body.admin-bar) {
+		scroll-padding-block-start: calc(var(--ta-header-h) + 46px + 1rem);
+	}
+}
+
+@media (max-width: 600px) {
+	html:has(body.admin-bar) {
+		scroll-padding-block-start: calc(var(--ta-header-h) + 1rem);
+	}
+}
+
 body {
 	margin: 0;
 	background: var(--ta-bg);
@@ -1688,6 +1705,307 @@ address {
 	gap: var(--ta-space-1) var(--ta-space-4);
 }
 
+/* 9e. Services page
+   ========================================================================== */
+
+/* Home service cards link to their row: the whole card is clickable. */
+.ta-feature--link {
+	position: relative;
+}
+
+.ta-feature__link {
+	color: inherit;
+	text-decoration: none;
+}
+
+.ta-feature__link::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-radius: var(--ta-radius-lg);
+}
+
+.ta-feature--link:hover .ta-feature__link {
+	text-decoration: underline;
+	text-underline-offset: 0.2em;
+}
+
+.ta-feature__link:focus-visible {
+	outline: none;
+}
+
+.ta-feature__link:focus-visible::after {
+	outline: 3px solid var(--ta-focus);
+	outline-offset: 3px;
+}
+
+/* Intro */
+.ta-services-intro {
+	padding-block-end: var(--ta-space-6);
+}
+
+.ta-services-intro .ta-eyebrow {
+	justify-content: center;
+}
+
+.ta-services-intro .ta-section__title {
+	margin-block-end: var(--ta-space-4);
+}
+
+.ta-services-intro .ta-lead {
+	margin: 0;
+	color: var(--ta-text-soft);
+}
+
+/* Service rows: image + text, image side alternating from 960px */
+.ta-service-row__inner {
+	display: grid;
+	gap: var(--ta-space-6);
+	align-items: center;
+}
+
+@media (min-width: 960px) {
+	.ta-service-row__inner {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: var(--ta-space-8);
+	}
+
+	.ta-service-row--end .ta-service-row__media {
+		order: 2;
+	}
+
+	.ta-service-row--no-media .ta-service-row__inner {
+		grid-template-columns: minmax(0, 46rem);
+	}
+}
+
+.ta-service-row__media {
+	margin: 0;
+	aspect-ratio: 4 / 3;
+	overflow: hidden;
+	border-radius: var(--ta-radius-lg);
+	background: linear-gradient(160deg, var(--ta-sky) 0%, var(--ta-sky-soft) 100%);
+	box-shadow: var(--ta-shadow-lg);
+}
+
+/* Tablets stack image over text: a wider crop keeps the text closer. */
+@media (min-width: 640px) and (max-width: 959.98px) {
+	.ta-service-row__media { aspect-ratio: 16 / 9; }
+}
+
+.ta-service-row__img {
+	display: block;
+	inline-size: 100%;
+	block-size: 100%;
+	object-fit: cover;
+	transition: scale var(--ta-dur-zoom) var(--ta-ease);
+}
+
+.ta-service-row__media:hover .ta-service-row__img {
+	scale: 1.04;
+}
+
+.ta-service-row__body .ta-section__title {
+	margin-block-end: var(--ta-space-3);
+}
+
+.ta-service-row__body .ta-lead {
+	margin-block: 0 var(--ta-space-5);
+	color: var(--ta-text-soft);
+}
+
+/* Check-mark bullets */
+.ta-checklist {
+	display: grid;
+	gap: var(--ta-space-3);
+	margin: 0 0 var(--ta-space-6);
+	padding: 0;
+	list-style: none;
+}
+
+.ta-checklist li {
+	display: flex;
+	align-items: flex-start;
+	gap: var(--ta-space-3);
+	font-weight: 600;
+}
+
+.ta-checklist__icon {
+	display: inline-flex;
+	flex: none;
+	align-items: center;
+	justify-content: center;
+	inline-size: 1.625rem;
+	block-size: 1.625rem;
+	border-radius: 50%;
+	background: var(--ta-sky-soft);
+	color: var(--ta-primary);
+}
+
+.ta-checklist__icon .ta-icon {
+	inline-size: 1rem;
+	block-size: 1rem;
+}
+
+:root:lang(ar) .ta-checklist__icon {
+	margin-block-start: 0.1rem;
+}
+
+/* Domestic & international */
+.ta-coverage {
+	display: grid;
+	gap: var(--ta-space-5);
+	max-inline-size: 64rem;
+	margin: 0 auto;
+	padding: 0;
+	list-style: none;
+}
+
+@media (min-width: 640px) {
+	.ta-coverage { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+.ta-coverage__card {
+	position: relative;
+	isolation: isolate;
+	overflow: hidden;
+	padding: var(--ta-space-6);
+	border: 1px solid var(--ta-border);
+	border-radius: var(--ta-radius-lg);
+	background: var(--ta-white);
+	box-shadow: var(--ta-shadow-sm);
+	transition: box-shadow var(--ta-dur) var(--ta-ease), transform var(--ta-dur) var(--ta-ease);
+}
+
+.ta-coverage__card:hover {
+	box-shadow: var(--ta-shadow-lg);
+	transform: translateY(-4px);
+}
+
+/* Soft sky circle in the top inline-end corner: decorative only. */
+.ta-coverage__card::before {
+	content: "";
+	position: absolute;
+	inset-block-start: -3.5rem;
+	inset-inline-end: -3.5rem;
+	z-index: -1;
+	inline-size: 10rem;
+	block-size: 10rem;
+	border-radius: 50%;
+	background: var(--ta-sky-soft);
+}
+
+.ta-coverage__icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	inline-size: 3.5rem;
+	block-size: 3.5rem;
+	margin-block-end: var(--ta-space-4);
+	border-radius: 50%;
+	background: var(--ta-primary);
+	box-shadow: var(--ta-shadow);
+	color: var(--ta-white);
+}
+
+.ta-coverage__icon .ta-icon {
+	inline-size: 1.625rem;
+	block-size: 1.625rem;
+}
+
+.ta-coverage__title {
+	margin-block-end: var(--ta-space-2);
+	font-size: var(--ta-fs-h3);
+}
+
+.ta-coverage__text {
+	margin: 0;
+	color: var(--ta-text-soft);
+}
+
+/* FAQ accordion (<details>/<summary>) */
+.ta-faq {
+	display: grid;
+	gap: var(--ta-space-3);
+	max-inline-size: 48rem;
+	margin-inline: auto;
+}
+
+.ta-faq__item {
+	border: 1px solid var(--ta-border);
+	border-radius: var(--ta-radius);
+	background: var(--ta-bg);
+	transition: background-color var(--ta-dur) var(--ta-ease), box-shadow var(--ta-dur) var(--ta-ease);
+}
+
+.ta-faq__item[open] {
+	background: var(--ta-white);
+	box-shadow: var(--ta-shadow);
+}
+
+.ta-faq__question {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--ta-space-4);
+	padding: var(--ta-space-4) var(--ta-space-5);
+	border-radius: var(--ta-radius);
+	color: var(--ta-primary);
+	font-size: var(--ta-fs-lg);
+	font-weight: 700;
+	line-height: 1.4;
+	list-style: none;
+	cursor: pointer;
+	transition: color var(--ta-transition);
+}
+
+.ta-faq__question::-webkit-details-marker {
+	display: none;
+}
+
+.ta-faq__question:hover {
+	color: var(--ta-primary-dark);
+}
+
+/* Points down when closed, up when open: symmetric, so it works in RTL too. */
+.ta-faq__chevron {
+	flex: none;
+	inline-size: 1.25rem;
+	block-size: 1.25rem;
+	color: var(--ta-secondary);
+	rotate: 90deg;
+	transition: rotate var(--ta-dur) var(--ta-ease);
+}
+
+.ta-faq__item[open] .ta-faq__chevron {
+	rotate: -90deg;
+}
+
+.ta-faq__answer {
+	padding: 0 var(--ta-space-5) var(--ta-space-5);
+	color: var(--ta-text-soft);
+}
+
+.ta-faq__item[open] .ta-faq__answer {
+	animation: ta-faq-in var(--ta-dur) var(--ta-ease);
+}
+
+.ta-faq__answer p {
+	margin: 0;
+}
+
+.ta-faq__answer a {
+	color: var(--ta-secondary);
+	font-weight: 600;
+}
+
+@keyframes ta-faq-in {
+	from {
+		opacity: 0;
+		translate: 0 -0.5rem;
+	}
+}
+
 /* 10. Footer
    ========================================================================== */
 .ta-footer {
@@ -1918,12 +2236,14 @@ address {
 	.ta-why__item:hover,
 	.ta-point:hover,
 	.ta-dest:hover,
+	.ta-coverage__card:hover,
 	.ta-wa-float:hover {
 		transform: none;
 	}
 
 	.ta-card:hover .ta-card__img,
-	.ta-dest:hover .ta-dest__img {
+	.ta-dest:hover .ta-dest__img,
+	.ta-service-row__media:hover .ta-service-row__img {
 		scale: none;
 	}
 }

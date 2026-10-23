@@ -163,15 +163,15 @@ function ta_strings() {
 			'en' => 'The right flight at the right time, booked for you without the hassle.',
 		),
 		'service_planning'    => array(
-			'ar' => 'تخطيط الرحلات والعطلات',
-			'en' => 'Trip & holiday planning',
+			'ar' => 'برامج الرحلات وتخطيط الإجازات',
+			'en' => 'Itineraries & vacation planning',
 		),
 		'service_planning_text' => array(
 			'ar' => 'برنامج واضح لعطلتك يومًا بيوم، مبنيّ على ما تحبه.',
 			'en' => 'A clear day-by-day plan for your holiday, built around what you love.',
 		),
 		'service_tours'       => array(
-			'ar' => 'جولات سياحية بصحبة مرشد',
+			'ar' => 'جولات سياحية بمرشدين',
 			'en' => 'Guided tours',
 		),
 		'service_tours_text'  => array(
@@ -186,11 +186,11 @@ function ta_strings() {
 			'ar' => 'إقامة مريحة تناسب ميزانيتك وخطة رحلتك.',
 			'en' => 'Comfortable stays that suit your budget and your plans.',
 		),
-		'service_consulting'  => array(
-			'ar' => 'استشارات سفر شخصية',
-			'en' => 'Personal travel advice',
+		'service_consultancy' => array(
+			'ar' => 'استشارات سفر مخصصة',
+			'en' => 'Personalized travel consultancy',
 		),
-		'service_consulting_text' => array(
+		'service_consultancy_text' => array(
 			'ar' => 'لا تعرف من أين تبدأ؟ نساعدك على الاختيار بنصيحة صادقة.',
 			'en' => "Not sure where to start? We'll help you choose with honest advice.",
 		),
@@ -201,6 +201,226 @@ function ta_strings() {
 		'service_honeymoon_text' => array(
 			'ar' => 'بداية هادئة ورومانسية لحياتكما الجديدة، مع الاهتمام بكل التفاصيل.',
 			'en' => 'A calm, romantic start to your new life together, with every detail in place.',
+		),
+
+		// Services page: hero and intro.
+		'services_page_title'       => array(
+			'ar' => 'خدماتنا',
+			'en' => 'Our services',
+		),
+		'services_page_intro'       => array(
+			'ar' => 'كل ما تحتاجه رحلتك.. مخطط بعناية وفي مكان واحد.',
+			'en' => 'Everything your journey needs, planned with care, in one place.',
+		),
+		'services_intro_eyebrow'    => array(
+			'ar' => 'ماذا نقدّم',
+			'en' => 'What we do',
+		),
+		'services_intro_title'      => array(
+			'ar' => 'سفرك.. في أيدٍ أمينة',
+			'en' => 'Travel, taken care of',
+		),
+		'services_intro_text'       => array(
+			'ar' => 'سواء كنت تحلم بعطلة قصيرة، أو إجازة عائلية، أو شهر عسل لا يُنسى، يتولى فريقنا التخطيط من أول فكرة حتى لحظة عودتك إلى البيت. اختر الخدمة التي تناسبك، أو أخبرنا بما يدور في ذهنك وسنرتّب لك كل شيء.',
+			'en' => "Whether you're dreaming of a quick getaway, a family holiday or the honeymoon of a lifetime, our team handles the planning from the first idea to the moment you land back home. Choose a service below, or tell us what you have in mind and we'll put it all together for you.",
+		),
+
+		// Services page: service rows (keys follow the labels in ta_services()).
+		'service_cta'               => array(
+			'ar' => 'استفسر عن هذه الخدمة',
+			'en' => 'Ask about this service',
+		),
+		'service_wa_message'        => array(
+			'ar' => 'مرحبًا، أريد الاستفسار عن خدمة: %s',
+			'en' => "Hello, I'd like to ask about: %s",
+		),
+		'service_flights_desc'      => array(
+			'ar' => 'حجوزات طيران سلسة لرحلاتك الداخلية والدولية. نساعدك في اختيار الرحلات المناسبة ونتولى الحجز، لتبدأ رحلتك بكل سلاسة.',
+			'en' => 'Seamless airline reservations for domestic and international trips. We help you find suitable flights and handle the booking, so your journey starts smoothly.',
+		),
+		'service_flights_point_1'   => array(
+			'ar' => 'رحلات طيران داخلية ودولية',
+			'en' => 'Domestic and international flights',
+		),
+		'service_flights_point_2'   => array(
+			'ar' => 'مساعدة في اختيار المسارات والمواعيد المناسبة',
+			'en' => 'Help choosing convenient routes and times',
+		),
+		'service_flights_point_3'   => array(
+			'ar' => 'متابعة معك في كل خطوات الحجز',
+			'en' => 'Support throughout your booking',
+		),
+		'service_flights_alt'       => array(
+			'ar' => 'جناح طائرة يظهر من نافذتها فوق السحاب',
+			'en' => 'An airplane wing seen through the window above the clouds',
+		),
+		'service_planning_desc'     => array(
+			'ar' => 'برامج رحلات مخططة بعناية حسب وقتك وميزانيتك واهتماماتك. نرتّب أيامك لتقضيها في الاستمتاع، لا في التخطيط.',
+			'en' => 'Meticulously planned itineraries built around your time, budget and interests. We organize the days so you can spend them enjoying, not planning.',
+		),
+		'service_planning_point_1'  => array(
+			'ar' => 'برنامج واضح لكل يوم',
+			'en' => 'A clear plan for every day',
+		),
+		'service_planning_point_2'  => array(
+			'ar' => 'مصمم حسب ميزانيتك واهتماماتك',
+			'en' => 'Built around your budget and interests',
+		),
+		'service_planning_point_3'  => array(
+			'ar' => 'وجهات داخل مصر وخارجها',
+			'en' => 'Destinations in Egypt and abroad',
+		),
+		'service_planning_alt'      => array(
+			'ar' => 'خريطة وكاميرا ودفتر ملاحظات وساعة على طاولة خشبية',
+			'en' => 'A map, a camera, a notebook and a watch on a wooden table',
+		),
+		'service_tours_desc'        => array(
+			'ar' => 'اكتشف كل وجهة من خلال جولات بمرشدين تُحيي أماكنها وحكاياتها، مع تنظيم كامل لكل التفاصيل.',
+			'en' => 'Discover each destination through guided tours that bring its places and stories to life, with every detail organized for you.',
+		),
+		'service_tours_point_1'     => array(
+			'ar' => 'زيارات منظمة لأهم المعالم',
+			'en' => 'Organized visits to the main landmarks',
+		),
+		'service_tours_point_2'     => array(
+			'ar' => 'مرشدون يعرّفونك بكل مكان',
+			'en' => 'Guides who introduce you to every place',
+		),
+		'service_tours_point_3'     => array(
+			'ar' => 'مواعيد مريحة ومرتبة',
+			'en' => 'Comfortable, well-planned schedules',
+		),
+		'service_tours_alt'         => array(
+			'ar' => 'قافلة جمال عند أهرامات الجيزة وقت الغروب',
+			'en' => 'A camel caravan by the Pyramids of Giza at sunset',
+		),
+		'service_hotels_desc'       => array(
+			'ar' => 'من الإقامات الهادئة إلى المنتجعات، نساعدك في اختيار الفندق المناسب لرحلتك ونتولى الحجز عنك.',
+			'en' => 'From cozy stays to resorts, we help you choose the hotel that fits your trip and take care of the reservation.',
+		),
+		'service_hotels_point_1'    => array(
+			'ar' => 'خيارات تناسب كل ميزانية',
+			'en' => 'Options for every budget',
+		),
+		'service_hotels_point_2'    => array(
+			'ar' => 'مساعدة في اختيار الموقع المناسب',
+			'en' => 'Help choosing the right location',
+		),
+		'service_hotels_point_3'    => array(
+			'ar' => 'نتولى الحجز بالكامل',
+			'en' => 'Reservation handled for you',
+		),
+		'service_hotels_alt'        => array(
+			'ar' => 'حمام سباحة في منتجع تحيط به أشجار النخيل',
+			'en' => 'A resort swimming pool surrounded by palm trees',
+		),
+		'service_consultancy_desc'  => array(
+			'ar' => 'لا تعرف من أين تبدأ؟ تحدّث مع فريقنا. نستمع لما تريده ونقترح عليك الوجهات والخطط الأنسب لك.',
+			'en' => 'Not sure where to start? Talk to our team. We listen to what you want and suggest the destinations and plans that suit you best.',
+		),
+		'service_consultancy_point_1' => array(
+			'ar' => 'نصائح مصممة لك',
+			'en' => 'Advice tailored to you',
+		),
+		'service_consultancy_point_2' => array(
+			'ar' => 'أفكار للوجهات وأفضل أوقات السفر',
+			'en' => 'Ideas for destinations and the best times to go',
+		),
+		'service_consultancy_point_3' => array(
+			'ar' => 'توصيات واضحة وصادقة',
+			'en' => 'Clear, honest recommendations',
+		),
+		'service_consultancy_alt'   => array(
+			'ar' => 'حاسوب محمول على طاولة تطل على جبال خضراء',
+			'en' => 'A laptop on a table overlooking green mountains',
+		),
+		'service_honeymoon_desc'    => array(
+			'ar' => 'ابدآ حياتكما الجديدة برحلة الأحلام. باقات شهر العسل الشاملة إلى وجهات مثل المالديف وتركيا وبالي تتيح لكما الاستمتاع بكل لحظة معًا، بينما نهتم نحن بكل شيء آخر.',
+			'en' => 'Start your new life with a dream trip. Our all-inclusive honeymoon packages to destinations like the Maldives, Turkey and Bali let you focus on each other while we take care of everything else.',
+		),
+		'service_honeymoon_point_1' => array(
+			'ar' => 'باقات شاملة',
+			'en' => 'All-inclusive packages',
+		),
+		'service_honeymoon_point_2' => array(
+			'ar' => 'وجهات رومانسية مثل المالديف وتركيا وبالي',
+			'en' => 'Romantic destinations like the Maldives, Turkey and Bali',
+		),
+		'service_honeymoon_point_3' => array(
+			'ar' => 'كل التفاصيل جاهزة مسبقًا',
+			'en' => 'Every detail prepared in advance',
+		),
+		'service_honeymoon_alt'     => array(
+			'ar' => 'أرجوحة على رصيف خشبي فوق البحر وقت الغروب',
+			'en' => 'A swing bed on a wooden deck over the sea at sunset',
+		),
+
+		// Services page: domestic and international.
+		'coverage_title'            => array(
+			'ar' => 'قريبًا أو بعيدًا.. نحن معك',
+			'en' => "Near or far, we've got you covered",
+		),
+		'coverage_egypt'            => array(
+			'ar' => 'اكتشف مصر',
+			'en' => 'Explore Egypt',
+		),
+		'coverage_egypt_text'       => array(
+			'ar' => 'أعد اكتشاف جمال مصر بشواطئها وتاريخها وكرم أهلها، في رحلات مخططة حسب رغبتك.',
+			'en' => 'Rediscover the beauty of Egypt, its coasts, its history and its warm hospitality, with trips planned around you.',
+		),
+		'coverage_world'            => array(
+			'ar' => 'اكتشف العالم',
+			'en' => 'Discover the world',
+		),
+		'coverage_world_text'       => array(
+			'ar' => 'من مياه المالديف الفيروزية إلى سحر تركيا وبالي، نفتح لك الباب على وجهات لا تُنسى.',
+			'en' => 'From the turquoise waters of the Maldives to the magic of Turkey and Bali, we open the door to unforgettable destinations.',
+		),
+
+		// Services page: FAQ. faq_5_a holds HTML and is a sprintf() format: %s = Offers page URL.
+		'faq_title'                 => array(
+			'ar' => 'الأسئلة الشائعة',
+			'en' => 'Frequently asked questions',
+		),
+		'faq_1_q'                   => array(
+			'ar' => 'كيف أحجز رحلة؟',
+			'en' => 'How do I book a trip?',
+		),
+		'faq_1_a'                   => array(
+			'ar' => 'أرسل لنا رسالة عبر واتساب أو زُرنا في فرع المنصورة. أخبرنا بوجهتك ومواعيدك وعدد المسافرين، ونتولى نحن الباقي.',
+			'en' => "Send us a message on WhatsApp or visit our Mansoura branch. Tell us your destination, dates and number of travelers, and we'll take it from there.",
+		),
+		'faq_2_q'                   => array(
+			'ar' => 'هل يمكنكم تخطيط رحلة خاصة بي؟',
+			'en' => 'Can you plan a trip just for me?',
+		),
+		'faq_2_a'                   => array(
+			'ar' => 'بالتأكيد. التخطيط المخصص هو جوهر ما نقدمه، فنبني الرحلة حسب ميزانيتك واهتماماتك ومواعيدك.',
+			'en' => 'Absolutely. Personalized planning is at the heart of what we do. We build the trip around your budget, interests and schedule.',
+		),
+		'faq_3_q'                   => array(
+			'ar' => 'هل تقدمون رحلات داخل مصر وخارجها؟',
+			'en' => 'Do you offer trips inside Egypt and abroad?',
+		),
+		'faq_3_a'                   => array(
+			'ar' => 'نعم، نقدم خدماتنا للسفر الداخلي والدولي على حد سواء.',
+			'en' => 'Yes. We serve both domestic and international travel.',
+		),
+		'faq_4_q'                   => array(
+			'ar' => 'ما المعلومات التي أجهّزها قبل التواصل معكم؟',
+			'en' => 'What should I prepare before contacting you?',
+		),
+		'faq_4_a'                   => array(
+			'ar' => 'الوجهة المفضلة (أو مجرد أفكار)، ومواعيد السفر، وعدد المسافرين، وميزانية تقريبية. ولو لم تكن متأكدًا بعد، سيساعدك فريقنا في الاختيار.',
+			'en' => 'Your preferred destination (or just a few ideas), travel dates, number of travelers and an approximate budget. Not sure yet? Our team will help you decide.',
+		),
+		'faq_5_q'                   => array(
+			'ar' => 'أين أجد أحدث العروض؟',
+			'en' => 'Where can I find your latest offers?',
+		),
+		'faq_5_a'                   => array(
+			'ar' => 'زُر <a href="%s">صفحة العروض</a>، حيث نشارك أحدث عروضنا أولًا بأول.',
+			'en' => 'Visit our <a href="%s">Offers page</a>, where we share our newest deals.',
 		),
 
 		// Home: how it works.

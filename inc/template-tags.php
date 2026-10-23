@@ -221,37 +221,84 @@ function ta_nav_list( $class ) {
 }
 
 /**
- * The six services: icon name and string keys (title key, text key = title key . '_text').
+ * The six services. The key is also the row's anchor id on the Services page.
  *
- * @return array<string, array{icon: string, label: string}>
+ * String keys derive from 'label': title = label, short Home text = label . '_text',
+ * long text = label . '_desc', bullets = label . '_point_1'…'_point_3', image alt = label . '_alt'.
+ *
+ * @return array<string, array{icon: string, label: string, image: string}>
  */
 function ta_services() {
 	return array(
-		'flights'    => array(
+		'flights'     => array(
 			'icon'  => 'plane',
 			'label' => 'service_flights',
+			'image' => 'service-flights.jpg',
 		),
-		'planning'   => array(
+		'planning'    => array(
 			'icon'  => 'map',
 			'label' => 'service_planning',
+			'image' => 'service-planning.jpg',
 		),
-		'tours'      => array(
+		'tours'       => array(
 			'icon'  => 'compass',
 			'label' => 'service_tours',
+			'image' => 'service-tours.jpg',
 		),
-		'hotels'     => array(
+		'hotels'      => array(
 			'icon'  => 'bed',
 			'label' => 'service_hotels',
+			'image' => 'service-hotels.jpg',
 		),
-		'consulting' => array(
+		'consultancy' => array(
 			'icon'  => 'bulb',
-			'label' => 'service_consulting',
+			'label' => 'service_consultancy',
+			'image' => 'service-consultancy.jpg',
 		),
-		'honeymoon'  => array(
+		'honeymoon'   => array(
 			'icon'  => 'heart',
 			'label' => 'service_honeymoon',
+			'image' => 'service-honeymoon.jpg',
 		),
 	);
+}
+
+/**
+ * URL of a service row on the Services page (current language).
+ *
+ * @param string $key Key from ta_services().
+ * @return string Empty string when the Services page does not exist.
+ */
+function ta_service_url( $key ) {
+	$url = ta_page_url( 'services' );
+
+	return $url ? $url . '#' . $key : '';
+}
+
+/**
+ * Services page FAQ for the current language: question and answer HTML.
+ *
+ * @return array<int, array{q: string, a: string}> Unescaped; answers may contain links.
+ */
+function ta_faq_items() {
+	$offers = ta_page_url( 'offers' );
+	$items  = array();
+
+	for ( $i = 1; $i <= 5; $i++ ) {
+		$answer = ta_t( 'faq_' . $i . '_a' );
+
+		if ( 5 === $i ) {
+			// Without an Offers page, keep the sentence but drop the link.
+			$answer = $offers ? sprintf( $answer, esc_url( $offers ) ) : wp_strip_all_tags( $answer );
+		}
+
+		$items[] = array(
+			'q' => ta_t( 'faq_' . $i . '_q' ),
+			'a' => $answer,
+		);
+	}
+
+	return $items;
 }
 
 /**
@@ -415,6 +462,7 @@ function ta_icon( $name, $class = '' ) {
 		'user'     => '<g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M16 11l2 2 4-4"/></g>',
 		'tag'      => '<g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.6 2.6A2 2 0 0 0 11.2 2H4a2 2 0 0 0-2 2v7.2a2 2 0 0 0 .6 1.4l8.7 8.7a2.4 2.4 0 0 0 3.4 0l6.6-6.6a2.4 2.4 0 0 0 0-3.4z"/><circle cx="7.5" cy="7.5" r="1" fill="currentColor"/></g>',
 		'shield'   => '<g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.6 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1.2 1.2 0 0 1 1.6 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M9 12l2 2 4-4"/></g>',
+		'check'    => '<path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/>',
 		'chevron'  => '<path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"/>',
 		'cloud'    => '<path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M17.5 19H7a5 5 0 1 1 1.3-9.8A6 6 0 0 1 19.7 11 4 4 0 0 1 17.5 19z"/>',
 		'suitcase' => '<g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></g>',
