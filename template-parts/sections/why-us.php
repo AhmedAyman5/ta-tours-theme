@@ -46,11 +46,11 @@ $ta_points = array(
 		);
 		?>
 
-		<ul class="ta-why" role="list" data-ta-reveal-group>
+		<ul class="ta-why" role="list" data-reveal-stagger="fade-up">
 			<?php foreach ( $ta_points as $ta_point ) : ?>
 				<li class="ta-why__item">
 					<?php if ( ! empty( $ta_point['value'] ) ) : ?>
-						<span class="ta-why__value" dir="ltr"><?php echo esc_html( $ta_point['value'] ); ?></span>
+						<span class="ta-why__value" dir="ltr"><span data-countup><?php echo esc_html( $ta_point['value'] ); ?></span></span>
 					<?php else : ?>
 						<span class="ta-why__icon"><?php echo ta_icon( $ta_point['icon'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
 					<?php endif; ?>

@@ -33,7 +33,7 @@ if ( ! $ta_offers->have_posts() ) {
 		);
 		?>
 
-		<div class="ta-grid" data-ta-reveal-group>
+		<div class="ta-grid" data-reveal-stagger="fade-up">
 			<?php
 			while ( $ta_offers->have_posts() ) :
 				$ta_offers->the_post();

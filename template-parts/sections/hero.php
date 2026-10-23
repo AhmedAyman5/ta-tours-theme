@@ -18,6 +18,7 @@ $ta_offers_url = ta_page_url( 'offers' );
 			ta_t( 'hero_image_alt' ),
 			array(
 				'class'         => 'ta-hero__img',
+				'data-parallax' => 'hero',
 				'loading'       => 'eager',
 				'fetchpriority' => 'high',
 				'decoding'      => 'sync',
@@ -26,14 +27,14 @@ $ta_offers_url = ta_page_url( 'offers' );
 		?>
 	</div>
 
-	<div class="ta-container ta-hero__inner">
+	<div class="ta-container ta-hero__inner" data-reveal-stagger="fade-up">
 		<p class="ta-hero__eyebrow"><?php echo esc_html( ta_t( 'hero_eyebrow' ) ); ?></p>
 		<h1 class="ta-hero__title" id="ta-hero-title"><?php echo esc_html( ta_t( 'tagline' ) ); ?></h1>
 		<p class="ta-hero__subline"><?php echo esc_html( ta_t( 'hero_subline' ) ); ?></p>
 	</div>
 
 	<div class="ta-container">
-		<div class="ta-band ta-hero__band">
+		<div class="ta-band ta-hero__band" data-reveal="fade-up" data-reveal-delay="300">
 			<p class="ta-band__text"><?php echo esc_html( ta_t( 'hero_band_text' ) ); ?></p>
 			<div class="ta-btn-group">
 				<a class="ta-btn ta-btn--light" href="<?php echo esc_url( ta_whatsapp_url( ta_t( 'wa_default_message' ) ) ); ?>" target="_blank" rel="noopener">

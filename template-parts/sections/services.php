@@ -22,7 +22,7 @@ defined( 'ABSPATH' ) || exit;
 		);
 		?>
 
-		<ul class="ta-grid ta-features" role="list" data-ta-reveal-group>
+		<ul class="ta-grid ta-features" role="list" data-reveal-stagger="fade-up">
 			<?php foreach ( ta_services() as $ta_service ) : ?>
 				<li class="ta-feature">
 					<span class="ta-feature__icon"><?php echo ta_icon( $ta_service['icon'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>

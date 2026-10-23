@@ -26,7 +26,7 @@ $ta_steps = array(
 		);
 		?>
 
-		<ol class="ta-steps" role="list" data-ta-reveal-group>
+		<ol class="ta-steps" role="list" data-reveal-stagger="fade-up">
 			<?php foreach ( $ta_steps as $ta_number => $ta_step_icon ) : ?>
 				<li class="ta-step">
 					<span class="ta-step__badge">
@@ -39,7 +39,7 @@ $ta_steps = array(
 			<?php endforeach; ?>
 		</ol>
 
-		<p class="ta-steps__cta" data-ta-reveal>
+		<p class="ta-steps__cta" data-reveal="fade-up">
 			<a class="ta-btn ta-btn--whatsapp" href="<?php echo esc_url( ta_whatsapp_url( ta_t( 'wa_default_message' ) ) ); ?>" target="_blank" rel="noopener">
 				<?php echo ta_icon( 'whatsapp' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 				<span><?php echo esc_html( ta_t( 'step_1_title' ) ); ?></span>

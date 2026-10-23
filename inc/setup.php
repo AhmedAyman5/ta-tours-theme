@@ -47,10 +47,13 @@ remove_action( 'wp_head', 'wp_site_icon', 99 );
 /**
  * Swap the html "no-js" class for "js" before the page paints.
  *
+ * Safety net: if main.js has not started within 3s (blocked or failed), "ta-motion-off"
+ * cancels the hidden reveal state so no content stays invisible.
+ *
  * @return void
  */
 function ta_js_class() {
-	wp_print_inline_script_tag( "document.documentElement.classList.replace('no-js','js');" );
+	wp_print_inline_script_tag( "(function(d){d.classList.replace('no-js','js');setTimeout(function(){d.classList.contains('ta-motion')||d.classList.add('ta-motion-off');},3000);})(document.documentElement);" );
 }
 add_action( 'wp_head', 'ta_js_class', 1 );
 

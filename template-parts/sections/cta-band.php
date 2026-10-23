@@ -9,7 +9,7 @@ defined( 'ABSPATH' ) || exit;
 ?>
 <section class="ta-section ta-cta-section" aria-labelledby="ta-cta-title">
 	<div class="ta-container">
-		<div class="ta-cta" data-ta-reveal>
+		<div class="ta-cta" data-reveal="zoom-in">
 			<?php
 			// Decorative background behind the text: empty alt.
 			echo ta_theme_image( 'cta-wing.jpg', '', array( 'class' => 'ta-cta__img', 'loading' => 'lazy' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in ta_theme_image().

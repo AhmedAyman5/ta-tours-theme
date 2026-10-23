@@ -8,6 +8,9 @@ The site is mostly static marketing pages. The **only content the client edits**
 
 This repository is a **custom WordPress theme** named `ta-tours`, developed locally and deployed by uploading the theme folder as a zip.
 
+Final copy for each page is supplied in the task prompt in Arabic and
+English. Use it as written.
+
 ## Environments
 
 |            | Local (development)     | Production                         |
@@ -28,7 +31,10 @@ This repository is a **custom WordPress theme** named `ta-tours`, developed loca
 6. **Plugins:** the only allowed plugin is **Polylang (free)**. Ask before adding any other plugin.
 7. **Security:** escape all output (`esc_html`, `esc_attr`, `esc_url`, `wp_kses_post`), sanitize all input, and protect admin actions with nonces and capability checks (`manage_options`).
 8. **Prefixes:** prefix all PHP functions, hooks, options, and handles with `ta_`. Text domain: `ta-tours`.
-9. **Never invent business facts.** Use only the facts in this file. If something is missing (social links, opening hours, prices), leave it out or add `<!-- TODO: ... -->`. Never use fake testimonials, fake numbers, or fake reviews.
+9. Creative marketing copy is allowed (the client approved it). Never invent
+   facts: no numbers, statistics, ratings, testimonials, awards, partner names,
+   prices, or people's names. Missing real data goes into the report under
+   'Data to request from the client'.
 10. **Ask before destructive actions** (deleting posts or pages, resetting the database, removing files outside the theme).
 11. Use **WP-CLI** (`wp ...`) for WordPress operations when available.
 12. Work **one phase at a time**. At the end of each phase, stop and report: files created or changed, what to test at `http://ta-tours.local`, and any open questions.
@@ -211,6 +217,26 @@ ta-tours/
 - Mobile-first, responsive CSS. Breakpoints: 640px, 960px, 1200px.
 - Semantic HTML5, accessible labels, visible focus states, `alt` text on all images.
 - Performance: enqueue only what is needed, defer non-critical JS, no heavy libraries.
+
+## Motion & Animation
+- Goal: the site should feel alive and smooth, never slow or distracting.
+- Animate only `transform` and `opacity` (GPU-friendly). Never animate layout
+  properties (width, height, top, left, margin).
+- Vanilla JS only (IntersectionObserver + requestAnimationFrame). No animation
+  libraries.
+- Durations 400–700ms, easing `cubic-bezier(0.22, 1, 0.36, 1)`. Stagger grouped
+  items by 80–120ms.
+- Respect `prefers-reduced-motion: reduce`: disable all non-essential motion.
+- Progressive enhancement: content is hidden for reveal only when JS is
+  running (`.js` class on <html>). Without JS everything is visible.
+- Reveal each element only once. No layout shift.
+- Reusable API: `data-reveal` (fade-up | fade-in | zoom-in | slide-start |
+  slide-end) and `data-reveal-stagger` on a parent to stagger its children.
+  `slide-start` / `slide-end` must respect RTL.
+- Planned effects: hero entrance on load, section reveals, staggered cards,
+  number count-up, header shadow/shrink after scrolling, subtle hero parallax
+  (desktop only, disabled on touch and reduced motion), card hover lift with
+  image zoom, button hover/press feedback, smooth scrolling for in-page anchors.
 
 ## Git
 

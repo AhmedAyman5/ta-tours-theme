@@ -57,7 +57,19 @@
 	--ta-shadow: 0 8px 24px rgb(9 108 141 / 0.1);
 	--ta-shadow-lg: 0 16px 40px rgb(9 108 141 / 0.16);
 	--ta-header-h: 4.5rem;
-	--ta-transition: 180ms ease;
+	--ta-header-shrink: 0.82;  /* compact header scale after scrolling */
+
+	/* Motion (see CLAUDE.md → Motion & Animation) */
+	--ta-ease: cubic-bezier(0.22, 1, 0.36, 1);
+	--ta-dur: 400ms;           /* hover lifts, header state */
+	--ta-dur-reveal: 700ms;    /* scroll reveals (keep in sync with main.js) */
+	--ta-dur-zoom: 600ms;      /* image zoom on hover */
+	--ta-transition: 200ms var(--ta-ease); /* colors and button feedback */
+	--ta-dir: 1;               /* -1 in RTL: flips horizontal motion */
+}
+
+[dir="rtl"] {
+	--ta-dir: -1;
 }
 
 :root:lang(ar) {
@@ -159,6 +171,10 @@ address {
 	outline: 3px solid var(--ta-focus);
 	outline-offset: 3px;
 	border-radius: 2px;
+}
+
+.ta-main {
+	overflow-x: clip; /* slide-in reveals never cause a horizontal scrollbar */
 }
 
 .ta-main:focus {
@@ -296,7 +312,12 @@ address {
 }
 
 .ta-btn:hover {
-	transform: translateY(-1px);
+	transform: translateY(-2px);
+}
+
+.ta-btn:active {
+	transform: translateY(0) scale(0.97);
+	transition-duration: 80ms;
 }
 
 .ta-btn--sm {
@@ -405,12 +426,12 @@ address {
 	border: 1px solid var(--ta-border);
 	border-radius: var(--ta-radius-lg);
 	box-shadow: var(--ta-shadow-sm);
-	transition: box-shadow var(--ta-transition), transform var(--ta-transition);
+	transition: box-shadow var(--ta-dur) var(--ta-ease), transform var(--ta-dur) var(--ta-ease);
 }
 
 .ta-card:hover {
 	box-shadow: var(--ta-shadow-lg);
-	transform: translateY(-3px);
+	transform: translateY(-4px);
 }
 
 .ta-card__media {
@@ -425,6 +446,11 @@ address {
 	inline-size: 100%;
 	block-size: 100%;
 	object-fit: cover;
+	transition: scale var(--ta-dur-zoom) var(--ta-ease);
+}
+
+.ta-card:hover .ta-card__img {
+	scale: 1.05;
 }
 
 .ta-card__body {
@@ -454,16 +480,51 @@ address {
 	position: sticky;
 	inset-block-start: 0;
 	z-index: 100;
+}
+
+/* The bar background (::before) and its scroll shadow (::after) are separate layers,
+   so the compact state is pure transform/opacity: the header box keeps its height
+   and the page below never jumps. */
+.ta-header::before,
+.ta-header::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	transform-origin: top;
+	transition: transform var(--ta-dur) var(--ta-ease), opacity var(--ta-dur) var(--ta-ease);
+}
+
+.ta-header::before {
 	background: rgb(255 255 255 / 0.94);
 	border-block-end: 1px solid var(--ta-border);
 	box-shadow: var(--ta-shadow-sm);
 }
 
 @supports (backdrop-filter: blur(8px)) {
-	.ta-header {
+	.ta-header::before {
 		background: rgb(255 255 255 / 0.85);
 		backdrop-filter: blur(8px);
 	}
+}
+
+.ta-header::after {
+	box-shadow: var(--ta-shadow);
+	opacity: 0;
+}
+
+.ta-header.is-scrolled::before,
+.ta-header.is-scrolled::after {
+	transform: scaleY(var(--ta-header-shrink));
+}
+
+.ta-header.is-scrolled::after {
+	opacity: 1;
+}
+
+/* Keep the content centered in the shorter bar. */
+.ta-header.is-scrolled .ta-header__inner {
+	transform: translateY(calc(var(--ta-header-h) * (var(--ta-header-shrink) - 1) / 2));
 }
 
 .admin-bar .ta-header {
@@ -484,6 +545,7 @@ address {
 	justify-content: space-between;
 	gap: var(--ta-space-4);
 	min-block-size: var(--ta-header-h);
+	transition: transform var(--ta-dur) var(--ta-ease);
 }
 
 .ta-header__logo {
@@ -496,6 +558,16 @@ address {
 .ta-header__logo-img {
 	inline-size: auto;
 	block-size: 3.5rem;
+	transform-origin: left center;
+	transition: transform var(--ta-dur) var(--ta-ease);
+}
+
+[dir="rtl"] .ta-header__logo-img {
+	transform-origin: right center;
+}
+
+.ta-header.is-scrolled .ta-header__logo-img {
+	transform: scale(0.86);
 }
 
 @media (min-width: 960px) {
@@ -625,6 +697,11 @@ address {
 		display: block;
 	}
 
+	/* The inner row moves up in the compact state; move the panel up to the bar's new edge too. */
+	.js .ta-header.is-scrolled .ta-header__panel {
+		transform: translateY(calc(var(--ta-header-h) * (var(--ta-header-shrink) - 1) / 2));
+	}
+
 	.no-js .ta-header__inner {
 		flex-wrap: wrap;
 	}
@@ -729,6 +806,13 @@ address {
 	block-size: 100%;
 	object-fit: cover;
 	object-position: 50% 45%;
+}
+
+/* Parallax runs only here (main.js uses the same media query). */
+@media (min-width: 960px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+	.ta-hero__img {
+		will-change: transform;
+	}
 }
 
 .ta-hero__inner {
@@ -883,13 +967,13 @@ address {
 	background: var(--ta-bg);
 	border: 1px solid var(--ta-border);
 	border-radius: var(--ta-radius-lg);
-	transition: background-color var(--ta-transition), box-shadow var(--ta-transition), transform var(--ta-transition);
+	transition: background-color var(--ta-dur) var(--ta-ease), box-shadow var(--ta-dur) var(--ta-ease), transform var(--ta-dur) var(--ta-ease);
 }
 
 .ta-feature:hover {
 	background: var(--ta-white);
 	box-shadow: var(--ta-shadow);
-	transform: translateY(-3px);
+	transform: translateY(-4px);
 }
 
 .ta-feature__icon {
@@ -1018,6 +1102,12 @@ address {
 	border-radius: var(--ta-radius-lg);
 	box-shadow: var(--ta-shadow-sm);
 	text-align: center;
+	transition: box-shadow var(--ta-dur) var(--ta-ease), transform var(--ta-dur) var(--ta-ease);
+}
+
+.ta-why__item:hover {
+	box-shadow: var(--ta-shadow);
+	transform: translateY(-4px);
 }
 
 .ta-why__value,
@@ -1068,12 +1158,12 @@ address {
 	background: linear-gradient(160deg, var(--ta-sky) 0%, var(--ta-primary) 100%);
 	box-shadow: var(--ta-shadow);
 	color: var(--ta-white);
-	transition: box-shadow var(--ta-transition), transform var(--ta-transition);
+	transition: box-shadow var(--ta-dur) var(--ta-ease), transform var(--ta-dur) var(--ta-ease);
 }
 
 .ta-dest:hover {
 	box-shadow: var(--ta-shadow-lg);
-	transform: translateY(-3px);
+	transform: translateY(-4px);
 }
 
 .ta-dest__img {
@@ -1083,7 +1173,7 @@ address {
 	inline-size: 100%;
 	block-size: 100%;
 	object-fit: cover;
-	transition: scale 600ms ease;
+	transition: scale var(--ta-dur-zoom) var(--ta-ease);
 }
 
 .ta-dest:hover .ta-dest__img {
@@ -1204,20 +1294,6 @@ address {
 
 .ta-cta :focus-visible {
 	outline-color: var(--ta-white);
-}
-
-/* Reveal on scroll (classes added by main.js; never hides content without JS) */
-@media (prefers-reduced-motion: no-preference) {
-	.ta-reveal {
-		opacity: 0;
-		translate: 0 1.5rem;
-		transition: opacity 600ms ease, translate 600ms ease, background-color var(--ta-transition), box-shadow var(--ta-transition), transform var(--ta-transition);
-	}
-
-	.ta-reveal.is-revealed {
-		opacity: 1;
-		translate: none;
-	}
 }
 
 /* 10. Footer
@@ -1369,7 +1445,66 @@ address {
 	border-radius: var(--ta-radius);
 }
 
-/* 13. Reduced motion
+/* 13. Motion: reveal on scroll and count-up
+   API: data-reveal="fade-up|fade-in|zoom-in|slide-start|slide-end" on an element,
+   data-reveal-stagger="<variant>" on a parent. State classes come from main.js.
+   ========================================================================== */
+:is([data-reveal], [data-reveal-stagger] > *) {
+	--ta-reveal-x: 0px;
+	--ta-reveal-y: 1.5rem;
+	--ta-reveal-scale: 1;
+}
+
+[data-reveal="fade-in"],
+[data-reveal-stagger="fade-in"] > :not([data-reveal]) {
+	--ta-reveal-y: 0px;
+}
+
+[data-reveal="zoom-in"],
+[data-reveal-stagger="zoom-in"] > :not([data-reveal]) {
+	--ta-reveal-y: 0px;
+	--ta-reveal-scale: 0.94;
+}
+
+/* "start" / "end" follow the reading direction (--ta-dir is -1 in RTL). */
+[data-reveal="slide-start"],
+[data-reveal-stagger="slide-start"] > :not([data-reveal]) {
+	--ta-reveal-x: calc(-2.5rem * var(--ta-dir));
+	--ta-reveal-y: 0px;
+}
+
+[data-reveal="slide-end"],
+[data-reveal-stagger="slide-end"] > :not([data-reveal]) {
+	--ta-reveal-x: calc(2.5rem * var(--ta-dir));
+	--ta-reveal-y: 0px;
+}
+
+/* Hidden only while JS runs; .ta-motion-off is the safety net set from <head>. */
+@media (prefers-reduced-motion: no-preference) {
+	.js:not(.ta-motion-off) :is([data-reveal], [data-reveal-stagger] > *):not(.is-revealed) {
+		opacity: 0;
+		translate: var(--ta-reveal-x) var(--ta-reveal-y);
+		scale: var(--ta-reveal-scale);
+	}
+
+	[data-reveal].is-revealing,
+	[data-reveal-stagger] > .is-revealing {
+		transition:
+			opacity var(--ta-dur-reveal) var(--ta-ease),
+			translate var(--ta-dur-reveal) var(--ta-ease),
+			scale var(--ta-dur-reveal) var(--ta-ease);
+		transition-delay: var(--ta-reveal-delay, 0ms);
+	}
+}
+
+/* Count-up digits: fixed-width figures so the number never wobbles. */
+[data-countup] {
+	display: inline-block;
+	font-variant-numeric: tabular-nums;
+	text-align: end;
+}
+
+/* 14. Reduced motion
    ========================================================================== */
 @media (prefers-reduced-motion: reduce) {
 	html {
@@ -1385,13 +1520,16 @@ address {
 	}
 
 	.ta-btn:hover,
+	.ta-btn:active,
 	.ta-card:hover,
 	.ta-feature:hover,
+	.ta-why__item:hover,
 	.ta-dest:hover,
 	.ta-wa-float:hover {
 		transform: none;
 	}
 
+	.ta-card:hover .ta-card__img,
 	.ta-dest:hover .ta-dest__img {
 		scale: none;
 	}

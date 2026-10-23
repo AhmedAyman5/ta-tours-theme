@@ -20,7 +20,7 @@ defined( 'ABSPATH' ) || exit;
 		);
 		?>
 
-		<ul class="ta-destinations" role="list" data-ta-reveal-group>
+		<ul class="ta-destinations" role="list" data-reveal-stagger="fade-up">
 			<?php
 			foreach ( ta_destinations() as $ta_dest ) :
 				$ta_name = ta_t( $ta_dest['label'] );

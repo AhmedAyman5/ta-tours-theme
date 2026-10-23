@@ -297,7 +297,7 @@ function ta_section_head( array $args ) {
 
 	$class = 'ta-section__head' . ( $args['center'] ? ' ta-section__head--center' : '' );
 	?>
-	<div class="<?php echo esc_attr( $class ); ?>" data-ta-reveal>
+	<div class="<?php echo esc_attr( $class ); ?>" data-reveal="fade-up">
 		<div class="ta-section__heading">
 			<?php if ( $args['eyebrow'] ) : ?>
 				<p class="ta-eyebrow"><?php echo esc_html( $args['eyebrow'] ); ?></p>
