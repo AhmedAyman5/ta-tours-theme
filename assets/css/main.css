@@ -1,0 +1,912 @@
+/* ==========================================================================
+   TA Tours — main stylesheet
+   Mobile-first. Logical properties only, so one file serves RTL and LTR.
+   Breakpoints: 640px, 960px, 1200px.
+   ========================================================================== */
+
+/* 1. Design tokens
+   ========================================================================== */
+:root {
+	/* Brand colors */
+	--ta-primary: #096c8d;
+	--ta-secondary: #0a769f;
+	--ta-muted: #538da1;      /* borders / large text only on light backgrounds (3.7:1) */
+	--ta-sky: #7caad5;        /* decorative accents only, never text */
+	--ta-bg: #fafafa;
+	--ta-white: #ffffff;
+	--ta-text: #1f2a33;
+
+	/* Derived */
+	--ta-primary-dark: #075872;
+	--ta-text-soft: #4a5863;  /* 7:1 on white */
+	--ta-sky-soft: #eaf3fb;
+	--ta-border: #d9e6ee;
+	--ta-whatsapp: #0f7a40;   /* darkened WhatsApp green: 5.4:1 with white text */
+	--ta-whatsapp-dark: #0b6234;
+	--ta-focus: #f2b632;
+
+	/* Typography (English by default; Arabic below) */
+	--ta-font-heading: "Gabriela", Georgia, "Times New Roman", serif;
+	--ta-font-body: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+	--ta-line-height: 1.6;
+	--ta-heading-line-height: 1.25;
+	--ta-fs-sm: 0.875rem;
+	--ta-fs-base: 1rem;
+	--ta-fs-lg: 1.125rem;
+	--ta-fs-h3: 1.25rem;
+	--ta-fs-h2: clamp(1.625rem, 1.3rem + 1.4vw, 2.25rem);
+	--ta-fs-h1: clamp(2rem, 1.5rem + 2.4vw, 3rem);
+	--ta-fs-hero: clamp(2.5rem, 1.6rem + 4.5vw, 4.5rem);
+
+	/* Spacing, shape, depth */
+	--ta-space-1: 0.25rem;
+	--ta-space-2: 0.5rem;
+	--ta-space-3: 0.75rem;
+	--ta-space-4: 1rem;
+	--ta-space-5: 1.5rem;
+	--ta-space-6: 2rem;
+	--ta-space-7: 3rem;
+	--ta-space-8: 4.5rem;
+	--ta-gutter: 1rem;
+	--ta-container: 1200px;
+	--ta-radius-sm: 0.5rem;
+	--ta-radius: 1rem;
+	--ta-radius-lg: 1.5rem;
+	--ta-radius-pill: 999px;
+	--ta-shadow-sm: 0 1px 3px rgb(9 108 141 / 0.08);
+	--ta-shadow: 0 8px 24px rgb(9 108 141 / 0.1);
+	--ta-shadow-lg: 0 16px 40px rgb(9 108 141 / 0.16);
+	--ta-header-h: 4.5rem;
+	--ta-transition: 180ms ease;
+}
+
+:root:lang(ar) {
+	--ta-font-heading: "Cairo", Tahoma, Arial, sans-serif;
+	--ta-font-body: "Cairo", Tahoma, Arial, sans-serif;
+	--ta-line-height: 1.8;
+	--ta-heading-line-height: 1.4;
+}
+
+@media (min-width: 640px) {
+	:root { --ta-gutter: 1.5rem; }
+}
+
+@media (min-width: 960px) {
+	:root { --ta-header-h: 5.5rem; }
+}
+
+/* 2. Base
+   ========================================================================== */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+	scroll-padding-block-start: calc(var(--ta-header-h) + 1rem);
+}
+
+body {
+	margin: 0;
+	background: var(--ta-bg);
+	color: var(--ta-text);
+	font-family: var(--ta-font-body);
+	font-size: var(--ta-fs-base);
+	line-height: var(--ta-line-height);
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4 {
+	margin-block: 0 var(--ta-space-4);
+	font-family: var(--ta-font-heading);
+	line-height: var(--ta-heading-line-height);
+	color: var(--ta-primary);
+	font-weight: 700;
+}
+
+:root:not(:lang(ar)) h1,
+:root:not(:lang(ar)) h2,
+:root:not(:lang(ar)) h3 {
+	font-weight: 400; /* Gabriela ships one weight */
+}
+
+h1 { font-size: var(--ta-fs-h1); }
+h2 { font-size: var(--ta-fs-h2); }
+h3 { font-size: var(--ta-fs-h3); }
+
+p {
+	margin-block: 0 var(--ta-space-4);
+}
+
+a {
+	color: var(--ta-secondary);
+	text-underline-offset: 0.2em;
+	transition: color var(--ta-transition);
+}
+
+a:hover {
+	color: var(--ta-primary-dark);
+}
+
+img,
+svg {
+	max-width: 100%;
+	height: auto;
+	vertical-align: middle;
+}
+
+address {
+	font-style: normal;
+}
+
+:focus-visible {
+	outline: 3px solid var(--ta-focus);
+	outline-offset: 3px;
+	border-radius: 2px;
+}
+
+.ta-main:focus {
+	outline: none;
+}
+
+::selection {
+	background: var(--ta-sky);
+	color: var(--ta-text);
+}
+
+/* 3. Utilities
+   ========================================================================== */
+.ta-visually-hidden {
+	position: absolute !important;
+	inline-size: 1px;
+	block-size: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+.ta-skip-link {
+	position: absolute;
+	inset-block-start: var(--ta-space-2);
+	inset-inline-start: var(--ta-space-2);
+	z-index: 1000;
+	padding: var(--ta-space-2) var(--ta-space-4);
+	background: var(--ta-white);
+	color: var(--ta-primary);
+	border-radius: var(--ta-radius-sm);
+	box-shadow: var(--ta-shadow);
+	transform: translateY(-200%);
+	transition: transform var(--ta-transition);
+}
+
+.ta-skip-link:focus {
+	transform: none;
+}
+
+.ta-text-center {
+	text-align: center;
+}
+
+.ta-icon {
+	inline-size: 1.25em;
+	block-size: 1.25em;
+	flex-shrink: 0;
+}
+
+[dir="rtl"] .ta-icon--flip {
+	transform: scaleX(-1);
+}
+
+/* 4. Layout
+   ========================================================================== */
+.ta-container {
+	inline-size: 100%;
+	max-inline-size: var(--ta-container);
+	margin-inline: auto;
+	padding-inline: var(--ta-gutter);
+}
+
+.ta-section {
+	padding-block: var(--ta-space-7);
+}
+
+@media (min-width: 960px) {
+	.ta-section {
+		padding-block: var(--ta-space-8);
+	}
+}
+
+.ta-section__head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: var(--ta-space-3) var(--ta-space-5);
+	margin-block-end: var(--ta-space-6);
+}
+
+.ta-section__title {
+	margin: 0;
+}
+
+.ta-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--ta-space-5);
+}
+
+@media (min-width: 640px) {
+	.ta-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 960px) {
+	.ta-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--ta-space-6); }
+}
+
+.ta-prose {
+	max-inline-size: 72ch;
+}
+
+.ta-prose.ta-text-center {
+	margin-inline: auto;
+}
+
+.ta-prose > :last-child {
+	margin-block-end: 0;
+}
+
+/* 5. Buttons and links
+   ========================================================================== */
+.ta-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--ta-space-2);
+	min-block-size: 2.875rem;
+	padding: var(--ta-space-2) var(--ta-space-5);
+	border: 2px solid transparent;
+	border-radius: var(--ta-radius-pill);
+	font-family: var(--ta-font-body);
+	font-size: var(--ta-fs-base);
+	font-weight: 600;
+	line-height: 1.2;
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
+	transition: background-color var(--ta-transition), color var(--ta-transition), border-color var(--ta-transition), box-shadow var(--ta-transition), transform var(--ta-transition);
+}
+
+.ta-btn:hover {
+	transform: translateY(-1px);
+}
+
+.ta-btn--sm {
+	min-block-size: 2.5rem;
+	padding-inline: var(--ta-space-4);
+	font-size: var(--ta-fs-sm);
+}
+
+.ta-btn--block {
+	inline-size: 100%;
+}
+
+.ta-btn--primary {
+	background: var(--ta-secondary);
+	color: var(--ta-white);
+}
+
+.ta-btn--primary:hover {
+	background: var(--ta-primary-dark);
+	color: var(--ta-white);
+	box-shadow: var(--ta-shadow);
+}
+
+.ta-btn--outline {
+	background: transparent;
+	border-color: var(--ta-secondary);
+	color: var(--ta-secondary);
+}
+
+.ta-btn--outline:hover {
+	background: var(--ta-secondary);
+	color: var(--ta-white);
+}
+
+.ta-btn--whatsapp {
+	background: var(--ta-whatsapp);
+	color: var(--ta-white);
+}
+
+.ta-btn--whatsapp:hover {
+	background: var(--ta-whatsapp-dark);
+	color: var(--ta-white);
+	box-shadow: var(--ta-shadow);
+}
+
+/* For use on the brand-blue band */
+.ta-btn--light {
+	background: var(--ta-white);
+	color: var(--ta-primary);
+}
+
+.ta-btn--light:hover {
+	background: var(--ta-sky-soft);
+	color: var(--ta-primary-dark);
+	box-shadow: var(--ta-shadow-lg);
+}
+
+.ta-btn--outline-light {
+	background: transparent;
+	border-color: var(--ta-white);
+	color: var(--ta-white);
+}
+
+.ta-btn--outline-light:hover {
+	background: var(--ta-white);
+	color: var(--ta-primary);
+}
+
+.ta-btn-group {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--ta-space-3);
+}
+
+.ta-link-arrow {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--ta-space-2);
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.ta-link-arrow:hover {
+	text-decoration: underline;
+}
+
+.ta-link-arrow .ta-icon {
+	transition: translate var(--ta-transition);
+}
+
+.ta-link-arrow:hover .ta-icon {
+	translate: 3px 0;
+}
+
+[dir="rtl"] .ta-link-arrow:hover .ta-icon {
+	translate: -3px 0;
+}
+
+/* 6. Cards
+   ========================================================================== */
+.ta-card {
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	background: var(--ta-white);
+	border: 1px solid var(--ta-border);
+	border-radius: var(--ta-radius-lg);
+	box-shadow: var(--ta-shadow-sm);
+	transition: box-shadow var(--ta-transition), transform var(--ta-transition);
+}
+
+.ta-card:hover {
+	box-shadow: var(--ta-shadow-lg);
+	transform: translateY(-3px);
+}
+
+.ta-card__media {
+	aspect-ratio: 4 / 3;
+	overflow: hidden;
+	/* Shown when no image is available */
+	background: linear-gradient(160deg, var(--ta-sky) 0%, var(--ta-sky-soft) 70%, var(--ta-white) 100%);
+}
+
+.ta-card__img {
+	display: block;
+	inline-size: 100%;
+	block-size: 100%;
+	object-fit: cover;
+}
+
+.ta-card__body {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	padding: var(--ta-space-5);
+}
+
+.ta-card__title {
+	margin-block-end: var(--ta-space-2);
+	font-size: var(--ta-fs-h3);
+}
+
+.ta-card__text {
+	color: var(--ta-text-soft);
+}
+
+.ta-card__footer {
+	margin-block-start: auto;
+	padding-block-start: var(--ta-space-3);
+}
+
+/* 7. Header
+   ========================================================================== */
+.ta-header {
+	position: sticky;
+	inset-block-start: 0;
+	z-index: 100;
+	background: rgb(255 255 255 / 0.94);
+	border-block-end: 1px solid var(--ta-border);
+	box-shadow: var(--ta-shadow-sm);
+}
+
+@supports (backdrop-filter: blur(8px)) {
+	.ta-header {
+		background: rgb(255 255 255 / 0.85);
+		backdrop-filter: blur(8px);
+	}
+}
+
+.admin-bar .ta-header {
+	inset-block-start: 32px;
+}
+
+@media (max-width: 782px) {
+	.admin-bar .ta-header { inset-block-start: 46px; }
+}
+
+@media (max-width: 600px) {
+	.admin-bar .ta-header { inset-block-start: 0; }
+}
+
+.ta-header__inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--ta-space-4);
+	min-block-size: var(--ta-header-h);
+}
+
+.ta-header__logo {
+	display: inline-flex;
+	align-items: center;
+	padding-block: var(--ta-space-1);
+	text-decoration: none;
+}
+
+.ta-header__logo-img {
+	inline-size: auto;
+	block-size: 3.5rem;
+}
+
+@media (min-width: 960px) {
+	.ta-header__logo-img { block-size: 4.25rem; }
+}
+
+.ta-header__brand {
+	font-family: var(--ta-font-heading);
+	font-size: 1.375rem;
+	color: var(--ta-primary);
+}
+
+.ta-header__toggle {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	inline-size: 2.75rem;
+	block-size: 2.75rem;
+	padding: 0;
+	background: transparent;
+	border: 1px solid var(--ta-border);
+	border-radius: var(--ta-radius-sm);
+	color: var(--ta-primary);
+	cursor: pointer;
+}
+
+.ta-header__toggle .ta-icon {
+	inline-size: 1.5rem;
+	block-size: 1.5rem;
+}
+
+.ta-header__toggle-close,
+.ta-header__toggle[aria-expanded="true"] .ta-header__toggle-open {
+	display: none;
+}
+
+.ta-header__toggle[aria-expanded="true"] .ta-header__toggle-close {
+	display: block;
+}
+
+/* Without JS the toggle is useless: hide it and show the panel inline. */
+.no-js .ta-header__toggle {
+	display: none;
+}
+
+.ta-nav__list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.ta-nav__list a {
+	display: block;
+	padding: var(--ta-space-3) var(--ta-space-2);
+	color: var(--ta-text);
+	font-weight: 600;
+	text-decoration: none;
+	border-radius: var(--ta-radius-sm);
+}
+
+.ta-nav__list a:hover {
+	color: var(--ta-secondary);
+	background: var(--ta-sky-soft);
+}
+
+.ta-nav__list a[aria-current="page"] {
+	color: var(--ta-primary);
+	box-shadow: inset 0 -3px 0 var(--ta-sky);
+}
+
+.ta-header__actions {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--ta-space-3);
+}
+
+.ta-lang-switch {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--ta-space-2);
+	min-block-size: 2.5rem;
+	padding-inline: var(--ta-space-3);
+	border: 1px solid var(--ta-border);
+	border-radius: var(--ta-radius-pill);
+	color: var(--ta-primary);
+	font-weight: 600;
+	font-size: var(--ta-fs-sm);
+	text-decoration: none;
+}
+
+.ta-lang-switch:hover {
+	border-color: var(--ta-secondary);
+	background: var(--ta-sky-soft);
+}
+
+/* The switcher label is in the *other* language: use that language's font. */
+.ta-lang-switch[lang="ar"] {
+	font-family: "Cairo", Tahoma, Arial, sans-serif;
+}
+
+.ta-lang-switch[lang="en"] {
+	font-family: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* Mobile panel (< 960px) */
+@media (max-width: 959.98px) {
+	.ta-header__panel {
+		padding-block: var(--ta-space-2) var(--ta-space-5);
+	}
+
+	.js .ta-header__panel {
+		display: none;
+		position: absolute;
+		inset-inline: 0;
+		inset-block-start: 100%;
+		max-block-size: calc(100vh - var(--ta-header-h));
+		max-block-size: calc(100dvh - var(--ta-header-h));
+		overflow-y: auto;
+		padding-inline: var(--ta-gutter);
+		background: var(--ta-white);
+		border-block-end: 1px solid var(--ta-border);
+		box-shadow: var(--ta-shadow-lg);
+	}
+
+	.js .ta-header.is-open .ta-header__panel {
+		display: block;
+	}
+
+	.no-js .ta-header__inner {
+		flex-wrap: wrap;
+	}
+
+	.no-js .ta-header__panel {
+		inline-size: 100%;
+	}
+
+	.ta-nav__list {
+		display: grid;
+		gap: var(--ta-space-1);
+		padding-block: var(--ta-space-2);
+	}
+
+	.ta-nav__list a {
+		padding-inline: var(--ta-space-3);
+		font-size: var(--ta-fs-lg);
+	}
+
+	.ta-header__actions {
+		padding-block-start: var(--ta-space-4);
+		border-block-start: 1px solid var(--ta-border);
+	}
+}
+
+/* Desktop (>= 960px) */
+@media (min-width: 960px) {
+	.ta-header__toggle {
+		display: none;
+	}
+
+	.ta-header__panel {
+		display: flex;
+		flex: 1;
+		align-items: center;
+		justify-content: space-between;
+		gap: var(--ta-space-5);
+		margin-inline-start: var(--ta-space-6);
+	}
+
+	.ta-nav__list {
+		display: flex;
+		gap: var(--ta-space-1);
+	}
+
+	.ta-nav__list a {
+		padding-inline: var(--ta-space-3);
+	}
+
+	.ta-header__actions {
+		flex-wrap: nowrap;
+	}
+}
+
+/* 8. Page header
+   ========================================================================== */
+.ta-page-header {
+	padding-block: var(--ta-space-7) var(--ta-space-6);
+	background: linear-gradient(180deg, var(--ta-sky-soft) 0%, var(--ta-bg) 100%);
+	text-align: center;
+}
+
+.ta-page-header__title {
+	margin: 0;
+}
+
+/* 9. Hero + blue band
+   ========================================================================== */
+.ta-hero {
+	position: relative;
+	display: flex;
+	align-items: center;
+	min-block-size: clamp(18rem, 55vh, 34rem);
+	padding-block: var(--ta-space-8);
+	/* White veil keeps the blue headline readable over any cloud photo;
+	   the sky gradient is the fallback when the photo is missing. */
+	background-color: var(--ta-sky);
+	background-image:
+		linear-gradient(180deg, rgb(255 255 255 / 0.55) 0%, rgb(255 255 255 / 0.25) 60%, rgb(255 255 255 / 0) 100%),
+		var(--ta-hero-image, linear-gradient(180deg, #cfe3f4 0%, var(--ta-sky) 100%));
+	background-size: cover;
+	background-position: center;
+}
+
+.ta-hero__inner {
+	text-align: center;
+}
+
+.ta-hero__title {
+	max-inline-size: 16ch;
+	margin-inline: auto;
+	margin-block-end: 0;
+	font-size: var(--ta-fs-hero);
+	color: var(--ta-primary);
+	text-shadow: 0 2px 18px rgb(255 255 255 / 0.85), 0 1px 2px rgb(255 255 255 / 0.9);
+}
+
+.ta-band {
+	background: var(--ta-primary);
+	color: var(--ta-white);
+}
+
+.ta-band__inner {
+	display: grid;
+	gap: var(--ta-space-5);
+	padding-block: var(--ta-space-6);
+	justify-items: center;
+	text-align: center;
+}
+
+.ta-band__text {
+	margin: 0;
+	max-inline-size: 48ch;
+	font-size: var(--ta-fs-lg);
+}
+
+@media (min-width: 960px) {
+	.ta-band__inner {
+		grid-template-columns: 1fr auto;
+		justify-items: start;
+		align-items: center;
+		text-align: start;
+	}
+}
+
+/* 10. Footer
+   ========================================================================== */
+.ta-footer {
+	background: var(--ta-primary);
+	color: var(--ta-white);
+	/* Room so the floating WhatsApp button never covers footer text on phones */
+	padding-block-end: 4.5rem;
+}
+
+@media (min-width: 640px) {
+	.ta-footer { padding-block-end: 0; }
+}
+
+.ta-footer a {
+	color: var(--ta-white);
+}
+
+.ta-footer a:hover {
+	color: var(--ta-sky-soft);
+}
+
+.ta-footer__grid {
+	display: grid;
+	gap: var(--ta-space-6);
+	padding-block: var(--ta-space-7);
+}
+
+@media (min-width: 640px) {
+	.ta-footer__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	.ta-footer__about { grid-column: 1 / -1; }
+}
+
+@media (min-width: 960px) {
+	.ta-footer__grid { grid-template-columns: 1.4fr 1fr 1.4fr; }
+	.ta-footer__about { grid-column: auto; }
+}
+
+.ta-footer__logo {
+	display: inline-block;
+	margin-block-end: var(--ta-space-4);
+}
+
+.ta-footer__logo-img {
+	inline-size: auto;
+	block-size: 7rem;
+}
+
+.ta-footer__about p {
+	max-inline-size: 42ch;
+}
+
+.ta-footer__title {
+	margin-block-end: var(--ta-space-4);
+	font-size: var(--ta-fs-lg);
+	color: var(--ta-white);
+}
+
+.ta-footer__links,
+.ta-footer__contact {
+	display: grid;
+	gap: var(--ta-space-3);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.ta-footer__links a {
+	text-decoration: none;
+}
+
+.ta-footer__links a:hover,
+.ta-footer__links a[aria-current="page"] {
+	text-decoration: underline;
+}
+
+.ta-footer__contact li {
+	display: flex;
+	align-items: flex-start;
+	gap: var(--ta-space-3);
+}
+
+.ta-footer__contact .ta-icon {
+	margin-block-start: 0.2em;
+	opacity: 0.9;
+}
+
+.ta-footer__bottom {
+	border-block-start: 1px solid rgb(255 255 255 / 0.2);
+	font-size: var(--ta-fs-sm);
+}
+
+.ta-footer__bottom p {
+	margin: 0;
+	padding-block: var(--ta-space-4);
+	text-align: center;
+}
+
+.ta-footer :focus-visible,
+.ta-band :focus-visible {
+	outline-color: var(--ta-white);
+}
+
+/* 11. Floating WhatsApp button
+   ========================================================================== */
+.ta-wa-float {
+	position: fixed;
+	inset-block-end: var(--ta-space-4);
+	inset-inline-end: var(--ta-space-4);
+	z-index: 90;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	inline-size: 3.5rem;
+	block-size: 3.5rem;
+	border-radius: 50%;
+	background: var(--ta-whatsapp);
+	color: var(--ta-white);
+	box-shadow: 0 6px 20px rgb(15 122 64 / 0.35);
+	transition: transform var(--ta-transition), background-color var(--ta-transition);
+}
+
+.ta-wa-float:hover {
+	background: var(--ta-whatsapp-dark);
+	color: var(--ta-white);
+	transform: scale(1.06);
+}
+
+.ta-wa-float .ta-icon {
+	inline-size: 1.75rem;
+	block-size: 1.75rem;
+}
+
+@media (min-width: 960px) {
+	.ta-wa-float {
+		inset-block-end: var(--ta-space-5);
+		inset-inline-end: var(--ta-space-5);
+	}
+}
+
+/* 12. Content defaults (page.php)
+   ========================================================================== */
+.ta-entry + .ta-entry {
+	margin-block-start: var(--ta-space-6);
+}
+
+.ta-prose img {
+	border-radius: var(--ta-radius);
+}
+
+/* 13. Reduced motion
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		transition-duration: 0.01ms !important;
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+	}
+
+	.ta-btn:hover,
+	.ta-card:hover,
+	.ta-wa-float:hover {
+		transform: none;
+	}
+}

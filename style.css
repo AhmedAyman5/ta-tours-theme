@@ -1,0 +1,19 @@
+/*
+Theme Name:        TA Tours
+Theme URI:         https://ta-tours.com
+Author:            TA Tours
+Description:       Bilingual (Arabic / English) custom theme for TA Tours — Toyor Al-Jannah Tours, Mansoura branch.
+Version:           1.0.0
+Requires at least: 6.5
+Tested up to:      7.1
+Requires PHP:      8.2
+License:           GNU General Public License v2 or later
+License URI:       https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain:       ta-tours
+*/
+
+/* Real styles live in assets/css/main.css. This file only carries the theme header and a tiny base. */
+html {
+	-webkit-text-size-adjust: 100%;
+	text-size-adjust: 100%;
+}
