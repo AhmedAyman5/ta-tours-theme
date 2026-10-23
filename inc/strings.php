@@ -354,6 +354,180 @@ function ta_strings() {
 			'en' => "Send us a message and let's start planning together today.",
 		),
 
+		// Inner page hero.
+		'breadcrumb'                => array(
+			'ar' => 'مسار التنقل',
+			'en' => 'Breadcrumb',
+		),
+
+		// About: page hero.
+		'about_title'               => array(
+			'ar' => 'من نحن',
+			'en' => 'About us',
+		),
+		'about_intro'               => array(
+			'ar' => 'منذ عام 2016 ونحن نحوّل خطط السفر إلى رحلات سهلة ومليئة بالمتعة.',
+			'en' => "Since 2016, we've been turning travel plans into easy, joyful journeys.",
+		),
+
+		// About: our story.
+		'about_story_eyebrow'       => array(
+			'ar' => 'من نحن',
+			'en' => 'Who we are',
+		),
+		'about_story_title'         => array(
+			'ar' => 'حكايتنا',
+			'en' => 'Our story',
+		),
+		'about_story_p1'            => array(
+			'ar' => 'بدأت «TA Tours» – المعروفة رسميًا باسم «طيور الجنة» – رحلتها عام 2016 بفكرة بسيطة: أن يكون السفر متعة تبدأ من أول رسالة، لا عبئًا يُثقل كاهلك. ومنذ ذلك الحين أصبحنا اسمًا موثوقًا في قطاع السفر في مصر، نرافق المسافرين في رحلاتهم داخل مصر وحول العالم بكل سهولة وثقة.',
+			'en' => "TA Tours — officially known as Toyor Al-Jannah — began its journey in 2016 with a simple belief: travel should feel exciting from the very first message, not stressful. Since then, we have grown into a trusted name in Egypt's travel industry, helping travelers explore Egypt and the world with ease and confidence.",
+		),
+		'about_story_p2'            => array(
+			'ar' => 'من برامج الرحلات المخططة بعناية وحجوزات الطيران السلسة، إلى حجز الفنادق والجولات السياحية المصحوبة بمرشدين واستشارات السفر الشخصية، نهتم بكل تفصيلة بدقة، حتى لا يتبقى لك سوى أن تحزم حقيبتك وتستمتع بالرحلة.',
+			'en' => "From carefully planned itineraries and seamless flight bookings to hotel reservations, guided tours and personal travel advice, we take care of every detail with precision — so all that's left for you is to pack your bag and enjoy the journey.",
+		),
+		'about_story_img_alt'       => array(
+			'ar' => 'جواز سفر موضوع على خريطة العالم',
+			'en' => 'A passport resting on a world map',
+		),
+
+		// About: key facts.
+		'about_facts_label'         => array(
+			'ar' => 'حقائق سريعة',
+			'en' => 'Key facts',
+		),
+		'about_fact_founded'        => array(
+			'ar' => 'سنة التأسيس',
+			'en' => 'Year founded',
+		),
+		'about_fact_branches'       => array(
+			'ar' => 'فرعًا بنظام الفرنشايز في أنحاء مصر',
+			'en' => 'Franchise branches across Egypt',
+		),
+		'about_fact_services'       => array(
+			'ar' => 'خدمات سفر في مكان واحد',
+			'en' => 'Travel services under one roof',
+		),
+
+		// About: our network.
+		'about_network_eyebrow'     => array(
+			'ar' => 'شبكتنا',
+			'en' => 'Our network',
+		),
+		'about_network_title'       => array(
+			'ar' => '21 فرعًا.. ووعد واحد',
+			'en' => '21 branches. One promise.',
+		),
+		'about_network_text'        => array(
+			'ar' => 'انطلاقًا من جذورنا في مصر، نمت «طيور الجنة» لتصبح شبكة تضم 21 فرعًا بنظام الفرنشايز في أنحاء الجمهورية، لنقرّب السفر السهل والموثوق من الجميع. ويعمل في كل فرع فريق شغوف بالسفر ومتمرّس في فنون الضيافة، لتحصل دائمًا على اهتمام شخصي وخطة مصممة خصيصًا لك.',
+			'en' => 'Rooted in Egypt, Toyor Al-Jannah has grown into a network of 21 franchise branches across the country, bringing easy, reliable travel closer to everyone. Every branch is run by a dedicated team that loves travel and masters the art of hospitality, so you always get personal attention and a plan made just for you.',
+		),
+		'about_network_note'        => array(
+			'ar' => 'هذا الموقع هو بيت فرعنا في المنصورة، حيث ينتظرك فريقنا بكل ترحاب.',
+			'en' => 'This website is home to our Mansoura branch, where our team is ready to welcome you.',
+		),
+
+		// About: our values.
+		'about_values_title'        => array(
+			'ar' => 'ما نؤمن به',
+			'en' => 'What we stand for',
+		),
+		'about_value_ease'          => array(
+			'ar' => 'السهولة',
+			'en' => 'Ease',
+		),
+		'about_value_ease_text'     => array(
+			'ar' => 'التخطيط للسفر يجب أن يكون خفيفًا كالسحاب، لذلك نجعل كل خطوة واضحة وبسيطة.',
+			'en' => 'Planning a trip should feel as light as a cloud. We keep every step clear and simple.',
+		),
+		'about_value_hassle'        => array(
+			'ar' => 'سفر بلا متاعب',
+			'en' => 'Hassle-free travel',
+		),
+		'about_value_hassle_text'   => array(
+			'ar' => 'الطيران والفنادق وكل الحجوزات بينهما.. نتولاها عنك لتسافر وأنت مطمئن.',
+			'en' => 'Flights, hotels and every booking in between: we handle it all, so you can travel with peace of mind.',
+		),
+		'about_value_detail'        => array(
+			'ar' => 'الاهتمام بالتفاصيل',
+			'en' => 'Detail-oriented',
+		),
+		'about_value_detail_text'   => array(
+			'ar' => 'التفاصيل الصغيرة هي ما يصنع رحلة رائعة، لذلك نراجع كل تفصيلة قبل أن تقلع طائرتك.',
+			'en' => 'The small things make a great trip. We check every detail before you take off.',
+		),
+
+		// About: why travelers trust us.
+		'about_trust_title'         => array(
+			'ar' => 'لماذا يثق بنا المسافرون؟',
+			'en' => 'Why travelers trust us',
+		),
+		'about_trust_1'             => array(
+			'ar' => 'رضاك أولًا',
+			'en' => 'Your satisfaction comes first',
+		),
+		'about_trust_1_text'        => array(
+			'ar' => 'راحتك وسعادتك هما البوصلة التي توجّه كل قرار نتخذه.',
+			'en' => 'Your comfort and happiness guide every decision we make.',
+		),
+		'about_trust_2'             => array(
+			'ar' => 'علاقات قوية',
+			'en' => 'Strong relationships',
+		),
+		'about_trust_2_text'        => array(
+			'ar' => 'علاقاتنا الوثيقة مع شركات الطيران والفنادق والمعالم السياحية تمنحك خيارات أفضل.',
+			'en' => 'Close ties with airlines, hotels and attractions help us find you better options.',
+		),
+		'about_trust_3'             => array(
+			'ar' => 'أسعار تنافسية وعروض حصرية',
+			'en' => 'Competitive prices & exclusive deals',
+		),
+		'about_trust_3_text'        => array(
+			'ar' => 'نسعى دائمًا لنمنحك قيمة حقيقية وعروضًا ستحبها.',
+			'en' => "We work hard to give you real value and offers you'll love.",
+		),
+		'about_trust_4'             => array(
+			'ar' => 'عملاء يعودون إلينا',
+			'en' => 'Travelers who come back',
+		),
+		'about_trust_4_text'        => array(
+			'ar' => 'كثير من عملائنا يعودون إلينا رحلة بعد رحلة، وهذا أجمل دليل على اهتمامنا.',
+			'en' => 'Many of our clients return to us trip after trip, and that is the best proof of our care.',
+		),
+
+		// About: our vision.
+		'about_vision_eyebrow'      => array(
+			'ar' => 'نتطلع إلى المستقبل',
+			'en' => 'Looking ahead',
+		),
+		'about_vision_title'        => array(
+			'ar' => 'رؤيتنا',
+			'en' => 'Our vision',
+		),
+		'about_vision_text'         => array(
+			'ar' => 'نتطلع إلى المستقبل بنفس الشغف الذي بدأنا به: أن نواصل الابتكار، ونطوّر خدماتنا باستمرار، ونبقى في طليعة قطاع السفر في مصر وخارجها، لنحوّل أحلام الاستكشاف والمغامرة إلى رحلات حقيقية للمسافرين من كل الخلفيات.',
+			'en' => 'We look to the future with the same passion we started with: to keep innovating, keep growing our services, and stay at the forefront of travel in Egypt and beyond, turning dreams of exploration and adventure into real journeys for travelers from all walks of life.',
+		),
+		'about_vision_quote'        => array(
+			'ar' => 'السفر أصبح سهلًا.. اليوم وغدًا وفي كل رحلة.',
+			'en' => 'Travel made easy — today, tomorrow, and on every trip.',
+		),
+
+		// About: Mansoura branch card.
+		'about_branch_title'        => array(
+			'ar' => 'زورونا في فرع المنصورة',
+			'en' => 'Visit our Mansoura branch',
+		),
+		'about_branch_text'         => array(
+			'ar' => 'تفضّل التخطيط وجهًا لوجه؟ يسعدنا استقبالك لنخطط معًا لرحلتك القادمة.',
+			'en' => "Prefer to plan face to face? Drop by, and we'll be happy to plan your next trip with you.",
+		),
+		'get_directions'            => array(
+			'ar' => 'احصل على الاتجاهات',
+			'en' => 'Get directions',
+		),
+
 		// Footer.
 		/* translators: 1: founding year, 2: number of branches. */
 		'footer_about'        => array(

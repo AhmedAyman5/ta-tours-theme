@@ -201,7 +201,9 @@ ta-tours/
 │   └── images/
 ├── template-parts/
 │   ├── offer-card.php
-│   └── sections/              # home sections
+│   ├── page-hero.php          # inner page hero + breadcrumb
+│   ├── about/                 # about page sections
+│   └── sections/              # home sections (cta-band is shared)
 ├── templates/                 # page templates
 ├── header.php
 ├── footer.php

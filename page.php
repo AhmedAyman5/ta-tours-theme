@@ -11,7 +11,7 @@ get_header();
 
 while ( have_posts() ) :
 	the_post();
-	get_template_part( 'template-parts/page-header' );
+	get_template_part( 'template-parts/page-hero' );
 	?>
 	<div class="ta-section">
 		<div class="ta-container ta-prose">
