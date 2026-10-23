@@ -2006,6 +2006,182 @@ address {
 	}
 }
 
+/* 9f. Contact page
+   ========================================================================== */
+
+/* Contact cards: 1 → 2 → 4 columns, action pinned to the bottom */
+.ta-contact-cards {
+	display: grid;
+	gap: var(--ta-space-5);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+@media (min-width: 640px) {
+	.ta-contact-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1200px) {
+	.ta-contact-cards { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+.ta-contact-card {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: var(--ta-space-6) var(--ta-space-5);
+	border: 1px solid var(--ta-border);
+	border-radius: var(--ta-radius-lg);
+	background: var(--ta-white);
+	box-shadow: var(--ta-shadow-sm);
+	transition: box-shadow var(--ta-dur) var(--ta-ease), transform var(--ta-dur) var(--ta-ease);
+}
+
+.ta-contact-card:hover {
+	box-shadow: var(--ta-shadow-lg);
+	transform: translateY(-4px);
+}
+
+.ta-contact-card__icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	inline-size: 3.5rem;
+	block-size: 3.5rem;
+	margin-block-end: var(--ta-space-4);
+	border-radius: 50%;
+	background: var(--ta-primary);
+	box-shadow: var(--ta-shadow);
+	color: var(--ta-white);
+}
+
+.ta-contact-card__icon--whatsapp {
+	background: var(--ta-whatsapp);
+}
+
+.ta-contact-card__icon .ta-icon {
+	inline-size: 1.625rem;
+	block-size: 1.625rem;
+}
+
+.ta-contact-card__title {
+	margin-block-end: var(--ta-space-2);
+	font-size: var(--ta-fs-h3);
+}
+
+.ta-contact-card__text {
+	margin-block-end: var(--ta-space-4);
+	color: var(--ta-text-soft);
+}
+
+.ta-contact-card__address {
+	margin-block-end: var(--ta-space-4);
+	font-style: normal;
+	font-weight: 600;
+}
+
+.ta-contact-card__action {
+	align-self: stretch;
+	margin-block-start: auto;
+}
+
+.ta-contact-card__links {
+	display: grid;
+	gap: var(--ta-space-2);
+	margin-block-end: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.ta-contact-card__links a {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--ta-space-2);
+	color: var(--ta-secondary);
+	font-weight: 600;
+	font-size: var(--ta-fs-lg);
+	text-decoration: none;
+	overflow-wrap: anywhere;
+}
+
+.ta-contact-card__links a:hover {
+	color: var(--ta-primary-dark);
+	text-decoration: underline;
+}
+
+.ta-contact-card__links .ta-icon {
+	inline-size: 1.125rem;
+	block-size: 1.125rem;
+}
+
+/* "Get a faster reply" box */
+.ta-reply {
+	max-inline-size: 44rem;
+	margin-inline: auto;
+	padding: var(--ta-space-6) var(--ta-space-5);
+	border: 1px solid var(--ta-border);
+	border-radius: var(--ta-radius-lg);
+	background: var(--ta-white);
+	box-shadow: var(--ta-shadow);
+}
+
+@media (min-width: 640px) {
+	.ta-reply { padding: var(--ta-space-7); }
+}
+
+.ta-reply__icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	inline-size: 3rem;
+	block-size: 3rem;
+	margin-block-end: var(--ta-space-4);
+	border-radius: 50%;
+	background: var(--ta-sky-soft);
+	color: var(--ta-primary);
+}
+
+.ta-reply__icon .ta-icon {
+	inline-size: 1.5rem;
+	block-size: 1.5rem;
+}
+
+.ta-reply__title {
+	margin-block-end: var(--ta-space-2);
+	font-size: var(--ta-fs-h2);
+}
+
+.ta-reply__text {
+	margin-block-end: var(--ta-space-5);
+	color: var(--ta-text-soft);
+	font-size: var(--ta-fs-lg);
+}
+
+@media (min-width: 640px) {
+	.ta-reply__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Map */
+.ta-map {
+	overflow: hidden;
+	border: 1px solid var(--ta-border);
+	border-radius: var(--ta-radius-lg);
+	background: var(--ta-sky-soft);
+	box-shadow: var(--ta-shadow);
+}
+
+.ta-map__frame {
+	display: block;
+	inline-size: 100%;
+	block-size: 320px;
+	border: 0;
+}
+
+@media (min-width: 640px) {
+	.ta-map__frame { block-size: 420px; }
+}
+
 /* 10. Footer
    ========================================================================== */
 .ta-footer {
@@ -2237,6 +2413,7 @@ address {
 	.ta-point:hover,
 	.ta-dest:hover,
 	.ta-coverage__card:hover,
+	.ta-contact-card:hover,
 	.ta-wa-float:hover {
 		transform: none;
 	}

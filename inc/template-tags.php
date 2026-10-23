@@ -43,6 +43,15 @@ function ta_directions_url() {
 }
 
 /**
+ * Google Maps embed URL for the branch address, in the current language (no API key needed).
+ *
+ * @return string Unescaped URL — pass through esc_url() on output.
+ */
+function ta_map_embed_url() {
+	return 'https://maps.google.com/maps?q=' . rawurlencode( (string) ta_config( 'map_query' ) ) . '&hl=' . ta_lang() . '&z=16&output=embed';
+}
+
+/**
  * Site map: page key => template file (empty template = front page).
  *
  * @return array<string, array{template: string, label: string, slugs: array{ar: string, en: string}}>

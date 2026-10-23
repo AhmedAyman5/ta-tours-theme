@@ -748,6 +748,88 @@ function ta_strings() {
 			'en' => 'Get directions',
 		),
 
+		// Contact page.
+		'contact_page_title'        => array(
+			'ar' => 'تواصل معنا',
+			'en' => 'Contact us',
+		),
+		'contact_page_intro'        => array(
+			'ar' => 'نحن هنا لنساعدك في التخطيط لرحلتك القادمة. تواصل معنا بالطريقة التي تناسبك.',
+			'en' => "We're here to help you plan your next trip. Reach out the way that suits you best.",
+		),
+		'contact_cards_title'       => array(
+			'ar' => 'طرق التواصل',
+			'en' => 'Ways to reach us',
+		),
+		'contact_whatsapp_title'    => array(
+			'ar' => 'واتساب',
+			'en' => 'WhatsApp',
+		),
+		'contact_whatsapp_text'     => array(
+			'ar' => 'أسرع طريقة للتواصل معنا. أرسل رسالتك وسنرد عليك.',
+			'en' => "The fastest way to reach us. Send a message and we'll get back to you.",
+		),
+		'contact_whatsapp_btn'      => array(
+			'ar' => 'تحدّث معنا عبر واتساب',
+			'en' => 'Chat on WhatsApp',
+		),
+		'contact_call_title'        => array(
+			'ar' => 'اتصل بنا',
+			'en' => 'Call us',
+		),
+		'contact_call_text'         => array(
+			'ar' => 'تفضّل الحديث مباشرة؟ اتصل بنا.',
+			'en' => 'Prefer to talk? Call us directly.',
+		),
+		'contact_email_title'       => array(
+			'ar' => 'البريد الإلكتروني',
+			'en' => 'Email',
+		),
+		'contact_email_text'        => array(
+			'ar' => 'لطلباتك التفصيلية، راسلنا في أي وقت.',
+			'en' => 'For detailed requests, write to us anytime.',
+		),
+		'contact_visit_title'       => array(
+			'ar' => 'زورونا',
+			'en' => 'Visit us',
+		),
+		'contact_visit_text'        => array(
+			'ar' => 'يسعد فرعنا في المنصورة باستقبالك.',
+			'en' => 'Our Mansoura branch is happy to welcome you.',
+		),
+		'contact_directions_btn'    => array(
+			'ar' => 'احصل على الاتجاهات',
+			'en' => 'Get directions',
+		),
+		'contact_reply_title'       => array(
+			'ar' => 'لرد أسرع',
+			'en' => 'Get a faster reply',
+		),
+		'contact_reply_text'        => array(
+			'ar' => 'لنساعدك في التخطيط لرحلتك بسرعة، أخبرنا في رسالتك بـ:',
+			'en' => 'To help us plan your trip quickly, include in your message:',
+		),
+		'contact_reply_point_1'     => array(
+			'ar' => 'وجهتك (أو بعض الأفكار)',
+			'en' => 'Your destination (or a few ideas)',
+		),
+		'contact_reply_point_2'     => array(
+			'ar' => 'مواعيد السفر',
+			'en' => 'Your travel dates',
+		),
+		'contact_reply_point_3'     => array(
+			'ar' => 'عدد المسافرين',
+			'en' => 'Number of travelers',
+		),
+		'contact_reply_point_4'     => array(
+			'ar' => 'ميزانيتك التقريبية',
+			'en' => 'Your approximate budget',
+		),
+		'contact_map_title'         => array(
+			'ar' => 'موقعنا على الخريطة',
+			'en' => 'Find us on the map',
+		),
+
 		// Footer.
 		/* translators: 1: founding year, 2: number of branches. */
 		'footer_about'        => array(
