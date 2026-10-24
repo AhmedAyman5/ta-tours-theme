@@ -94,8 +94,8 @@ function ta_strings() {
 			'en' => 'Travel made easy',
 		),
 		'hero_subline'        => array(
-			'ar' => 'طيران وفنادق وعطلات متكاملة، نصمّمها لتناسبك ونتولّى عنك كل التفاصيل.',
-			'en' => 'Flights, hotels and complete holidays, planned around you, with every detail taken care of.',
+			'ar' => 'طيران وفنادق وعطلات وحج وعمرة.. نخطط لها من أجلك من المنصورة.',
+			'en' => 'Flights, hotels, holidays, Hajj and Umrah — planned for you from Mansoura.',
 		),
 		'hero_band_text'      => array(
 			'ar' => 'أخبرنا بوجهة أحلامك، ونحن نرتّب لك رحلة مريحة من البداية إلى النهاية.',
@@ -153,6 +153,19 @@ function ta_strings() {
 		'services_link'       => array(
 			'ar' => 'تعرّف على خدماتنا',
 			'en' => 'Explore our services',
+		),
+		// Hajj & Umrah: the featured service (Home card + first Services row).
+		'service_hajj'       => array(
+			'ar' => 'الحج والعمرة',
+			'en' => 'Hajj & Umrah',
+		),
+		'service_hajj_text'  => array(
+			'ar' => 'فريق التشغيل الخاص بنا داخل المملكة معك من الحجز حتى عودتك إلى بيتك بالسلامة.',
+			'en' => 'Our operations team inside the Kingdom stays with you from booking to your safe return home.',
+		),
+		'service_hajj_badge' => array(
+			'ar' => 'فريق تشغيل داخل المملكة',
+			'en' => 'Operations team in the Kingdom',
 		),
 		'service_flights'     => array(
 			'ar' => 'حجز الطيران',
@@ -233,6 +246,31 @@ function ta_strings() {
 		'service_wa_message'        => array(
 			'ar' => 'مرحبًا، أريد الاستفسار عن خدمة: %s',
 			'en' => "Hello, I'd like to ask about: %s",
+		),
+		// Hajj & Umrah row: WhatsApp button reuses hajj_btn / hajj_wa_message from the Offers page.
+		'service_hajj_desc'        => array(
+			'ar' => 'رحلة روحانية تستحق راحة بال كاملة. من أول رسالة واتساب ومكالمة تأكيد الحجز، مرورًا بكل يوم تقضيه في المملكة، يبقى فريق التشغيل الخاص بنا في السعودية بجانبك، حتى تعود إلى بيتك بالسلامة.',
+			'en' => 'A spiritual journey deserves complete peace of mind. From your first WhatsApp message and the booking confirmation call, through every day in the Kingdom, our full operations team in Saudi Arabia stays by your side and makes sure you return home safely.',
+		),
+		'service_hajj_point_1'     => array(
+			'ar' => 'فريق تشغيل متكامل داخل المملكة',
+			'en' => 'Full operations team inside Saudi Arabia',
+		),
+		'service_hajj_point_2'     => array(
+			'ar' => 'متابعة من أول رسالة حتى عودتك إلى بيتك',
+			'en' => 'Follow-up from your first message until you return home',
+		),
+		'service_hajj_point_3'     => array(
+			'ar' => 'دعم في كل ما تحتاجه طوال إقامتك',
+			'en' => 'Support for anything you need during your stay',
+		),
+		'service_hajj_alt'         => array(
+			'ar' => 'الكعبة المشرفة في المسجد الحرام بمكة المكرمة',
+			'en' => 'The Kaaba in Masjid al-Haram, Makkah',
+		),
+		'service_hajj_journey'     => array(
+			'ar' => 'تعرّف على الرحلة كاملة',
+			'en' => 'See the full journey',
 		),
 		'service_flights_desc'      => array(
 			'ar' => 'حجوزات طيران سلسة لرحلاتك الداخلية والدولية. نساعدك في اختيار الرحلات المناسبة ونتولى الحجز، لتبدأ رحلتك بكل سلاسة.',
@@ -382,6 +420,14 @@ function ta_strings() {
 			'ar' => 'الأسئلة الشائعة',
 			'en' => 'Frequently asked questions',
 		),
+		'faq_hajj_q'               => array(
+			'ar' => 'هل تنظمون رحلات الحج والعمرة؟',
+			'en' => 'Do you organize Hajj and Umrah trips?',
+		),
+		'faq_hajj_a'               => array(
+			'ar' => 'نعم، السياحة الدينية من أهم خدماتنا. فريق التشغيل الخاص بنا داخل المملكة يتابعك من أول رسالة حتى تعود إلى بيتك بالسلامة.',
+			'en' => 'Yes. Religious tourism is one of our key services. Our full operations team inside Saudi Arabia follows you from your first message until you return home safely.',
+		),
 		'faq_1_q'                   => array(
 			'ar' => 'كيف أحجز رحلة؟',
 			'en' => 'How do I book a trip?',
@@ -500,6 +546,15 @@ function ta_strings() {
 			'en' => 'Strong relationships with airlines and hotels let us offer you better value.',
 		),
 
+		'why_kingdom_title'  => array(
+			'ar' => 'معك في المملكة',
+			'en' => 'With you in the Kingdom',
+		),
+		'why_kingdom_text'   => array(
+			'ar' => 'في الحج والعمرة، فريق التشغيل الخاص بنا في السعودية بجانبك طوال رحلتك.',
+			'en' => 'For Hajj and Umrah, our operations team in Saudi Arabia is by your side throughout your trip.',
+		),
+
 		// Home: destinations.
 		'dest_eyebrow'        => array(
 			'ar' => 'وجهات مميّزة',
@@ -562,6 +617,22 @@ function ta_strings() {
 		'dest_bali_alt'       => array(
 			'ar' => 'مدرّجات الأرز الخضراء بين أشجار النخيل في بالي',
 			'en' => 'Green rice terraces among palm trees in Bali',
+		),
+		'dest_makkah'        => array(
+			'ar' => 'مكة المكرمة والمدينة المنورة',
+			'en' => 'Makkah & Madinah',
+		),
+		'dest_makkah_text'   => array(
+			'ar' => 'عمرة وحج، وفريقنا بجانبك',
+			'en' => 'Umrah and Hajj, with our team by your side',
+		),
+		'dest_makkah_alt'    => array(
+			'ar' => 'مآذن المسجد النبوي وقبابه في المدينة المنورة',
+			'en' => 'The minarets and domes of Al-Masjid an-Nabawi in Madinah',
+		),
+		'dest_makkah_wa_message' => array(
+			'ar' => 'مرحبًا، أريد الاستفسار عن رحلات العمرة والحج إلى مكة المكرمة والمدينة المنورة.',
+			'en' => "Hello, I'd like to ask about Umrah and Hajj trips to Makkah and Madinah.",
 		),
 
 		// Home: final call to action.
@@ -642,6 +713,10 @@ function ta_strings() {
 		'about_network_text'        => array(
 			'ar' => 'انطلاقًا من جذورنا في مصر، نمت «طيور الجنة» لتصبح شبكة تضم 21 فرعًا بنظام الفرنشايز في أنحاء الجمهورية، لنقرّب السفر السهل والموثوق من الجميع. ويعمل في كل فرع فريق شغوف بالسفر ومتمرّس في فنون الضيافة، لتحصل دائمًا على اهتمام شخصي وخطة مصممة خصيصًا لك.',
 			'en' => 'Rooted in Egypt, Toyor Al-Jannah has grown into a network of 21 franchise branches across the country, bringing easy, reliable travel closer to everyone. Every branch is run by a dedicated team that loves travel and masters the art of hospitality, so you always get personal attention and a plan made just for you.',
+		),
+		'about_network_hajj'       => array(
+			'ar' => 'وفي رحلات الحج والعمرة يمتد اهتمامنا أبعد من ذلك؛ إذ يرافق فريق تشغيل متكامل داخل المملكة ضيوف الرحمن من عملائنا طوال رحلتهم، حتى يعودوا إلى بيوتهم بالسلامة.',
+			'en' => 'For Hajj and Umrah, our care goes even further: a full operations team inside Saudi Arabia accompanies our pilgrims throughout their journey, until they return home safely.',
 		),
 		'about_network_note'        => array(
 			'ar' => 'هذا الموقع هو بيت فرعنا في المنصورة، حيث ينتظرك فريقنا بكل ترحاب.',
@@ -825,6 +900,10 @@ function ta_strings() {
 			'ar' => 'ميزانيتك التقريبية',
 			'en' => 'Your approximate budget',
 		),
+		'contact_reply_point_5'    => array(
+			'ar' => 'للحج أو العمرة: الموسم المفضل وعدد الحجاج أو المعتمرين',
+			'en' => 'For Hajj or Umrah: your preferred season and the number of pilgrims',
+		),
 		'contact_map_title'         => array(
 			'ar' => 'موقعنا على الخريطة',
 			'en' => 'Find us on the map',
@@ -961,8 +1040,12 @@ function ta_strings() {
 		// Footer.
 		/* translators: 1: founding year, 2: number of branches. */
 		'footer_about'        => array(
-			'ar' => 'منذ %1$s، نخطّط رحلاتك بسهولة واهتمام بالتفاصيل عبر %2$s فرعًا في أنحاء مصر. هذا موقع فرع المنصورة.',
-			'en' => 'Since %1$s, we have planned easy, detail-focused trips through %2$s branches across Egypt. This is the Mansoura branch.',
+			'ar' => 'منذ %1$s نخطط لرحلات سهلة تهتم بأدق التفاصيل، من العطلات حول العالم إلى الحج والعمرة، عبر %2$s فرعًا في أنحاء مصر. هذا موقع فرع المنصورة.',
+			'en' => 'Since %1$s, we\'ve planned easy, detail-focused trips, from holidays around the world to Hajj and Umrah, through %2$s branches across Egypt. This is the Mansoura branch.',
+		),
+		'footer_hajj_link'   => array(
+			'ar' => 'الحج والعمرة',
+			'en' => 'Hajj & Umrah',
 		),
 		'quick_links'         => array(
 			'ar' => 'روابط سريعة',

@@ -22,7 +22,19 @@ $ta_brand = ta_pick( ta_config( 'brand' ) );
 
 		<nav class="ta-footer__col" aria-labelledby="ta-footer-links-title">
 			<h2 class="ta-footer__title" id="ta-footer-links-title"><?php echo esc_html( ta_t( 'quick_links' ) ); ?></h2>
-			<?php ta_nav_list( 'ta-footer__links' ); ?>
+			<?php
+			$ta_hajj_url = ta_hajj_offers_url();
+			ta_nav_list(
+				'ta-footer__links',
+				$ta_hajj_url ? array(
+					array(
+						'label' => ta_t( 'footer_hajj_link' ),
+						'url'   => $ta_hajj_url,
+						'class' => 'ta-footer__hajj',
+					),
+				) : array()
+			);
+			?>
 		</nav>
 
 		<div class="ta-footer__col">

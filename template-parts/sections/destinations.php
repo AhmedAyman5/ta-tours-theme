@@ -23,9 +23,10 @@ defined( 'ABSPATH' ) || exit;
 		<ul class="ta-destinations" role="list" data-reveal-stagger="fade-up">
 			<?php
 			foreach ( ta_destinations() as $ta_dest ) :
-				$ta_name = ta_t( $ta_dest['label'] );
+				$ta_name    = ta_t( $ta_dest['label'] );
+				$ta_message = empty( $ta_dest['message'] ) ? sprintf( ta_t( 'dest_wa_message' ), $ta_name ) : ta_t( $ta_dest['message'] );
 				?>
-				<li class="ta-dest">
+				<li class="ta-dest<?php echo empty( $ta_dest['hajj'] ) ? '' : ' ta-dest--hajj'; ?>">
 					<?php
 					echo ta_theme_image( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in ta_theme_image().
 						$ta_dest['image'],
@@ -39,7 +40,7 @@ defined( 'ABSPATH' ) || exit;
 					<div class="ta-dest__body">
 						<h3 class="ta-dest__title"><?php echo esc_html( $ta_name ); ?></h3>
 						<p class="ta-dest__text"><?php echo esc_html( ta_t( $ta_dest['label'] . '_text' ) ); ?></p>
-						<a class="ta-dest__link" href="<?php echo esc_url( ta_whatsapp_url( sprintf( ta_t( 'dest_wa_message' ), $ta_name ) ) ); ?>" target="_blank" rel="noopener" aria-label="<?php echo esc_attr( sprintf( ta_t( 'dest_cta_label' ), $ta_name ) . ' ' . ta_t( 'opens_new_tab' ) ); ?>">
+						<a class="ta-dest__link" href="<?php echo esc_url( ta_whatsapp_url( $ta_message ) ); ?>" target="_blank" rel="noopener" aria-label="<?php echo esc_attr( sprintf( ta_t( 'dest_cta_label' ), $ta_name ) . ' ' . ta_t( 'opens_new_tab' ) ); ?>">
 							<?php echo ta_icon( 'whatsapp' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 							<span><?php echo esc_html( ta_t( 'dest_cta' ) ); ?></span>
 							<?php echo ta_icon( 'arrow', 'ta-icon--flip' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>

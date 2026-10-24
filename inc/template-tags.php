@@ -212,9 +212,10 @@ function ta_nav_items() {
  * Print a navigation list.
  *
  * @param string $class CSS class for the <ul>.
+ * @param array  $extra Extra items appended after the site pages: { label, url, class }.
  * @return void
  */
-function ta_nav_list( $class ) {
+function ta_nav_list( $class, array $extra = array() ) {
 	echo '<ul class="' . esc_attr( $class ) . '">';
 
 	foreach ( ta_nav_items() as $item ) {
@@ -226,50 +227,84 @@ function ta_nav_list( $class ) {
 		);
 	}
 
+	foreach ( $extra as $item ) {
+		printf(
+			'<li class="%1$s"><a href="%2$s">%3$s</a></li>',
+			esc_attr( isset( $item['class'] ) ? $item['class'] : '' ),
+			esc_url( $item['url'] ),
+			esc_html( $item['label'] )
+		);
+	}
+
 	echo '</ul>';
 }
 
 /**
- * The six services. The key is also the row's anchor id on the Services page.
+ * The services. The key is also the row's anchor id on the Services page.
  *
  * String keys derive from 'label': title = label, short Home text = label . '_text',
  * long text = label . '_desc', bullets = label . '_point_1'…'_point_3', image alt = label . '_alt'.
+ * A 'featured' service (Hajj & Umrah) gets the gold accent, a full-width Home card
+ * with a badge (label . '_badge') and its own buttons on the Services page.
  *
- * @return array<string, array{icon: string, label: string, image: string}>
+ * @return array<string, array{icon: string, label: string, image: string, featured: bool}>
  */
 function ta_services() {
 	return array(
+		'hajj-umrah'  => array(
+			'icon'     => 'kaaba',
+			'label'    => 'service_hajj',
+			'image'    => 'hajj-umrah.jpg',
+			'featured' => true,
+		),
 		'flights'     => array(
-			'icon'  => 'plane',
-			'label' => 'service_flights',
-			'image' => 'service-flights.jpg',
+			'icon'     => 'plane',
+			'label'    => 'service_flights',
+			'image'    => 'service-flights.jpg',
+			'featured' => false,
 		),
 		'planning'    => array(
-			'icon'  => 'map',
-			'label' => 'service_planning',
-			'image' => 'service-planning.jpg',
+			'icon'     => 'map',
+			'label'    => 'service_planning',
+			'image'    => 'service-planning.jpg',
+			'featured' => false,
 		),
 		'tours'       => array(
-			'icon'  => 'compass',
-			'label' => 'service_tours',
-			'image' => 'service-tours.jpg',
+			'icon'     => 'compass',
+			'label'    => 'service_tours',
+			'image'    => 'service-tours.jpg',
+			'featured' => false,
 		),
 		'hotels'      => array(
-			'icon'  => 'bed',
-			'label' => 'service_hotels',
-			'image' => 'service-hotels.jpg',
+			'icon'     => 'bed',
+			'label'    => 'service_hotels',
+			'image'    => 'service-hotels.jpg',
+			'featured' => false,
 		),
 		'consultancy' => array(
-			'icon'  => 'bulb',
-			'label' => 'service_consultancy',
-			'image' => 'service-consultancy.jpg',
+			'icon'     => 'bulb',
+			'label'    => 'service_consultancy',
+			'image'    => 'service-consultancy.jpg',
+			'featured' => false,
 		),
 		'honeymoon'   => array(
-			'icon'  => 'heart',
-			'label' => 'service_honeymoon',
-			'image' => 'service-honeymoon.jpg',
+			'icon'     => 'heart',
+			'label'    => 'service_honeymoon',
+			'image'    => 'service-honeymoon.jpg',
+			'featured' => false,
 		),
 	);
+}
+
+/**
+ * URL of the Hajj & Umrah section on the Offers page (current language).
+ *
+ * @return string Empty string when the Offers page does not exist.
+ */
+function ta_hajj_offers_url() {
+	$url = ta_page_url( 'offers' );
+
+	return $url ? $url . '#hajj-umrah' : '';
 }
 
 /**
@@ -293,16 +328,16 @@ function ta_faq_items() {
 	$offers = ta_page_url( 'offers' );
 	$items  = array();
 
-	for ( $i = 1; $i <= 5; $i++ ) {
-		$answer = ta_t( 'faq_' . $i . '_a' );
+	foreach ( array( 'hajj', '1', '2', '3', '4', '5' ) as $id ) {
+		$answer = ta_t( 'faq_' . $id . '_a' );
 
-		if ( 5 === $i ) {
+		if ( '5' === $id ) {
 			// Without an Offers page, keep the sentence but drop the link.
 			$answer = $offers ? sprintf( $answer, esc_url( $offers ) ) : wp_strip_all_tags( $answer );
 		}
 
 		$items[] = array(
-			'q' => ta_t( 'faq_' . $i . '_q' ),
+			'q' => ta_t( 'faq_' . $id . '_q' ),
 			'a' => $answer,
 		);
 	}
@@ -313,7 +348,10 @@ function ta_faq_items() {
 /**
  * Popular destinations: image file and string keys (name key, plus '_text' and '_alt').
  *
- * @return array<string, array{image: string, label: string}>
+ * 'message' is an optional string key for a custom WhatsApp message; otherwise
+ * dest_wa_message is used with the name. 'hajj' cards get the gold accent.
+ *
+ * @return array<string, array{image: string, label: string, message?: string, hajj?: bool}>
  */
 function ta_destinations() {
 	return array(
@@ -328,6 +366,12 @@ function ta_destinations() {
 		'bali'     => array(
 			'image' => 'dest-bali.jpg',
 			'label' => 'dest_bali',
+		),
+		'makkah'   => array(
+			'image'   => 'dest-madinah.jpg',
+			'label'   => 'dest_makkah',
+			'message' => 'dest_makkah_wa_message',
+			'hajj'    => true,
 		),
 	);
 }
@@ -544,6 +588,7 @@ function ta_icon( $name, $class = '' ) {
 		'smile'    => '<g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><circle cx="9" cy="9.5" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="9.5" r="1" fill="currentColor" stroke="none"/></g>',
 		'network'  => '<g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><path d="M10.8 7.2 6.2 16.8M13.2 7.2l4.6 9.6M7.5 19h9"/></g>',
 		'calendar' => '<g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 17.5h.01M12 17.5h.01"/></g>',
+		'kaaba'    => '<g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3 3 7v10l9 4 9-4V7z"/><path d="M3 7l9 4 9-4M12 11v10"/><path stroke-linecap="round" d="M3 10.5l9 4 9-4"/></g>',
 		'repeat'   => '<g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a3 3 0 0 1 3-3h15"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a3 3 0 0 1-3 3H3"/></g>',
 	);
 

@@ -15,8 +15,8 @@ defined( 'ABSPATH' ) || exit;
 			<p class="ta-reply__text"><?php echo esc_html( ta_t( 'contact_reply_text' ) ); ?></p>
 
 			<ul class="ta-checklist ta-reply__list" role="list" data-reveal-stagger="fade-up">
-				<?php for ( $ta_i = 1; $ta_i <= 4; $ta_i++ ) : ?>
-					<li>
+				<?php for ( $ta_i = 1; $ta_i <= 5; $ta_i++ ) : ?>
+					<li<?php echo 5 === $ta_i ? ' class="ta-checklist__item--hajj"' : ''; ?>>
 						<span class="ta-checklist__icon"><?php echo ta_icon( 'check' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
 						<span><?php echo esc_html( ta_t( 'contact_reply_point_' . $ta_i ) ); ?></span>
 					</li>

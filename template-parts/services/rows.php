@@ -3,7 +3,8 @@
  * Services: one row per service, image side alternating (start, end, start…).
  *
  * Each row's id is its ta_services() key, so the Home cards can link to #flights etc.
- * The whole row slides in from its image side.
+ * The whole row slides in from its image side. The featured row (Hajj & Umrah) gets the
+ * gold accent, the Offers page WhatsApp message and a link to the full journey there.
  *
  * @package ta-tours
  */
@@ -15,7 +16,8 @@ $ta_index = 0;
 <div class="ta-service-rows">
 	<?php
 	foreach ( ta_services() as $ta_key => $ta_service ) :
-		$ta_title  = ta_t( $ta_service['label'] );
+		$ta_title    = ta_t( $ta_service['label'] );
+		$ta_featured = $ta_service['featured'];
 		$ta_is_end = 1 === $ta_index % 2;
 		$ta_slide  = $ta_is_end ? 'slide-end' : 'slide-start';
 		$ta_img    = ta_theme_image(
@@ -31,6 +33,9 @@ $ta_index = 0;
 		$ta_classes = 'ta-section ta-service-row' . ( $ta_is_end ? ' ta-service-row--end' : ' ta-section--white' );
 		if ( ! $ta_img ) {
 			$ta_classes .= ' ta-service-row--no-media';
+		}
+		if ( $ta_featured ) {
+			$ta_classes .= ' ta-service-row--featured';
 		}
 		++$ta_index;
 		?>
@@ -56,11 +61,27 @@ $ta_index = 0;
 						<?php endfor; ?>
 					</ul>
 
-					<a class="ta-btn ta-btn--whatsapp" href="<?php echo esc_url( ta_whatsapp_url( sprintf( ta_t( 'service_wa_message' ), $ta_title ) ) ); ?>" target="_blank" rel="noopener">
-						<?php echo ta_icon( 'whatsapp' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-						<span><?php echo esc_html( ta_t( 'service_cta' ) ); ?></span>
-						<span class="ta-visually-hidden"><?php echo esc_html( ': ' . $ta_title . ' ' . ta_t( 'opens_new_tab' ) ); ?></span>
-					</a>
+					<?php if ( $ta_featured ) : ?>
+						<div class="ta-btn-group ta-service-row__actions">
+							<a class="ta-btn ta-btn--whatsapp" href="<?php echo esc_url( ta_whatsapp_url( ta_t( 'hajj_wa_message' ) ) ); ?>" target="_blank" rel="noopener">
+								<?php echo ta_icon( 'whatsapp' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+								<span><?php echo esc_html( ta_t( 'hajj_btn' ) ); ?></span>
+								<span class="ta-visually-hidden"><?php echo esc_html( ta_t( 'opens_new_tab' ) ); ?></span>
+							</a>
+							<?php if ( ta_hajj_offers_url() ) : ?>
+								<a class="ta-link-arrow" href="<?php echo esc_url( ta_hajj_offers_url() ); ?>">
+									<span><?php echo esc_html( ta_t( 'service_hajj_journey' ) ); ?></span>
+									<?php echo ta_icon( 'arrow', 'ta-icon--flip' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+								</a>
+							<?php endif; ?>
+						</div>
+					<?php else : ?>
+						<a class="ta-btn ta-btn--whatsapp" href="<?php echo esc_url( ta_whatsapp_url( sprintf( ta_t( 'service_wa_message' ), $ta_title ) ) ); ?>" target="_blank" rel="noopener">
+							<?php echo ta_icon( 'whatsapp' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+							<span><?php echo esc_html( ta_t( 'service_cta' ) ); ?></span>
+							<span class="ta-visually-hidden"><?php echo esc_html( ': ' . $ta_title . ' ' . ta_t( 'opens_new_tab' ) ); ?></span>
+						</a>
+					<?php endif; ?>
 				</div>
 			</div>
 		</section>

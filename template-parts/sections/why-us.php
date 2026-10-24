@@ -31,6 +31,12 @@ $ta_points = array(
 		'title' => ta_t( 'why_deals_title' ),
 		'text'  => ta_t( 'why_deals_text' ),
 	),
+	array(
+		'icon'  => 'kaaba',
+		'title' => ta_t( 'why_kingdom_title' ),
+		'text'  => ta_t( 'why_kingdom_text' ),
+		'hajj'  => true,
+	),
 );
 ?>
 <section class="ta-section ta-section--sky" aria-labelledby="ta-why-title">
@@ -48,7 +54,7 @@ $ta_points = array(
 
 		<ul class="ta-why" role="list" data-reveal-stagger="fade-up">
 			<?php foreach ( $ta_points as $ta_point ) : ?>
-				<li class="ta-why__item">
+				<li class="ta-why__item<?php echo empty( $ta_point['hajj'] ) ? '' : ' ta-why__item--hajj'; ?>">
 					<?php if ( ! empty( $ta_point['value'] ) ) : ?>
 						<span class="ta-why__value" dir="ltr"><span data-countup><?php echo esc_html( $ta_point['value'] ); ?></span></span>
 					<?php else : ?>

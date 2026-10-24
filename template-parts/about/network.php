@@ -13,6 +13,7 @@ defined( 'ABSPATH' ) || exit;
 			<p class="ta-eyebrow"><?php echo esc_html( ta_t( 'about_network_eyebrow' ) ); ?></p>
 			<h2 class="ta-section__title" id="ta-network-title"><?php echo esc_html( ta_t( 'about_network_title' ) ); ?></h2>
 			<p><?php echo esc_html( ta_t( 'about_network_text' ) ); ?></p>
+			<p class="ta-hajj-note"><?php echo esc_html( ta_t( 'about_network_hajj' ) ); ?></p>
 		</div>
 
 		<div class="ta-note" data-reveal="slide-end">

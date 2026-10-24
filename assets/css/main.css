@@ -24,7 +24,7 @@
 	--ta-whatsapp: #0f7a40;   /* darkened WhatsApp green: 5.4:1 with white text */
 	--ta-whatsapp-dark: #0b6234;
 	--ta-focus: #f2b632;
-	--ta-gold: #c9a227;        /* Hajj & Umrah accent: badge and step numbers only, always with dark text (6:1) */
+	--ta-gold: #c9a227;        /* Hajj & Umrah accent (badges, icons, numbers, borders), always with dark text (6:1) */
 	--ta-gold-soft: #fbf4dc;
 
 	/* Typography (English by default; Arabic below) */
@@ -1100,18 +1100,26 @@ address {
 	}
 }
 
-/* Why TA Tours */
+/* Why TA Tours: flex-wrap so an odd last row (5 items) stays centered. */
 .ta-why {
-	display: grid;
+	--ta-why-cols: 1;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
 	gap: var(--ta-space-5);
 }
 
-@media (min-width: 640px) {
-	.ta-why { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.ta-why > * {
+	flex: 0 0 calc((100% - (var(--ta-why-cols) - 1) * var(--ta-space-5)) / var(--ta-why-cols));
+	min-inline-size: 0;
 }
 
-@media (min-width: 1200px) {
-	.ta-why { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (min-width: 640px) {
+	.ta-why { --ta-why-cols: 2; }
+}
+
+@media (min-width: 960px) {
+	.ta-why { --ta-why-cols: 3; }
 }
 
 .ta-why__item {
@@ -1157,6 +1165,16 @@ address {
 .ta-why__icon .ta-icon {
 	inline-size: 1.75rem;
 	block-size: 1.75rem;
+}
+
+/* Hajj & Umrah point: gold icon and top border. */
+.ta-why__item--hajj {
+	border-block-start: 3px solid var(--ta-gold);
+}
+
+.ta-why__item--hajj .ta-why__icon {
+	background: var(--ta-gold);
+	color: var(--ta-text);
 }
 
 /* Destinations */
@@ -1254,15 +1272,26 @@ address {
 	outline-color: var(--ta-white);
 }
 
+/* Hajj & Umrah card: gold inner ring and gold-edged button. */
+.ta-dest--hajj {
+	outline: 3px solid var(--ta-gold);
+	outline-offset: -3px;
+}
+
+.ta-dest--hajj .ta-dest__link {
+	border-color: var(--ta-gold);
+}
+
 @media (min-width: 640px) {
 	.ta-destinations { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-	.ta-dest:first-child { grid-column: 1 / -1; aspect-ratio: 16 / 7; }
+	.ta-dest { aspect-ratio: 4 / 3; }
 }
 
 @media (min-width: 960px) {
-	.ta-destinations { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--ta-space-6); }
-	.ta-dest,
-	.ta-dest:first-child { grid-column: auto; aspect-ratio: 4 / 5; }
+	.ta-destinations { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--ta-space-5); }
+	.ta-dest { aspect-ratio: 3 / 4; }
+	.ta-dest__body { padding: var(--ta-space-4); }
+	.ta-dest__title { font-size: 1.25rem; }
 }
 
 /* Final call to action */
@@ -1741,6 +1770,96 @@ address {
 	outline-offset: 3px;
 }
 
+/* Featured Hajj & Umrah card (Home): full width, gold accent. */
+.ta-feature--featured {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	gap: var(--ta-space-4);
+	align-items: center;
+	justify-items: start;
+	margin-block-end: var(--ta-space-5);
+	border-color: rgb(201 162 39 / 0.6);
+	border-inline-start: 4px solid var(--ta-gold);
+	background: linear-gradient(100deg, var(--ta-gold-soft) 0%, var(--ta-white) 70%);
+}
+
+[dir="rtl"] .ta-feature--featured {
+	background: linear-gradient(-100deg, var(--ta-gold-soft) 0%, var(--ta-white) 70%);
+}
+
+.ta-feature--featured .ta-feature__icon {
+	align-self: start;
+	margin: 0;
+	background: var(--ta-gold);
+	color: var(--ta-text);
+}
+
+.ta-feature--featured .ta-badge-gold {
+	margin-block-end: var(--ta-space-3);
+	font-size: var(--ta-fs-sm);
+}
+
+.ta-feature--featured .ta-badge-gold .ta-icon {
+	inline-size: 0.875rem;
+	block-size: 0.875rem;
+	padding: 0.3rem;
+}
+
+.ta-feature__arrow {
+	display: none;
+	color: var(--ta-primary);
+}
+
+@media (min-width: 640px) {
+	.ta-feature--featured {
+		grid-template-columns: auto minmax(0, 1fr) auto;
+		gap: var(--ta-space-5);
+		padding: var(--ta-space-6);
+	}
+
+	.ta-feature--featured .ta-feature__icon {
+		align-self: center;
+		inline-size: 4rem;
+		block-size: 4rem;
+	}
+
+	.ta-feature__arrow {
+		display: inline-flex;
+		transition: translate var(--ta-transition);
+	}
+
+	.ta-feature--featured:hover .ta-feature__arrow {
+		translate: 4px 0;
+	}
+
+	[dir="rtl"] .ta-feature--featured:hover .ta-feature__arrow {
+		translate: -4px 0;
+	}
+}
+
+/* Featured Services row (Hajj & Umrah): gold icon, checks and photo edge. */
+.ta-service-row--featured .ta-feature__icon,
+.ta-service-row--featured .ta-checklist__icon,
+.ta-checklist__item--hajj .ta-checklist__icon {
+	background: var(--ta-gold);
+	color: var(--ta-text);
+}
+
+.ta-service-row--featured .ta-service-row__media {
+	border: 3px solid var(--ta-gold);
+}
+
+.ta-service-row__actions {
+	align-items: center;
+	gap: var(--ta-space-4) var(--ta-space-5);
+}
+
+/* Hajj & Umrah paragraph inside running text (About). */
+.ta-hajj-note {
+	padding-inline-start: var(--ta-space-4);
+	border-inline-start: 3px solid var(--ta-gold);
+}
+
 /* Intro */
 .ta-services-intro {
 	padding-block-end: var(--ta-space-6);
@@ -2162,6 +2281,7 @@ address {
 
 @media (min-width: 640px) {
 	.ta-reply__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	.ta-reply__list > :last-child:nth-child(odd) { grid-column: 1 / -1; }
 }
 
 /* Map */
@@ -2252,7 +2372,8 @@ address {
 	margin-block-end: var(--ta-space-4);
 }
 
-.ta-hajj__badge {
+.ta-hajj__badge,
+.ta-badge-gold {
 	display: inline-flex;
 	align-items: center;
 	gap: var(--ta-space-2);
@@ -2267,7 +2388,8 @@ address {
 	line-height: 1.4;
 }
 
-.ta-hajj__badge .ta-icon {
+.ta-hajj__badge .ta-icon,
+.ta-badge-gold .ta-icon {
 	box-sizing: content-box;
 	inline-size: 1.125rem;
 	block-size: 1.125rem;
@@ -2602,6 +2724,18 @@ address {
 
 .ta-footer__links a {
 	text-decoration: none;
+}
+
+/* Hajj & Umrah quick link: gold dot. */
+.ta-footer__hajj a::before {
+	content: "";
+	display: inline-block;
+	inline-size: 0.5rem;
+	block-size: 0.5rem;
+	margin-inline-end: var(--ta-space-2);
+	border-radius: 50%;
+	background: var(--ta-gold);
+	vertical-align: middle;
 }
 
 .ta-footer__links a:hover,
