@@ -383,6 +383,71 @@ function ta_section_head( array $args ) {
 }
 
 /**
+ * Current page number for a paginated custom query on a page (or the static front page).
+ *
+ * @return int
+ */
+function ta_current_page_number() {
+	return max( 1, (int) get_query_var( 'paged' ), (int) get_query_var( 'page' ) );
+}
+
+/**
+ * Print accessible pagination for a custom query on the current page.
+ *
+ * Links are built from the page permalink, so they keep the current language.
+ *
+ * @param WP_Query $query    The paginated query.
+ * @param string   $label    Accessible name of the navigation (unescaped).
+ * @param string   $fragment Optional anchor id to land on, e.g. the grid section.
+ * @return void
+ */
+function ta_pagination( WP_Query $query, $label, $fragment = '' ) {
+	$total = (int) $query->max_num_pages;
+
+	if ( $total < 2 ) {
+		return;
+	}
+
+	$permalink = get_permalink();
+
+	if ( get_option( 'permalink_structure' ) ) {
+		$base   = trailingslashit( $permalink ) . '%_%';
+		$format = user_trailingslashit( 'page/%#%', 'paged' );
+	} else {
+		$base   = add_query_arg( 'paged', '%#%', $permalink );
+		$format = '';
+	}
+
+	$links = paginate_links(
+		array(
+			'base'               => $base,
+			'format'             => $format,
+			'current'            => min( ta_current_page_number(), $total ),
+			'total'              => $total,
+			'type'               => 'array',
+			'mid_size'           => 1,
+			'add_fragment'       => $fragment ? '#' . $fragment : '',
+			'before_page_number' => '<span class="ta-visually-hidden">' . esc_html( ta_t( 'offers_page_number' ) ) . ' </span>',
+			'prev_text'          => ta_icon( 'chevron', 'ta-pagination__prev' ) . '<span>' . esc_html( ta_t( 'offers_prev' ) ) . '</span>',
+			'next_text'          => '<span>' . esc_html( ta_t( 'offers_next' ) ) . '</span>' . ta_icon( 'chevron', 'ta-icon--flip' ),
+		)
+	);
+
+	if ( ! $links ) {
+		return;
+	}
+	?>
+	<nav class="ta-pagination" aria-label="<?php echo esc_attr( $label ); ?>" data-reveal="fade-up">
+		<ul class="ta-pagination__list">
+			<?php foreach ( $links as $link ) : ?>
+				<li><?php echo $link; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built by paginate_links() from escaped parts. ?></li>
+			<?php endforeach; ?>
+		</ul>
+	</nav>
+	<?php
+}
+
+/**
  * Whether a theme image exists in assets/images/.
  *
  * @param string $file File name.
@@ -478,6 +543,7 @@ function ta_icon( $name, $class = '' ) {
 		'search'   => '<g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></g>',
 		'smile'    => '<g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><circle cx="9" cy="9.5" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="9.5" r="1" fill="currentColor" stroke="none"/></g>',
 		'network'  => '<g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><path d="M10.8 7.2 6.2 16.8M13.2 7.2l4.6 9.6M7.5 19h9"/></g>',
+		'calendar' => '<g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 17.5h.01M12 17.5h.01"/></g>',
 		'repeat'   => '<g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a3 3 0 0 1 3-3h15"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a3 3 0 0 1-3 3H3"/></g>',
 	);
 

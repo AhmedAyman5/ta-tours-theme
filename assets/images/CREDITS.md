@@ -19,5 +19,6 @@ as "Free to use under the Unsplash License" (not Unsplash+), then resized and co
 | `service-consultancy.jpg` | Phakphoom Srinorajan ([@bukphak](https://unsplash.com/@bukphak)) | https://unsplash.com/photos/a-laptop-computer-sitting-on-top-of-a-table-TH5ZB2N2z7w |
 | `service-honeymoon.jpg` | Meg von Haartman ([@traveleroohlala](https://unsplash.com/@traveleroohlala)) | https://unsplash.com/photos/a-swing-bed-sitting-on-top-of-a-wooden-pier-c7lPHXMWTjY |
 | `offer-placeholder.jpg` | Marissa Grootes ([@marissacristina](https://unsplash.com/@marissacristina)) | https://unsplash.com/photos/open-suitcase-with-travel-essentials-and-hat-TVllFyGaLEA |
+| `hajj-umrah.jpg` | ekrem osmanoglu ([@konevi](https://unsplash.com/@konevi)) | https://unsplash.com/photos/R_t4oOh-Lvg |
 
 Logos (`logo-*.png`) and `favicon.png` are TA Tours brand assets.

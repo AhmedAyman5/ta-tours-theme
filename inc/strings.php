@@ -830,6 +830,134 @@ function ta_strings() {
 			'en' => 'Find us on the map',
 		),
 
+		// Offers page: hero, grid, pagination, empty state and CTA band.
+		'offers_page_title'       => array(
+			'ar' => 'العروض',
+			'en' => 'Offers',
+		),
+		'offers_page_intro'       => array(
+			'ar' => 'أحدث عروضنا، مختارة لتجعل رحلتك القادمة أسهل.',
+			'en' => 'Our latest deals, chosen to make your next trip easier.',
+		),
+		'offers_grid_eyebrow'     => array(
+			'ar' => 'أحدث العروض',
+			'en' => 'Latest deals',
+		),
+		'offers_grid_title'       => array(
+			'ar' => 'العروض الحالية',
+			'en' => 'Current offers',
+		),
+		'offers_pagination_label' => array(
+			'ar' => 'صفحات العروض',
+			'en' => 'Offers pages',
+		),
+		'offers_prev'             => array(
+			'ar' => 'السابق',
+			'en' => 'Previous',
+		),
+		'offers_next'             => array(
+			'ar' => 'التالي',
+			'en' => 'Next',
+		),
+		'offers_page_number'      => array(
+			'ar' => 'صفحة',
+			'en' => 'Page',
+		),
+		'offers_empty_title'      => array(
+			'ar' => 'عروض جديدة في الطريق!',
+			'en' => 'New offers are on the way!',
+		),
+		'offers_empty_text'       => array(
+			'ar' => 'راسلنا عبر واتساب وسنشاركك أحدث العروض.',
+			'en' => "Message us on WhatsApp and we'll share the latest deals with you.",
+		),
+		'offers_empty_btn'        => array(
+			'ar' => 'اسأل عن العروض الحالية',
+			'en' => 'Ask about current offers',
+		),
+		'offers_empty_wa_message' => array(
+			'ar' => 'مرحبًا، أريد الاستفسار عن العروض الحالية.',
+			'en' => "Hello, I'd like to ask about your current offers.",
+		),
+		'offers_cta_title'        => array(
+			'ar' => 'لم تجد ما تبحث عنه؟',
+			'en' => "Didn't find what you're looking for?",
+		),
+		'offers_cta_text'         => array(
+			'ar' => 'أخبرنا عن رحلة أحلامك وسنخطط لها من أجلك.',
+			'en' => "Tell us about your dream trip and we'll plan it for you.",
+		),
+
+		// Offers page: Hajj & Umrah.
+		'hajj_eyebrow'      => array(
+			'ar' => 'السياحة الدينية',
+			'en' => 'Religious tourism',
+		),
+		'hajj_title'        => array(
+			'ar' => 'الحج والعمرة.. معك في كل خطوة',
+			'en' => 'Hajj & Umrah — with you every step of the way',
+		),
+		'hajj_text'         => array(
+			'ar' => 'رحلتك إلى الأراضي المقدسة تستحق راحة بال كاملة. فريق التشغيل الخاص بنا داخل المملكة العربية السعودية يرافقك من أول رسالة حتى تعود إلى بيتك بالسلامة، لتتفرغ لعبادتك ونهتم نحن بكل ما عدا ذلك.',
+			'en' => 'Your journey to the Holy Lands deserves complete peace of mind. Our full operations team inside Saudi Arabia stays with you from your very first message until you return home safely, so you can focus on your worship while we take care of everything else.',
+		),
+		'hajj_badge'        => array(
+			'ar' => 'فريق تشغيل متكامل داخل المملكة',
+			'en' => 'Our full operations team inside the Kingdom',
+		),
+		'hajj_img_alt'      => array(
+			'ar' => 'الكعبة المشرفة في المسجد الحرام بمكة المكرمة',
+			'en' => 'The Kaaba in Masjid al-Haram, Makkah',
+		),
+		'hajj_steps_label'  => array(
+			'ar' => 'كيف نرافقك في رحلتك',
+			'en' => 'How we stay with you on your journey',
+		),
+		'hajj_step_1_title' => array(
+			'ar' => 'أول رسالة',
+			'en' => 'Your first message',
+		),
+		'hajj_step_1_text'  => array(
+			'ar' => 'احجز بسهولة عبر رسالة واتساب.',
+			'en' => 'Book easily with a WhatsApp message.',
+		),
+		'hajj_step_2_title' => array(
+			'ar' => 'مكالمة التأكيد',
+			'en' => 'Confirmation call',
+		),
+		'hajj_step_2_text'  => array(
+			'ar' => 'نتصل بك لتأكيد حجزك والإجابة عن كل أسئلتك.',
+			'en' => 'We call you to confirm your booking and answer all your questions.',
+		),
+		'hajj_step_3_title' => array(
+			'ar' => 'فريقنا في المملكة',
+			'en' => 'Our team in the Kingdom',
+		),
+		'hajj_step_3_text'  => array(
+			'ar' => 'من لحظة وصولك، فريق التشغيل بجانبك في كل ما تحتاجه.',
+			'en' => 'From the moment you arrive, our operations team is by your side for anything you need.',
+		),
+		'hajj_step_4_title' => array(
+			'ar' => 'العودة بالسلامة',
+			'en' => 'Home safely',
+		),
+		'hajj_step_4_text'  => array(
+			'ar' => 'نبقى معك حتى تعود إلى بيتك سالمًا.',
+			'en' => 'We stay with you until you are back home safe and sound.',
+		),
+		'hajj_season'       => array(
+			'ar' => 'الموسم يقترب.. تواصل معنا مبكرًا لتخطط براحة.',
+			'en' => 'The season is approaching. Reach out early to plan with ease.',
+		),
+		'hajj_btn'          => array(
+			'ar' => 'استفسر عن الحج والعمرة',
+			'en' => 'Ask about Hajj & Umrah',
+		),
+		'hajj_wa_message'   => array(
+			'ar' => 'مرحبًا، أريد الاستفسار عن برامج الحج والعمرة.',
+			'en' => "Hello, I'd like to ask about your Hajj and Umrah programs.",
+		),
+
 		// Footer.
 		/* translators: 1: founding year, 2: number of branches. */
 		'footer_about'        => array(

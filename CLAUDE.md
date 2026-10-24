@@ -44,7 +44,13 @@ English. Use it as written.
 - **Brand:** TA Tours — official name **Toyor Al-Jannah Tours** (Arabic: طيور الجنة).
 - **Founded:** 2016.
 - **Network:** 21 franchise branches across Egypt. **The website shows the Mansoura branch only.**
-- **Services:** flight booking, travel itineraries and vacation planning, guided tours, hotel booking, personalized travel consultancy, honeymoon packages.
+- **Services:** flight booking, travel itineraries and vacation planning, guided tours, hotel booking, personalized travel consultancy, honeymoon packages, Hajj & Umrah.
+- Religious tourism (Hajj & Umrah) is a key service. TA Tours has a full
+  operations team inside Saudi Arabia that follows each client from the first
+  WhatsApp booking message and the booking confirmation call, stays with them
+  throughout their time in the Kingdom for anything they need, until they
+  return home safely. Never describe it as 'the best in Egypt' or similar
+  absolute claims; describe the operations team and the follow-up instead.
 - **Example destinations:** Maldives, Turkey, Bali.
 - **Tagline:** "Travel made easy" — Arabic: «السفر أصبح سهلًا».
 - **Brand values:** ease, hassle-free travel, detail-oriented.
@@ -204,6 +210,7 @@ ta-tours/
 │   ├── page-hero.php          # inner page hero + breadcrumb
 │   ├── about/                 # about page sections
 │   ├── services/              # services page sections
+│   ├── offers/                # offers page sections (hajj-umrah, grid, empty)
 │   └── sections/              # home sections (cta-band is shared)
 ├── templates/                 # page templates
 ├── header.php

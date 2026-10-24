@@ -24,6 +24,8 @@
 	--ta-whatsapp: #0f7a40;   /* darkened WhatsApp green: 5.4:1 with white text */
 	--ta-whatsapp-dark: #0b6234;
 	--ta-focus: #f2b632;
+	--ta-gold: #c9a227;        /* Hajj & Umrah accent: badge and step numbers only, always with dark text (6:1) */
+	--ta-gold-soft: #fbf4dc;
 
 	/* Typography (English by default; Arabic below) */
 	--ta-font-heading: "Gabriela", Georgia, "Times New Roman", serif;
@@ -2182,6 +2184,356 @@ address {
 	.ta-map__frame { block-size: 420px; }
 }
 
+/* 9g. Offers page
+   ========================================================================== */
+
+/* Hajj & Umrah: a white panel on a soft sky band. Gold marks the badge and step numbers only. */
+.ta-hajj {
+	background:
+		radial-gradient(ellipse 40% 30% at 100% 0%, rgb(124 170 213 / 0.22) 0%, rgb(124 170 213 / 0) 70%),
+		linear-gradient(180deg, var(--ta-bg) 0%, var(--ta-sky-soft) 100%);
+}
+
+.ta-hajj__panel {
+	padding: var(--ta-space-5);
+	border: 1px solid var(--ta-border);
+	border-radius: var(--ta-radius-lg);
+	background: var(--ta-white);
+	box-shadow: var(--ta-shadow-lg);
+}
+
+@media (min-width: 640px) {
+	.ta-hajj__panel { padding: var(--ta-space-6); }
+}
+
+@media (min-width: 1200px) {
+	.ta-hajj__panel { padding: var(--ta-space-7); }
+}
+
+.ta-hajj__intro {
+	display: grid;
+	gap: var(--ta-space-6);
+	align-items: center;
+}
+
+@media (min-width: 960px) {
+	.ta-hajj__intro {
+		grid-template-columns: 1fr 1.1fr;
+		gap: var(--ta-space-7);
+	}
+
+	.ta-hajj__intro--single {
+		grid-template-columns: minmax(0, 46rem);
+	}
+}
+
+.ta-hajj__media {
+	margin: 0;
+	aspect-ratio: 3 / 2;
+	overflow: hidden;
+	border-radius: var(--ta-radius);
+	background: linear-gradient(160deg, var(--ta-sky) 0%, var(--ta-sky-soft) 100%);
+	box-shadow: var(--ta-shadow);
+}
+
+/* Tablets stack photo over text: a wider crop keeps the text closer. */
+@media (min-width: 640px) and (max-width: 959.98px) {
+	.ta-hajj__media { aspect-ratio: 16 / 9; }
+}
+
+.ta-hajj__img {
+	display: block;
+	inline-size: 100%;
+	block-size: 100%;
+	object-fit: cover;
+}
+
+.ta-hajj__text .ta-section__title {
+	margin-block-end: var(--ta-space-4);
+}
+
+.ta-hajj__badge {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--ta-space-2);
+	margin: 0;
+	padding-block: var(--ta-space-2);
+	padding-inline: var(--ta-space-2) var(--ta-space-4);
+	border: 1px solid rgb(201 162 39 / 0.5);
+	border-radius: var(--ta-radius-lg); /* pill on one line, still soft when it wraps */
+	background: var(--ta-gold-soft);
+	color: var(--ta-text);
+	font-weight: 700;
+	line-height: 1.4;
+}
+
+.ta-hajj__badge .ta-icon {
+	box-sizing: content-box;
+	inline-size: 1.125rem;
+	block-size: 1.125rem;
+	padding: 0.375rem;
+	border-radius: 50%;
+	background: var(--ta-gold);
+	color: var(--ta-text);
+}
+
+/* Timeline: vertical with a line on the inline-start side; horizontal from 960px. */
+.ta-timeline {
+	display: grid;
+	gap: var(--ta-space-5);
+	margin: var(--ta-space-7) 0 var(--ta-space-6);
+	padding: 0;
+	list-style: none;
+}
+
+.ta-timeline__step {
+	position: relative;
+	display: grid;
+	grid-template-columns: 2.75rem minmax(0, 1fr);
+	gap: var(--ta-space-4);
+	align-items: start;
+	align-content: start;
+}
+
+.ta-timeline__number {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	inline-size: 2.75rem;
+	block-size: 2.75rem;
+	border-radius: 50%;
+	background: var(--ta-gold);
+	box-shadow: 0 0 0 6px var(--ta-white), var(--ta-shadow);
+	color: var(--ta-text);
+	font-size: var(--ta-fs-lg);
+	font-weight: 700;
+	line-height: 1;
+}
+
+/* Dashed line from this number to the next one. */
+.ta-timeline__step:not(:last-child)::before {
+	content: "";
+	position: absolute;
+	inset-block: 2.75rem calc(-1 * var(--ta-space-5));
+	inset-inline-start: calc(1.375rem - 1px);
+	border-inline-start: 2px dashed var(--ta-sky);
+}
+
+.ta-timeline__title {
+	display: flex;
+	align-items: center;
+	gap: var(--ta-space-2);
+	margin-block: 0.5rem var(--ta-space-1);
+	font-size: var(--ta-fs-h3);
+}
+
+.ta-timeline__icon {
+	color: var(--ta-secondary);
+}
+
+.ta-timeline__text {
+	margin: 0;
+	color: var(--ta-text-soft);
+}
+
+@media (min-width: 960px) {
+	.ta-timeline {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+
+	.ta-timeline__step {
+		grid-template-columns: minmax(0, 1fr);
+		justify-items: center;
+		text-align: center;
+	}
+
+	.ta-timeline__step:not(:last-child)::before {
+		inset-block: 1.375rem auto;
+		inset-inline-start: calc(50% + 2.25rem);
+		inline-size: calc(100% - 4.5rem + var(--ta-space-5));
+		border-inline-start: 0;
+		border-block-start: 2px dashed var(--ta-sky);
+	}
+
+	/* Icon above the title, so wrapped titles stay aligned across the row. */
+	.ta-timeline__title {
+		flex-direction: column;
+		gap: var(--ta-space-1);
+		margin-block-start: var(--ta-space-3);
+	}
+
+	.ta-timeline__text {
+		max-inline-size: 26ch;
+	}
+}
+
+.ta-hajj__footer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: var(--ta-space-4);
+	padding-block-start: var(--ta-space-5);
+	border-block-start: 1px solid var(--ta-border);
+	text-align: center;
+}
+
+@media (min-width: 960px) {
+	.ta-hajj__footer {
+		flex-direction: row;
+		justify-content: space-between;
+		text-align: start;
+	}
+}
+
+.ta-hajj__season {
+	display: flex;
+	align-items: center;
+	gap: var(--ta-space-2);
+	margin: 0;
+	color: var(--ta-primary-dark);
+	font-size: var(--ta-fs-lg);
+	font-weight: 600;
+}
+
+.ta-hajj__season .ta-icon {
+	color: var(--ta-secondary);
+}
+
+/* Offers grid pagination */
+.ta-pagination {
+	margin-block-start: var(--ta-space-7);
+}
+
+.ta-pagination__list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: var(--ta-space-2);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.ta-pagination .page-numbers {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--ta-space-1);
+	min-inline-size: 2.75rem;
+	min-block-size: 2.75rem;
+	padding-inline: var(--ta-space-3);
+	border: 1px solid var(--ta-border);
+	border-radius: var(--ta-radius-pill);
+	background: var(--ta-white);
+	color: var(--ta-secondary);
+	font-weight: 600;
+	text-decoration: none;
+	transition: background-color var(--ta-transition), color var(--ta-transition), border-color var(--ta-transition);
+}
+
+.ta-pagination a.page-numbers:hover {
+	border-color: var(--ta-secondary);
+	background: var(--ta-sky-soft);
+}
+
+.ta-pagination .page-numbers.current {
+	border-color: var(--ta-secondary);
+	background: var(--ta-secondary);
+	color: var(--ta-white);
+}
+
+.ta-pagination .page-numbers.dots {
+	border-color: transparent;
+	background: none;
+	color: var(--ta-text-soft);
+}
+
+.ta-pagination .ta-icon {
+	inline-size: 1em;
+	block-size: 1em;
+}
+
+/* Chevron points back: left in LTR, right in RTL. */
+.ta-pagination__prev {
+	transform: scaleX(-1);
+}
+
+[dir="rtl"] .ta-pagination__prev {
+	transform: none;
+}
+
+/* Empty state: a soft sky card with drawn clouds and a gently floating icon. */
+.ta-empty {
+	position: relative;
+	isolation: isolate;
+	overflow: hidden;
+	max-inline-size: 42rem;
+	margin-inline: auto;
+	padding: var(--ta-space-7) var(--ta-space-5);
+	border: 1px solid var(--ta-border);
+	border-radius: var(--ta-radius-lg);
+	background: linear-gradient(180deg, #d6e8f6 0%, var(--ta-sky-soft) 55%, var(--ta-white) 100%);
+	box-shadow: var(--ta-shadow);
+	text-align: center;
+}
+
+@media (min-width: 640px) {
+	.ta-empty { padding: var(--ta-space-8) var(--ta-space-7); }
+}
+
+.ta-empty::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	background:
+		radial-gradient(ellipse 30% 22% at 10% 18%, rgb(255 255 255 / 0.95) 0%, rgb(255 255 255 / 0) 70%),
+		radial-gradient(ellipse 20% 16% at 22% 26%, rgb(255 255 255 / 0.8) 0%, rgb(255 255 255 / 0) 70%),
+		radial-gradient(ellipse 28% 20% at 90% 34%, rgb(255 255 255 / 0.9) 0%, rgb(255 255 255 / 0) 70%),
+		radial-gradient(ellipse 18% 14% at 78% 40%, rgb(255 255 255 / 0.7) 0%, rgb(255 255 255 / 0) 70%);
+}
+
+.ta-empty__icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	inline-size: 5rem;
+	block-size: 5rem;
+	margin-block-end: var(--ta-space-5);
+	border-radius: 50%;
+	background: var(--ta-white);
+	box-shadow: var(--ta-shadow-lg);
+	color: var(--ta-primary);
+	animation: ta-float 4s var(--ta-ease) infinite alternate;
+}
+
+.ta-empty__icon .ta-icon {
+	inline-size: 2.25rem;
+	block-size: 2.25rem;
+}
+
+@keyframes ta-float {
+	from { transform: translateY(0); }
+	to { transform: translateY(-6px); }
+}
+
+.ta-empty__title {
+	margin-block-end: var(--ta-space-2);
+	color: var(--ta-primary-dark);
+	font-size: var(--ta-fs-h2);
+}
+
+.ta-empty__text {
+	max-inline-size: 34ch;
+	margin-inline: auto;
+	margin-block-end: var(--ta-space-5);
+	color: var(--ta-text-soft);
+	font-size: var(--ta-fs-lg);
+	text-wrap: balance;
+}
+
 /* 10. Footer
    ========================================================================== */
 .ta-footer {
@@ -2416,6 +2768,10 @@ address {
 	.ta-contact-card:hover,
 	.ta-wa-float:hover {
 		transform: none;
+	}
+
+	.ta-empty__icon {
+		animation: none;
 	}
 
 	.ta-card:hover .ta-card__img,
