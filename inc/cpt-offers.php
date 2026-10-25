@@ -17,23 +17,75 @@ defined( 'ABSPATH' ) || exit;
  * @return void
  */
 function ta_register_offer_post_type() {
-	$labels = array(
-		'name'                  => 'العروض / Offers',
-		'singular_name'         => 'عرض / Offer',
-		'menu_name'             => 'العروض / Offers',
-		'all_items'             => 'كل العروض / All offers',
-		'add_new'               => 'إضافة عرض / Add offer',
-		'add_new_item'          => 'إضافة عرض جديد / Add new offer',
-		'edit_item'             => 'تعديل العرض / Edit offer',
-		'new_item'              => 'عرض جديد / New offer',
-		'view_item'             => 'عرض / View offer',
-		'search_items'          => 'بحث في العروض / Search offers',
-		'not_found'             => 'لا توجد عروض / No offers found',
-		'not_found_in_trash'    => 'لا توجد عروض في المهملات / No offers in Trash',
-		'featured_image'        => 'صورة العرض / Offer image',
-		'set_featured_image'    => 'تعيين صورة العرض / Set offer image',
-		'remove_featured_image' => 'إزالة صورة العرض / Remove offer image',
-		'use_featured_image'    => 'استخدام كصورة العرض / Use as offer image',
+	// Admin labels follow the user's admin language (Arabic only for an ar locale).
+	$labels = array_map(
+		'ta_pick_admin',
+		array(
+			'name'                  => array(
+				'ar' => 'العروض',
+				'en' => 'Offers',
+			),
+			'singular_name'         => array(
+				'ar' => 'عرض',
+				'en' => 'Offer',
+			),
+			'menu_name'             => array(
+				'ar' => 'العروض',
+				'en' => 'Offers',
+			),
+			'all_items'             => array(
+				'ar' => 'كل العروض',
+				'en' => 'All offers',
+			),
+			'add_new'               => array(
+				'ar' => 'إضافة عرض',
+				'en' => 'Add offer',
+			),
+			'add_new_item'          => array(
+				'ar' => 'إضافة عرض جديد',
+				'en' => 'Add new offer',
+			),
+			'edit_item'             => array(
+				'ar' => 'تعديل العرض',
+				'en' => 'Edit offer',
+			),
+			'new_item'              => array(
+				'ar' => 'عرض جديد',
+				'en' => 'New offer',
+			),
+			'view_item'             => array(
+				'ar' => 'عرض',
+				'en' => 'View offer',
+			),
+			'search_items'          => array(
+				'ar' => 'بحث في العروض',
+				'en' => 'Search offers',
+			),
+			'not_found'             => array(
+				'ar' => 'لا توجد عروض',
+				'en' => 'No offers found',
+			),
+			'not_found_in_trash'    => array(
+				'ar' => 'لا توجد عروض في المهملات',
+				'en' => 'No offers in Trash',
+			),
+			'featured_image'        => array(
+				'ar' => 'صورة العرض',
+				'en' => 'Offer image',
+			),
+			'set_featured_image'    => array(
+				'ar' => 'تعيين صورة العرض',
+				'en' => 'Set offer image',
+			),
+			'remove_featured_image' => array(
+				'ar' => 'إزالة صورة العرض',
+				'en' => 'Remove offer image',
+			),
+			'use_featured_image'    => array(
+				'ar' => 'استخدام كصورة العرض',
+				'en' => 'Use as offer image',
+			),
+		)
 	);
 
 	register_post_type(
@@ -51,10 +103,7 @@ function ta_register_offer_post_type() {
 			'hierarchical'        => false,
 			'menu_position'       => 5,
 			'menu_icon'           => 'dashicons-tickets-alt',
-			// Own capabilities (edit_offers, publish_offers, …) so the Offers Manager role
-			// can manage offers without any post capability. See inc/roles.php.
-			'capability_type'     => array( 'offer', 'offers' ),
-			'map_meta_cap'        => true,
+			'capability_type'     => 'post',
 			'supports'            => array( 'title', 'editor', 'thumbnail' ),
 			'rewrite'             => array(
 				'slug'       => 'offer',
@@ -139,9 +188,9 @@ function ta_offer_columns( $columns ) {
 		$new['cb'] = $columns['cb'];
 	}
 
-	$new['ta_thumb'] = 'الصورة / Image';
-	$new['title']    = $columns['title'] ?? 'العنوان / Title';
-	$new['date']     = $columns['date'] ?? 'التاريخ / Date';
+	$new['ta_thumb'] = ta_pick_admin( array( 'ar' => 'الصورة', 'en' => 'Image' ) );
+	$new['title']    = $columns['title'] ?? ta_pick_admin( array( 'ar' => 'العنوان', 'en' => 'Title' ) );
+	$new['date']     = $columns['date'] ?? ta_pick_admin( array( 'ar' => 'التاريخ', 'en' => 'Date' ) );
 
 	// Polylang adds its language column(s) after this filter runs.
 	return $new;

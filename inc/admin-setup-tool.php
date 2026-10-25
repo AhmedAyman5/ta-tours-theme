@@ -116,11 +116,7 @@ function ta_setup_polylang_front_url() {
  * @return array{ok: bool, log: array<int, array{0: string, 1: string}>}
  */
 function ta_setup_run() {
-	// Step 0: roles and capabilities (does not need Polylang).
-	$log      = array(
-		ta_setup_offers_role(),
-		ta_setup_admin_offer_caps(),
-	);
+	$log      = array();
 	$problems = ta_setup_check_polylang();
 
 	if ( $problems ) {
@@ -274,7 +270,7 @@ function ta_setup_tool_render() {
 	<div class="wrap">
 		<h1><?php esc_html_e( 'TA Tours Setup', 'ta-tours' ); ?></h1>
 
-		<p><?php esc_html_e( 'Creates the Offers Manager role (and gives administrators the offer capabilities), creates the site pages in Arabic and English, links their translations, sets the front page (served at /en/ for English) and permalinks. Safe to run many times — nothing is duplicated.', 'ta-tours' ); ?></p>
+		<p><?php esc_html_e( 'Creates the site pages in Arabic and English, links their translations, sets the front page (served at /en/ for English) and permalinks. Safe to run many times — nothing is duplicated.', 'ta-tours' ); ?></p>
 
 		<?php if ( $result ) : ?>
 			<div class="notice <?php echo $result['ok'] ? 'notice-success' : 'notice-error'; ?>">

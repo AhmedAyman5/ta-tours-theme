@@ -1091,76 +1091,7 @@ function ta_strings() {
 			'en' => 'Nothing here yet.',
 		),
 
-		// Admin (offers dashboard). Read with ta_t( $key, ta_admin_lang() ).
-		'admin_welcome_menu'    => array(
-			'ar' => 'مرحبًا',
-			'en' => 'Welcome',
-		),
-		/* translators: %s: user display name. */
-		'admin_welcome_title'   => array(
-			'ar' => 'مرحبًا، %s',
-			'en' => 'Welcome, %s',
-		),
-		'admin_welcome_intro'   => array(
-			'ar' => 'من هنا تضيف عروض الموقع وتعدّلها بسهولة.',
-			'en' => 'Add and update the website offers here, easily.',
-		),
-		'admin_add_offer'       => array(
-			'ar' => 'إضافة عرض جديد',
-			'en' => 'Add a new offer',
-		),
-		'admin_all_offers'      => array(
-			'ar' => 'كل العروض',
-			'en' => 'All offers',
-		),
-		'admin_published'       => array(
-			'ar' => 'العروض المنشورة',
-			'en' => 'Published offers',
-		),
-		'admin_lang_ar'         => array(
-			'ar' => 'العربية',
-			'en' => 'Arabic',
-		),
-		'admin_lang_en'         => array(
-			'ar' => 'الإنجليزية',
-			'en' => 'English',
-		),
-		'admin_lang_all'        => array(
-			'ar' => 'الإجمالي',
-			'en' => 'Total',
-		),
-		'admin_guide_title'     => array(
-			'ar' => 'كيف تضيف عرضًا؟',
-			'en' => 'How to add an offer',
-		),
-		'admin_guide_1'         => array(
-			'ar' => 'اكتب عنوان العرض',
-			'en' => 'Write the offer title',
-		),
-		'admin_guide_2'         => array(
-			'ar' => 'اكتب وصفًا قصيرًا',
-			'en' => 'Write a short description',
-		),
-		'admin_guide_3'         => array(
-			'ar' => 'اختر صورة العرض',
-			'en' => 'Choose the offer image',
-		),
-		'admin_guide_4'         => array(
-			'ar' => 'اضغط نشر، ثم أضف الترجمة الإنجليزية من صندوق «اللغات».',
-			'en' => 'Click Publish, then add the Arabic or English translation from the "Languages" box.',
-		),
-		'admin_help'            => array(
-			'ar' => 'تحتاج مساعدة؟',
-			'en' => 'Need help?',
-		),
-		'admin_help_link'       => array(
-			'ar' => 'راسلنا على واتساب',
-			'en' => 'Message us on WhatsApp',
-		),
-		'admin_footer'          => array(
-			'ar' => 'TA Tours — لوحة إدارة العروض',
-			'en' => 'TA Tours — Offers dashboard',
-		),
+		// Admin (offer editor). Read with ta_t( $key, ta_admin_lang() ).
 		'admin_title_ph'        => array(
 			'ar' => 'اكتب عنوان العرض هنا',
 			'en' => 'Offer title',
@@ -1184,10 +1115,6 @@ function ta_strings() {
 		'admin_no_image'        => array(
 			'ar' => 'تم حفظ العرض بدون صورة. سيظهر بصورة افتراضية حتى تختار «صورة العرض» من الصندوق الجانبي.',
 			'en' => 'The offer was saved without an image. It will show a default picture until you choose an "Offer image" in the side box.',
-		),
-		'admin_role_name'       => array(
-			'ar' => 'مدير العروض',
-			'en' => 'Offers Manager',
 		),
 	);
 }

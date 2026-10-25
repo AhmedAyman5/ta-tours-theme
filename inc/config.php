@@ -38,8 +38,6 @@ function ta_config( $key = null ) {
 				'en' => '125 Suez Canal Street, next to Kheir Zaman, above Al-Safwa Poultry, 2nd floor, Mansoura, Egypt',
 			),
 			'map_query' => '125 Suez Canal Street, Mansoura, Egypt',
-			// WhatsApp number for client support in wp-admin (digits only). Empty hides the help line.
-			'support_whatsapp' => '',
 		);
 	}
 

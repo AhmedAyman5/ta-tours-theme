@@ -17,9 +17,7 @@ $ta_includes = array(
 	'setup.php',
 	'enqueue.php',
 	'cpt-offers.php',
-	'roles.php',
 	'admin-offer-editor.php',
-	'admin-client.php',
 	'admin-branding.php',
 	'admin-setup-tool.php',
 );

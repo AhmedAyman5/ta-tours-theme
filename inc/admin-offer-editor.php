@@ -138,7 +138,7 @@ add_action( 'edit_form_top', 'ta_offer_tips_box' );
 function ta_dismiss_offer_tips() {
 	check_ajax_referer( 'ta_dismiss_offer_tips', 'nonce' );
 
-	if ( ! current_user_can( 'edit_offers' ) ) {
+	if ( ! current_user_can( 'edit_posts' ) ) {
 		wp_send_json_error( null, 403 );
 	}
 
@@ -184,25 +184,14 @@ function ta_offer_missing_image_notice() {
 add_action( 'admin_notices', 'ta_offer_missing_image_notice' );
 
 /**
- * Notices added by the theme (kept when other notices are hidden for the client).
+ * Admin styles and the tips-box script on the offer screens.
  *
- * @return callable[]
- */
-function ta_own_admin_notices() {
-	return array( 'ta_offer_missing_image_notice' );
-}
-
-/**
- * Admin styles and the tips-box script on the theme's admin screens.
- *
- * @param string $hook_suffix Admin page hook.
  * @return void
  */
-function ta_offer_admin_assets( $hook_suffix ) {
+function ta_offer_admin_assets() {
 	$screen = get_current_screen();
-	$offer  = $screen && 'offer' === $screen->post_type;
 
-	if ( ! $offer && 'toplevel_page_ta-welcome' !== $hook_suffix ) {
+	if ( ! $screen || 'offer' !== $screen->post_type ) {
 		return;
 	}
 

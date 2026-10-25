@@ -80,6 +80,16 @@ function ta_admin_lang() {
 }
 
 /**
+ * Pick the admin-language value from an [ 'ar' => ..., 'en' => ... ] array.
+ *
+ * @param array $values Values keyed by language.
+ * @return mixed
+ */
+function ta_pick_admin( array $values ) {
+	return ta_pick( $values, ta_admin_lang() );
+}
+
+/**
  * Pick the current-language value from an [ 'ar' => ..., 'en' => ... ] array.
  *
  * @param array       $values Values keyed by language.
