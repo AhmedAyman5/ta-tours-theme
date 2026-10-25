@@ -47,6 +47,12 @@ $ta_brand = ta_pick( ta_config( 'brand' ) );
 						<a href="<?php echo esc_url( ta_tel_url( $ta_phone ), array( 'tel' ) ); ?>" dir="ltr"><?php echo esc_html( $ta_phone ); ?></a>
 					</li>
 				<?php endforeach; ?>
+				<?php $ta_landline = ta_config( 'landline' ); ?>
+				<li>
+					<?php echo ta_icon( 'phone' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+					<span><?php echo esc_html( ta_t( 'landline' ) ); ?>:</span>
+					<a href="<?php echo esc_url( ta_tel_url( $ta_landline['tel'] ), array( 'tel' ) ); ?>"><bdi dir="ltr"><?php echo esc_html( $ta_landline['display'] ); ?></bdi></a>
+				</li>
 				<li>
 					<?php echo ta_icon( 'whatsapp' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					<a href="<?php echo esc_url( ta_whatsapp_url( ta_t( 'wa_default_message' ) ) ); ?>" target="_blank" rel="noopener">

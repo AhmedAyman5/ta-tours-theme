@@ -40,6 +40,14 @@ $ta_email = (string) ta_config( 'email' );
 							</a>
 						</li>
 					<?php endforeach; ?>
+					<?php $ta_landline = ta_config( 'landline' ); ?>
+					<li>
+						<a href="<?php echo esc_url( ta_tel_url( $ta_landline['tel'] ), array( 'tel' ) ); ?>">
+							<?php echo ta_icon( 'phone' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+							<span><?php echo esc_html( ta_t( 'landline' ) ); ?>:</span>
+							<bdi dir="ltr"><?php echo esc_html( $ta_landline['display'] ); ?></bdi>
+						</a>
+					</li>
 				</ul>
 			</li>
 

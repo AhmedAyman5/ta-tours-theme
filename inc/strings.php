@@ -86,8 +86,8 @@ function ta_strings() {
 
 		// Hero.
 		'hero_eyebrow'        => array(
-			'ar' => 'طيور الجنة · فرع المنصورة',
-			'en' => 'TA Tours · Mansoura branch',
+			'ar' => 'طيور الجنة · فرع المنصورة – قناة السويس',
+			'en' => 'TA Tours · Mansoura – Suez Canal branch',
 		),
 		'tagline'             => array(
 			'ar' => 'السفر أصبح سهلًا',
@@ -433,8 +433,8 @@ function ta_strings() {
 			'en' => 'How do I book a trip?',
 		),
 		'faq_1_a'                   => array(
-			'ar' => 'أرسل لنا رسالة عبر واتساب أو زُرنا في فرع المنصورة. أخبرنا بوجهتك ومواعيدك وعدد المسافرين، ونتولى نحن الباقي.',
-			'en' => "Send us a message on WhatsApp or visit our Mansoura branch. Tell us your destination, dates and number of travelers, and we'll take it from there.",
+			'ar' => 'أرسل لنا رسالة عبر واتساب أو زُرنا في فرع المنصورة – قناة السويس. أخبرنا بوجهتك ومواعيدك وعدد المسافرين، ونتولى نحن الباقي.',
+			'en' => "Send us a message on WhatsApp or visit our Mansoura – Suez Canal branch. Tell us your destination, dates and number of travelers, and we'll take it from there.",
 		),
 		'faq_2_q'                   => array(
 			'ar' => 'هل يمكنكم تخطيط رحلة خاصة بي؟',
@@ -526,8 +526,8 @@ function ta_strings() {
 			'en' => 'Branches across Egypt',
 		),
 		'why_branches_text'   => array(
-			'ar' => 'شبكة واسعة من الفروع، وفرعنا في المنصورة في خدمتك.',
-			'en' => 'A wide franchise network, with our Mansoura branch here to help you.',
+			'ar' => 'شبكة واسعة من الفروع، وفرعنا في المنصورة – قناة السويس في خدمتك.',
+			'en' => 'A wide franchise network, with our Mansoura – Suez Canal branch here to help you.',
 		),
 		'why_personal_title'  => array(
 			'ar' => 'تخطيط شخصي لكل رحلة',
@@ -719,8 +719,8 @@ function ta_strings() {
 			'en' => 'For Hajj and Umrah, our care goes even further: a full operations team inside Saudi Arabia accompanies our pilgrims throughout their journey, until they return home safely.',
 		),
 		'about_network_note'        => array(
-			'ar' => 'هذا الموقع هو بيت فرعنا في المنصورة، حيث ينتظرك فريقنا بكل ترحاب.',
-			'en' => 'This website is home to our Mansoura branch, where our team is ready to welcome you.',
+			'ar' => 'هذا الموقع هو بيت فرعنا في المنصورة – قناة السويس، حيث ينتظرك فريقنا بكل ترحاب.',
+			'en' => 'This website is home to our Mansoura – Suez Canal branch, where our team is ready to welcome you.',
 		),
 
 		// About: our values.
@@ -811,8 +811,8 @@ function ta_strings() {
 
 		// About: Mansoura branch card.
 		'about_branch_title'        => array(
-			'ar' => 'زورونا في فرع المنصورة',
-			'en' => 'Visit our Mansoura branch',
+			'ar' => 'زورونا في فرع المنصورة – قناة السويس',
+			'en' => 'Visit our Mansoura – Suez Canal branch',
 		),
 		'about_branch_text'         => array(
 			'ar' => 'تفضّل التخطيط وجهًا لوجه؟ يسعدنا استقبالك لنخطط معًا لرحلتك القادمة.',
@@ -869,8 +869,8 @@ function ta_strings() {
 			'en' => 'Visit us',
 		),
 		'contact_visit_text'        => array(
-			'ar' => 'يسعد فرعنا في المنصورة باستقبالك.',
-			'en' => 'Our Mansoura branch is happy to welcome you.',
+			'ar' => 'يسعد فرعنا في المنصورة – قناة السويس باستقبالك.',
+			'en' => 'Our Mansoura – Suez Canal branch is happy to welcome you.',
 		),
 		'contact_directions_btn'    => array(
 			'ar' => 'احصل على الاتجاهات',
@@ -1040,8 +1040,8 @@ function ta_strings() {
 		// Footer.
 		/* translators: 1: founding year, 2: number of branches. */
 		'footer_about'        => array(
-			'ar' => 'منذ %1$s نخطط لرحلات سهلة تهتم بأدق التفاصيل، من العطلات حول العالم إلى الحج والعمرة، عبر %2$s فرعًا في أنحاء مصر. هذا موقع فرع المنصورة.',
-			'en' => 'Since %1$s, we\'ve planned easy, detail-focused trips, from holidays around the world to Hajj and Umrah, through %2$s branches across Egypt. This is the Mansoura branch.',
+			'ar' => 'منذ %1$s نخطط لرحلات سهلة تهتم بأدق التفاصيل، من العطلات حول العالم إلى الحج والعمرة، عبر %2$s فرعًا في أنحاء مصر. هذا موقع فرع المنصورة – قناة السويس.',
+			'en' => 'Since %1$s, we\'ve planned easy, detail-focused trips, from holidays around the world to Hajj and Umrah, through %2$s branches across Egypt. This is the Mansoura – Suez Canal branch.',
 		),
 		'footer_hajj_link'   => array(
 			'ar' => 'الحج والعمرة',
@@ -1058,6 +1058,10 @@ function ta_strings() {
 		'phone'               => array(
 			'ar' => 'الهاتف',
 			'en' => 'Phone',
+		),
+		'landline'            => array(
+			'ar' => 'الهاتف الأرضي',
+			'en' => 'Landline',
 		),
 		'email'               => array(
 			'ar' => 'البريد الإلكتروني',

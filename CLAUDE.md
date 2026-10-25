@@ -46,7 +46,7 @@ English. Use it as written.
 
 - **Brand:** TA Tours — official name **Toyor Al-Jannah Tours** (Arabic: طيور الجنة).
 - **Founded:** 2016.
-- **Network:** 21 franchise branches across Egypt. **The website shows the Mansoura branch only.**
+- **Network:** 21 franchise branches across Egypt. **The website shows the Mansoura – Suez Canal branch only** (AR: «فرع المنصورة – قناة السويس»).
 - **Services:** flight booking, travel itineraries and vacation planning, guided tours, hotel booking, personalized travel consultancy, honeymoon packages, Hajj & Umrah.
 - Religious tourism (Hajj & Umrah) is a key service. TA Tours has a full
   operations team inside Saudi Arabia that follows each client from the first
@@ -59,9 +59,10 @@ English. Use it as written.
 - **Brand values:** ease, hassle-free travel, detail-oriented.
 - **Tone of voice:** welcoming, reassuring, simple.
 
-### Contact (Mansoura branch)
+### Contact (Mansoura – Suez Canal branch)
 
 - **Phones:** `+201038736666`, `+201035428936`
+- **Landline:** `050 2508981` → `tel:+20502508981` (label AR «الهاتف الأرضي» / EN "Landline"; calls only, not WhatsApp)
 - **WhatsApp:** `+201038736666` → link format `https://wa.me/201038736666?text=...` (URL-encode the text)
 - **Email:** `info@ta-tours.com`
 - **Address (AR):** المنصورة، 125 شارع قناة السويس، بجوار خير زمان، أعلى الصفوة للدواجن، الدور الثاني

@@ -1743,6 +1743,17 @@ address {
 	gap: var(--ta-space-1) var(--ta-space-4);
 }
 
+.ta-branch__landline {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--ta-space-1);
+}
+
+.ta-branch__landline .ta-icon {
+	inline-size: 1rem;
+	block-size: 1rem;
+}
+
 /* 9e. Services page
    ========================================================================== */
 

@@ -7,8 +7,9 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$ta_email = (string) ta_config( 'email' );
-$ta_wa    = '+' . preg_replace( '/\D+/', '', (string) ta_config( 'whatsapp' ) );
+$ta_email    = (string) ta_config( 'email' );
+$ta_wa       = '+' . preg_replace( '/\D+/', '', (string) ta_config( 'whatsapp' ) );
+$ta_landline = ta_config( 'landline' );
 ?>
 <section class="ta-section" aria-labelledby="ta-branch-title">
 	<div class="ta-container">
@@ -35,6 +36,11 @@ $ta_wa    = '+' . preg_replace( '/\D+/', '', (string) ta_config( 'whatsapp' ) );
 						<?php foreach ( (array) ta_config( 'phones' ) as $ta_phone ) : ?>
 							<a href="<?php echo esc_url( ta_tel_url( $ta_phone ), array( 'tel' ) ); ?>" dir="ltr"><?php echo esc_html( $ta_phone ); ?></a>
 						<?php endforeach; ?>
+						<a href="<?php echo esc_url( ta_tel_url( $ta_landline['tel'] ), array( 'tel' ) ); ?>" class="ta-branch__landline">
+							<?php echo ta_icon( 'phone' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+							<span><?php echo esc_html( ta_t( 'landline' ) ); ?>:</span>
+							<bdi dir="ltr"><?php echo esc_html( $ta_landline['display'] ); ?></bdi>
+						</a>
 					</dd>
 				</div>
 

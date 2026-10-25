@@ -31,6 +31,11 @@ function ta_config( $key = null ) {
 			'founded'   => 2016,
 			'branches'  => 21,
 			'phones'    => array( '+201038736666', '+201035428936' ),
+			// Landline (calls only, not WhatsApp).
+			'landline'  => array(
+				'display' => '050 2508981',
+				'tel'     => '+20502508981',
+			),
 			'whatsapp'  => '201038736666',
 			'email'     => 'info@ta-tours.com',
 			'address'   => array(

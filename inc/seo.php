@@ -201,7 +201,7 @@ function ta_seo_travel_agency_schema() {
 		'name'          => 'TA Tours',
 		'alternateName' => array( $brand_official['en'], $brand_official['ar'] ),
 		'url'           => ta_home_url(),
-		'telephone'     => ta_config( 'phones' ),
+		'telephone'     => array_merge( (array) ta_config( 'phones' ), array( ta_config( 'landline' )['tel'] ) ),
 		'email'         => ta_config( 'email' ),
 		'foundingDate'  => (string) ta_config( 'founded' ),
 		'address'       => array(
