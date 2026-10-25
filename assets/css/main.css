@@ -876,6 +876,12 @@ address {
 	text-shadow: 0 1px 12px rgb(255 255 255 / 0.95);
 }
 
+.ta-hero__subline .ta-sep {
+	margin-inline: 0.5em;
+	color: var(--ta-muted);
+	font-weight: 400;
+}
+
 .ta-band {
 	background: var(--ta-primary);
 	color: var(--ta-white);

@@ -31,7 +31,11 @@ $ta_offers_url = ta_page_url( 'offers' );
 	<div class="ta-container ta-hero__inner" data-reveal-stagger="fade-up">
 		<p class="ta-hero__eyebrow"><?php echo esc_html( ta_t( 'hero_eyebrow' ) ); ?></p>
 		<h1 class="ta-hero__title" id="ta-hero-title"><?php echo esc_html( ta_t( 'tagline' ) ); ?></h1>
-		<p class="ta-hero__subline"><?php echo esc_html( ta_t( 'hero_subline' ) ); ?></p>
+		<?php
+		// Each "/" gets its own span so the items breathe; <wbr> lets lines wrap after it.
+		$ta_subline_items = array_map( 'trim', explode( '/', ta_t( 'hero_subline' ) ) );
+		?>
+		<p class="ta-hero__subline"><?php echo implode( '<span class="ta-sep" aria-hidden="true">/</span><wbr>', array_map( 'esc_html', $ta_subline_items ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- items escaped above. ?></p>
 	</div>
 
 	<div class="ta-container">

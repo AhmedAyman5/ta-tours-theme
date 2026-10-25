@@ -94,8 +94,8 @@ function ta_strings() {
 			'en' => 'Travel made easy',
 		),
 		'hero_subline'        => array(
-			'ar' => 'طيران وفنادق وعطلات وحج وعمرة.. نخطط لها من أجلك من المنصورة.',
-			'en' => 'Flights, hotels, holidays, Hajj and Umrah — planned for you from Mansoura.',
+			'ar' => 'حجز تذاكر طيران / حجز فنادق / رحلات خارجية / رحلات داخلية مع برامج مميزة للحج والعمرة',
+			'en' => 'Flight tickets / Hotel booking / International trips / Domestic trips, with special Hajj & Umrah programs',
 		),
 		'hero_band_text'      => array(
 			'ar' => 'أخبرنا بوجهة أحلامك، ونحن نرتّب لك رحلة مريحة من البداية إلى النهاية.',
