@@ -153,7 +153,8 @@ Each page exists in both languages and the translations are linked in Polylang.
 ## Offers (Custom Post Type)
 
 - Post type key: `offer`. Admin labels bilingual: «العروض / Offers».
-- Supports: `title`, `editor`, `thumbnail`. `show_in_rest` = true (block editor).
+- Supports: `title`, `editor`, `thumbnail`. `show_in_rest` = true; the admin uses the **classic editor** for offers (simpler for the client).
+- Own capabilities: `capability_type` `offer`/`offers`, `map_meta_cap` true. The `ta_offers_manager` role has `read`, `upload_files` and the offer capabilities only (it can also edit/delete the attachments it uploaded). Administrators get the offer capabilities from the Setup Tool and from a once-per-version safeguard (`TA_CAPS_VERSION`); bump it when the offer capabilities change.
 - Offers do **not** need single pages. Make sure the post type is still **translatable in Polylang** (verify it appears in _Languages → Settings → Custom post types and Taxonomies_; adjust the registration arguments if it does not).
 - Image size: `add_image_size( 'ta-offer-card', 800, 600, true )`.
 - **Offer card** (`template-parts/offer-card.php`): featured image (fallback `assets/images/offer-placeholder.jpg`), title, description trimmed to about 25 words, and a WhatsApp button with a prefilled message:
@@ -199,11 +200,19 @@ ta-tours/
 │   ├── i18n.php               # ta_t() and Polylang helpers
 │   ├── strings.php            # all UI strings (ar/en)
 │   ├── cpt-offers.php         # Offers post type + admin columns
+│   ├── roles.php              # Offers Manager role, offer caps, admin caps safeguard
+│   ├── admin-offer-editor.php # classic offer editor, tips box, missing-image notice
+│   ├── admin-client.php       # client admin: Welcome screen, menu, notices, admin bar
+│   ├── admin-branding.php     # login branding + "TA Tours" admin color scheme
 │   ├── template-tags.php      # helpers: WhatsApp links, nav, page lookup
 │   └── admin-setup-tool.php   # Tools → TA Tours Setup
 ├── assets/
 │   ├── css/main.css
+│   ├── css/admin.css          # Welcome screen + offer editor
+│   ├── css/admin-colors(-rtl).css # admin color scheme (generated once from core "modern")
+│   ├── css/login.css
 │   ├── js/main.js
+│   ├── js/admin.js            # tips box dismissal
 │   └── images/
 ├── template-parts/
 │   ├── offer-card.php
@@ -258,7 +267,10 @@ ta-tours/
 
 1. **Production:** install and activate **Polylang** → add **Arabic (default)** and **English** → URL modifications: language from the directory name, hide the default language in the URL, front page URL contains the language code (`/en/`, not `/en/home-en/`; the Setup Tool also sets this) → enable translation for the `offer` post type.
 2. Zip the `ta-tours` folder (without `.git`) → **Appearance → Themes → Add New → Upload** → Activate.
-3. **Tools → TA Tours Setup** → Run setup.
+3. **Tools → TA Tours Setup** → Run setup. It also creates the **Offers Manager** role (`ta_offers_manager`) and gives administrators the offer capabilities (check both lines in the report).
 4. **Settings → Permalinks** → Save once.
-5. Add a test offer in Arabic and its English translation, then check both languages.
-6. **Launch:** change the admin email to a real inbox, disable maintenance mode, enable search engine indexing.
+5. Make sure the Arabic language pack is installed (Dashboard > Updates > Translations).
+6. **Users → Add New:** create the client's user with the role «مدير العروض / Offers Manager» and the language العربية. Log in as the client once to check the Welcome screen.
+7. Optional: set `support_whatsapp` in `inc/config.php` to show the "Need help?" line on the client's Welcome screen.
+8. Add a test offer in Arabic and its English translation, then check both languages.
+9. **Launch:** change the admin email to a real inbox, disable maintenance mode, enable search engine indexing.

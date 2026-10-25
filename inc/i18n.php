@@ -71,6 +71,15 @@ function ta_t( $key, $lang = null ) {
 }
 
 /**
+ * Admin language ('ar' or 'en') from the current user's locale.
+ *
+ * @return string
+ */
+function ta_admin_lang() {
+	return str_starts_with( get_user_locale(), 'ar' ) ? 'ar' : 'en';
+}
+
+/**
  * Pick the current-language value from an [ 'ar' => ..., 'en' => ... ] array.
  *
  * @param array       $values Values keyed by language.

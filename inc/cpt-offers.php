@@ -51,6 +51,10 @@ function ta_register_offer_post_type() {
 			'hierarchical'        => false,
 			'menu_position'       => 5,
 			'menu_icon'           => 'dashicons-tickets-alt',
+			// Own capabilities (edit_offers, publish_offers, …) so the Offers Manager role
+			// can manage offers without any post capability. See inc/roles.php.
+			'capability_type'     => array( 'offer', 'offers' ),
+			'map_meta_cap'        => true,
 			'supports'            => array( 'title', 'editor', 'thumbnail' ),
 			'rewrite'             => array(
 				'slug'       => 'offer',

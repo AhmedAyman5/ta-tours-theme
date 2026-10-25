@@ -1,0 +1,69 @@
+/* TA Tours login page: brand logo, colors and a soft sky background. */
+
+body.login {
+	background: linear-gradient(180deg, #cfe3f3 0%, #eaf3fb 45%, #fafafa 100%) fixed;
+	color: #1f2a33;
+}
+
+.login h1 a {
+	width: 260px;
+	height: 60px;
+	margin-block-end: 24px;
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.login form {
+	border: 1px solid #d9e6ee;
+	border-radius: 16px;
+	box-shadow: 0 12px 32px rgba(9, 108, 141, 0.12);
+}
+
+.login label {
+	color: #1f2a33;
+}
+
+.login input[type="text"]:focus,
+.login input[type="password"]:focus,
+.login input[type="email"]:focus,
+.login input[type="checkbox"]:focus {
+	border-color: #0a769f;
+	box-shadow: 0 0 0 1px #0a769f;
+}
+
+.login .button-primary {
+	border-color: #0a769f;
+	border-radius: 8px;
+	background: #0a769f;
+	color: #fff;
+}
+
+.login .button-primary:hover,
+.login .button-primary:focus {
+	border-color: #075a76;
+	background: #075a76;
+	color: #fff;
+}
+
+.login .button-primary:focus {
+	box-shadow: 0 0 0 2px #fff, 0 0 0 4px #0a769f;
+}
+
+.login .button.wp-hide-pw .dashicons,
+.login #nav a,
+.login #backtoblog a,
+.login .privacy-policy-link {
+	color: #075a76;
+}
+
+.login #nav a:hover,
+.login #backtoblog a:hover {
+	color: #0a769f;
+}
+
+.login .message,
+.login .notice,
+.login .success {
+	border-inline-start-color: #0a769f;
+}
