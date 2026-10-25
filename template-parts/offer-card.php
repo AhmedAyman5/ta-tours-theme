@@ -31,7 +31,7 @@ $ta_wa_url  = ta_whatsapp_url( sprintf( ta_t( 'offer_wa_message' ), $ta_raw ) );
 				)
 			);
 		} else {
-			echo ta_theme_image( 'offer-placeholder.jpg', '', array( 'class' => 'ta-card__img', 'loading' => 'lazy' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in ta_theme_image().
+			echo ta_theme_image( 'offer-placeholder.jpg', '', array( 'class' => 'ta-card__img', 'loading' => 'lazy', 'sizes' => '(min-width: 960px) 380px, (min-width: 640px) 50vw, 100vw' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in ta_theme_image().
 		}
 		?>
 	</div>

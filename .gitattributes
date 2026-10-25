@@ -1,0 +1,8 @@
+# Files left out of the deploy zip (git archive). See "Deploy" in CLAUDE.md.
+CLAUDE.md                 export-ignore
+docs/                     export-ignore
+tools/                    export-ignore
+.gitignore                export-ignore
+.gitattributes            export-ignore
+.claude/                  export-ignore
+assets/images/CREDITS.md  export-ignore

@@ -25,7 +25,7 @@ $ta_switch = ta_language_switch();
 	<div class="ta-container ta-header__inner">
 		<a class="ta-header__logo" href="<?php echo esc_url( ta_home_url() ); ?>" aria-label="<?php echo esc_attr( ta_t( 'home_link_label' ) ); ?>">
 			<?php
-			$ta_logo = ta_theme_image( 'logo-blue.png', '', array( 'class' => 'ta-header__logo-img' ) );
+			$ta_logo = ta_theme_image( 'logo-blue.png', '', array( 'class' => 'ta-header__logo-img', 'sizes' => '52px' ) );
 			echo $ta_logo ? $ta_logo : '<span class="ta-header__brand">' . esc_html( ta_pick( ta_config( 'brand' ) ) ) . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in ta_theme_image().
 			?>
 		</a>

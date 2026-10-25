@@ -16,6 +16,7 @@ $ta_includes = array(
 	'template-tags.php',
 	'setup.php',
 	'enqueue.php',
+	'seo.php',
 	'cpt-offers.php',
 	'admin-offer-editor.php',
 	'admin-branding.php',

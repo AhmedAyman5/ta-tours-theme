@@ -205,7 +205,8 @@ ta-tours/
 │   ├── cpt-offers.php         # Offers post type + admin columns
 │   ├── admin-offer-editor.php # classic offer editor, tips box, missing-image notice
 │   ├── admin-branding.php     # login page branding
-│   ├── template-tags.php      # helpers: WhatsApp links, nav, page lookup
+│   ├── template-tags.php      # helpers: WhatsApp links, nav, page lookup, images
+│   ├── seo.php                # titles, meta description, Open Graph, JSON-LD, sitemap
 │   └── admin-setup-tool.php   # Tools → TA Tours Setup
 ├── assets/
 │   ├── css/main.css
@@ -213,7 +214,7 @@ ta-tours/
 │   ├── css/login.css
 │   ├── js/main.js
 │   ├── js/admin.js            # tips box dismissal
-│   └── images/
+│   └── images/                # sizes/ = WebP srcset variants, og-image.jpg = 1200×630
 ├── template-parts/
 │   ├── offer-card.php
 │   ├── page-hero.php          # inner page hero + breadcrumb
@@ -222,6 +223,7 @@ ta-tours/
 │   ├── offers/                # offers page sections (hajj-umrah, grid, empty)
 │   └── sections/              # home sections (cta-band is shared)
 ├── templates/                 # page templates
+├── tools/make-images.php      # dev only (not in the zip): WebP variants + OG image
 ├── header.php
 ├── footer.php
 ├── front-page.php
@@ -263,10 +265,22 @@ ta-tours/
 - Commit after each completed phase with a clear message (for example `feat: offers CPT and card component`).
 - Never commit secrets or files outside the theme.
 
+## Deploy
+
+Build the zip **outside** the repository from the last commit (commit first;
+`.gitattributes` keeps CLAUDE.md, docs/, tools/, git files and image credits out):
+
+```bash
+git archive -o ../ta-tours.zip --prefix=ta-tours/ HEAD
+```
+
+After replacing a photo in `assets/images/`, rebuild its WebP variants with
+`php tools/make-images.php sizes` and commit them.
+
 ## Deployment Checklist (reference)
 
 1. **Production:** install and activate **Polylang** → add **Arabic (default)** and **English** → URL modifications: language from the directory name, hide the default language in the URL, front page URL contains the language code (`/en/`, not `/en/home-en/`; the Setup Tool also sets this) → enable translation for the `offer` post type.
-2. Zip the `ta-tours` folder (without `.git`) → **Appearance → Themes → Add New → Upload** → Activate.
+2. Build the zip (see **Deploy** above) → **Appearance → Themes → Add New → Upload** → Activate.
 3. **Tools → TA Tours Setup** → Run setup.
 4. **Settings → Permalinks** → Save once.
 5. Make sure the Arabic language pack is installed (Dashboard > Updates > Translations).

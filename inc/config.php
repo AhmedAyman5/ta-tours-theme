@@ -37,6 +37,16 @@ function ta_config( $key = null ) {
 				'ar' => 'المنصورة، 125 شارع قناة السويس، بجوار خير زمان، أعلى الصفوة للدواجن، الدور الثاني',
 				'en' => '125 Suez Canal Street, next to Kheir Zaman, above Al-Safwa Poultry, 2nd floor, Mansoura, Egypt',
 			),
+			// Structured parts of the address (JSON-LD).
+			'street'    => array(
+				'ar' => '125 شارع قناة السويس، بجوار خير زمان، أعلى الصفوة للدواجن، الدور الثاني',
+				'en' => '125 Suez Canal Street, next to Kheir Zaman, above Al-Safwa Poultry, 2nd floor',
+			),
+			'city'      => array(
+				'ar' => 'المنصورة',
+				'en' => 'Mansoura',
+			),
+			'country'   => 'EG',
 			'map_query' => '125 Suez Canal Street, Mansoura, Egypt',
 		);
 	}

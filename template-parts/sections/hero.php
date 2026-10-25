@@ -22,6 +22,7 @@ $ta_offers_url = ta_page_url( 'offers' );
 				'loading'       => 'eager',
 				'fetchpriority' => 'high',
 				'decoding'      => 'sync',
+				'sizes'         => '100vw',
 			)
 		);
 		?>

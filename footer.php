@@ -15,7 +15,7 @@ $ta_brand = ta_pick( ta_config( 'brand' ) );
 	<div class="ta-container ta-footer__grid">
 		<div class="ta-footer__about">
 			<a class="ta-footer__logo" href="<?php echo esc_url( ta_home_url() ); ?>" aria-label="<?php echo esc_attr( ta_t( 'home_link_label' ) ); ?>">
-				<?php echo ta_theme_image( 'logo-white.png', '', array( 'class' => 'ta-footer__logo-img', 'loading' => 'lazy' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in ta_theme_image(). ?>
+				<?php echo ta_theme_image( 'logo-white.png', '', array( 'class' => 'ta-footer__logo-img', 'loading' => 'lazy', 'sizes' => '112px' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in ta_theme_image(). ?>
 			</a>
 			<p><?php echo esc_html( sprintf( ta_t( 'footer_about' ), ta_config( 'founded' ), ta_config( 'branches' ) ) ); ?></p>
 		</div>

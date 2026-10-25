@@ -13,6 +13,7 @@ $ta_story_img = ta_theme_image(
 	array(
 		'class'   => 'ta-split__img',
 		'loading' => 'lazy',
+		'sizes'   => '(min-width: 960px) 600px, 100vw',
 	)
 );
 ?>

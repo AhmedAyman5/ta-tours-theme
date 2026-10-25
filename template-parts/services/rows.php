@@ -24,8 +24,10 @@ $ta_index = 0;
 			$ta_service['image'],
 			ta_t( $ta_service['label'] . '_alt' ),
 			array(
-				'class'   => 'ta-service-row__img',
-				'loading' => 0 === $ta_index ? 'eager' : 'lazy',
+				'class'         => 'ta-service-row__img',
+				'loading'       => 0 === $ta_index ? 'eager' : 'lazy',
+				'fetchpriority' => 0 === $ta_index ? 'high' : '',
+				'sizes'         => '(min-width: 960px) 600px, 100vw',
 			)
 		);
 

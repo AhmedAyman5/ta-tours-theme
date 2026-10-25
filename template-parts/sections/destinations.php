@@ -34,6 +34,7 @@ defined( 'ABSPATH' ) || exit;
 						array(
 							'class'   => 'ta-dest__img',
 							'loading' => 'lazy',
+							'sizes'   => '(min-width: 960px) 290px, (min-width: 640px) 50vw, 100vw',
 						)
 					);
 					?>

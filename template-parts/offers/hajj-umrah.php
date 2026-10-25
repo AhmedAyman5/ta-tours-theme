@@ -14,6 +14,7 @@ $ta_hajj_img = ta_theme_image(
 	array(
 		'class'   => 'ta-hajj__img',
 		'loading' => 'lazy',
+		'sizes'   => '(min-width: 960px) 600px, 100vw',
 	)
 );
 

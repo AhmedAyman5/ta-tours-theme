@@ -775,16 +775,23 @@ address {
 	}
 }
 
-/* 8. Page header
+/* 8. 404 page (hero comes from template-parts/page-hero.php)
    ========================================================================== */
-.ta-page-header {
-	padding-block: var(--ta-space-7) var(--ta-space-6);
-	background: linear-gradient(180deg, var(--ta-sky-soft) 0%, var(--ta-bg) 100%);
-	text-align: center;
+.ta-not-found__icon {
+	inline-size: 3.5rem;
+	block-size: 3.5rem;
+	margin-block-end: var(--ta-space-4);
+	color: var(--ta-sky);
 }
 
-.ta-page-header__title {
-	margin: 0;
+.ta-not-found .ta-lead {
+	max-inline-size: 46ch;
+	margin-inline: auto;
+}
+
+.ta-not-found__actions {
+	justify-content: center;
+	margin-block-start: var(--ta-space-5);
 }
 
 /* 9. Hero + blue band

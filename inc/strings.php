@@ -1073,6 +1073,56 @@ function ta_strings() {
 			'en' => '© %1$s %2$s. All rights reserved.',
 		),
 
+		// SEO: <title>, meta description, Open Graph (inc/seo.php).
+		'seo_site_name'       => array(
+			'ar' => 'طيور الجنة TA Tours',
+			'en' => 'TA Tours',
+		),
+		'seo_og_image_alt'    => array(
+			'ar' => 'شعار طيور الجنة TA Tours على خلفية زرقاء',
+			'en' => 'TA Tours logo on a blue background',
+		),
+		'seo_home_title'      => array(
+			'ar' => 'طيور الجنة TA Tours | السفر أصبح سهلًا: طيران وفنادق وحج وعمرة',
+			'en' => 'TA Tours | Travel made easy: Flights, Hotels, Hajj & Umrah',
+		),
+		'seo_home_desc'       => array(
+			'ar' => 'طيور الجنة TA Tours في المنصورة: حجز طيران وفنادق، برامج عطلات وشهر عسل، وحج وعمرة بفريق تشغيل داخل المملكة. منذ 2016.',
+			'en' => 'TA Tours (Toyor Al-Jannah) in Mansoura plans flights, hotels, holidays, honeymoons, Hajj and Umrah with care, since 2016.',
+		),
+		'seo_about_title'     => array(
+			'ar' => 'من نحن | طيور الجنة TA Tours',
+			'en' => 'About us | TA Tours',
+		),
+		'seo_about_desc'      => array(
+			'ar' => 'منذ 2016 نمت طيور الجنة لتضم 21 فرعًا في أنحاء مصر. تعرّف على حكايتنا وقيمنا ورؤيتنا.',
+			'en' => 'Since 2016, TA Tours has grown into 21 franchise branches across Egypt. Discover our story, values and vision.',
+		),
+		'seo_services_title'  => array(
+			'ar' => 'خدماتنا | طيور الجنة TA Tours',
+			'en' => 'Our services | TA Tours',
+		),
+		'seo_services_desc'   => array(
+			'ar' => 'الحج والعمرة، حجز الطيران والفنادق، برامج الرحلات، الجولات السياحية، استشارات السفر وباقات شهر العسل في مكان واحد.',
+			'en' => 'Hajj and Umrah, flight booking, hotels, itineraries, guided tours, travel consultancy and honeymoon packages, all in one place.',
+		),
+		'seo_offers_title'    => array(
+			'ar' => 'العروض والحج والعمرة | طيور الجنة TA Tours',
+			'en' => 'Offers, Hajj & Umrah | TA Tours',
+		),
+		'seo_offers_desc'     => array(
+			'ar' => 'أحدث عروض السفر، وبرامج الحج والعمرة مع فريق تشغيل متكامل داخل المملكة.',
+			'en' => 'Our latest travel deals, plus Hajj and Umrah programs with a full operations team inside Saudi Arabia.',
+		),
+		'seo_contact_title'   => array(
+			'ar' => 'تواصل معنا | طيور الجنة TA Tours المنصورة',
+			'en' => 'Contact us | TA Tours Mansoura',
+		),
+		'seo_contact_desc'    => array(
+			'ar' => 'تواصل مع طيور الجنة في المنصورة عبر واتساب أو الهاتف أو البريد الإلكتروني، أو زورنا في 125 شارع قناة السويس.',
+			'en' => 'Reach TA Tours in Mansoura on WhatsApp, by phone or email, or visit us at 125 Suez Canal Street.',
+		),
+
 		// Generic pages.
 		'not_found_title'     => array(
 			'ar' => 'الصفحة غير موجودة',
@@ -1081,6 +1131,14 @@ function ta_strings() {
 		'not_found_text'      => array(
 			'ar' => 'عذرًا، لم نتمكن من العثور على الصفحة المطلوبة.',
 			'en' => "Sorry, we couldn't find the page you were looking for.",
+		),
+		'not_found_hint'      => array(
+			'ar' => 'ربما تغيّر الرابط أو انتهى العرض. يمكنك البدء من هنا:',
+			'en' => 'The link may have changed or the offer may have ended. You can start from here:',
+		),
+		'not_found_links'     => array(
+			'ar' => 'روابط مفيدة',
+			'en' => 'Helpful links',
 		),
 		'back_home'           => array(
 			'ar' => 'العودة إلى الرئيسية',

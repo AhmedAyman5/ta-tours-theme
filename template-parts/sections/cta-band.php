@@ -28,7 +28,7 @@ $ta_cta_message = '' !== $ta_args['message'] ? $ta_args['message'] : ta_t( 'wa_d
 		<div class="ta-cta" data-reveal="zoom-in">
 			<?php
 			// Decorative background behind the text: empty alt.
-			echo ta_theme_image( 'cta-wing.jpg', '', array( 'class' => 'ta-cta__img', 'loading' => 'lazy' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in ta_theme_image().
+			echo ta_theme_image( 'cta-wing.jpg', '', array( 'class' => 'ta-cta__img', 'loading' => 'lazy', 'sizes' => '(min-width: 1200px) 1200px, 100vw' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in ta_theme_image().
 			?>
 			<div class="ta-cta__content">
 				<h2 class="ta-cta__title" id="ta-cta-title"><?php echo esc_html( $ta_cta_title ); ?></h2>

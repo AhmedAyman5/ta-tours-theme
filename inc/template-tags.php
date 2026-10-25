@@ -512,13 +512,44 @@ function ta_image_url( $file ) {
 }
 
 /**
- * An <img> tag for a theme image with intrinsic width/height.
+ * Srcset for a theme image from its WebP variants in assets/images/sizes/.
+ *
+ * Variants are built by tools/make-images.php ("{name}-{width}.webp"). The original
+ * file is added as the largest candidate.
+ *
+ * @param string $file  File name in assets/images/.
+ * @param int    $width Width of the original file.
+ * @return string Empty string when no variants exist.
+ */
+function ta_image_srcset( $file, $width ) {
+	$name = pathinfo( $file, PATHINFO_FILENAME );
+	$set  = array();
+
+	foreach ( array( 160, 320, 480, 800, 1200 ) as $w ) {
+		$variant = 'sizes/' . $name . '-' . $w . '.webp';
+
+		if ( $w < $width && ta_image_exists( $variant ) ) {
+			$set[] = esc_url( get_theme_file_uri( 'assets/images/' . $variant ) ) . ' ' . $w . 'w';
+		}
+	}
+
+	if ( ! $set ) {
+		return '';
+	}
+
+	$set[] = esc_url( get_theme_file_uri( 'assets/images/' . $file ) ) . ' ' . $width . 'w';
+
+	return implode( ', ', $set );
+}
+
+/**
+ * An <img> tag for a theme image with intrinsic width/height and a WebP srcset.
  *
  * Returns an empty string if the file is missing, so layouts never show a broken image.
  *
  * @param string $file  File name in assets/images/.
  * @param string $alt   Alt text (unescaped).
- * @param array  $attrs Extra attributes (unescaped), e.g. [ 'class' => 'x', 'loading' => 'lazy' ].
+ * @param array  $attrs Extra attributes (unescaped), e.g. [ 'class' => 'x', 'loading' => 'lazy', 'sizes' => '50vw' ].
  * @return string
  */
 function ta_theme_image( $file, $alt, array $attrs = array() ) {
@@ -526,11 +557,14 @@ function ta_theme_image( $file, $alt, array $attrs = array() ) {
 		return '';
 	}
 
-	$size = wp_getimagesize( get_theme_file_path( 'assets/images/' . $file ) );
+	$size   = wp_getimagesize( get_theme_file_path( 'assets/images/' . $file ) );
+	$srcset = $size ? ta_image_srcset( $file, (int) $size[0] ) : '';
 
 	$attrs = array_merge(
 		array(
 			'src'      => get_theme_file_uri( 'assets/images/' . $file ),
+			'srcset'   => $srcset,
+			'sizes'    => $srcset ? '100vw' : '',
 			'alt'      => $alt,
 			'width'    => $size ? $size[0] : '',
 			'height'   => $size ? $size[1] : '',
@@ -538,6 +572,10 @@ function ta_theme_image( $file, $alt, array $attrs = array() ) {
 		),
 		$attrs
 	);
+
+	if ( '' === $srcset ) {
+		unset( $attrs['sizes'] );
+	}
 
 	$html = '<img';
 
