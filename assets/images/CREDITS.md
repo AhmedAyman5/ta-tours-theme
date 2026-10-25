@@ -6,7 +6,11 @@ as "Free to use under the Unsplash License" (not Unsplash+), then resized and co
 
 | File | Photographer | Unsplash page |
 | ---- | ------------ | ------------- |
-| `hero-clouds.jpg` | Walter Mmari ([@waltermmari](https://unsplash.com/@waltermmari)) | https://unsplash.com/photos/vast-white-clouds-stretch-under-a-clear-blue-sky-CUjq3KT2d84 |
+| `hero-1-wing.jpg` | Alexander Korte ([@stelath](https://unsplash.com/@stelath)) | https://unsplash.com/photos/airplane-wing-over-clouds-at-sunset-Oj0ykWKf5To |
+| `hero-2-madinah.jpg` | Yasmine Arfaoui ([@yasmine_photo](https://unsplash.com/@yasmine_photo)) | https://unsplash.com/photos/al-masjid-an-nabawi-mosque-in-medina-qbvAboqHkBg |
+| `hero-3-maldives.jpg` | Hamdhulla Shakeeb ([@handhey](https://unsplash.com/@handhey)) | https://unsplash.com/photos/an-aerial-view-of-a-resort-in-the-middle-of-the-ocean-kjicxykvfiA |
+| `hero-4-cappadocia.jpg` | Ricky LK ([@rickyrynselo](https://unsplash.com/@rickyrynselo)) | https://unsplash.com/photos/a-group-of-hot-air-balloons-flying-over-a-valley-sqWpPdIU_ao |
+| `hero-5-bali.jpg` | Matthew Stephenson ([@matthewryanstephenson](https://unsplash.com/@matthewryanstephenson)) | https://unsplash.com/photos/rice-terraces-nestled-among-lush-tropical-greenery-FlQeHeTPClU |
 | `cta-wing.jpg` | Kirill Fokin ([@fokin_k](https://unsplash.com/@fokin_k)) | https://unsplash.com/photos/airplane-wing-flying-above-clouds-during-daytime-DkueQWsQzrQ |
 | `dest-maldives.jpg` | Rayyu Maldives ([@rayyu](https://unsplash.com/@rayyu)) | https://unsplash.com/photos/aerial-photography-of-resort-rooms-and-island-xPsFXsbXJRg |
 | `dest-turkey.jpg` | Alex Azabache ([@alexazabache](https://unsplash.com/@alexazabache)) | https://unsplash.com/photos/KGwK6n7rxSg |

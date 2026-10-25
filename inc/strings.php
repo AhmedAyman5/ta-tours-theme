@@ -97,13 +97,42 @@ function ta_strings() {
 			'ar' => 'حجز تذاكر طيران / حجز فنادق / رحلات خارجية / رحلات داخلية مع برامج مميزة للحج والعمرة',
 			'en' => 'Flight tickets / Hotel booking / International trips / Domestic trips, with special Hajj & Umrah programs',
 		),
-		'hero_band_text'      => array(
-			'ar' => 'أخبرنا بوجهة أحلامك، ونحن نرتّب لك رحلة مريحة من البداية إلى النهاية.',
-			'en' => "Tell us where you dream of going, and we'll arrange a relaxed trip from start to finish.",
+		'hero_slide_1'        => array(
+			'ar' => 'فوق السحاب',
+			'en' => 'Above the clouds',
 		),
-		'hero_image_alt'      => array(
-			'ar' => 'منظر فوق بحر من السحب البيضاء تحت سماء زرقاء صافية',
-			'en' => 'View above a sea of white clouds under a clear blue sky',
+		'hero_slide_2'        => array(
+			'ar' => 'المسجد النبوي، المدينة المنورة',
+			'en' => 'Al-Masjid an-Nabawi, Madinah',
+		),
+		'hero_slide_3'        => array(
+			'ar' => 'جزر المالديف',
+			'en' => 'Maldives',
+		),
+		'hero_slide_4'        => array(
+			'ar' => 'كابادوكيا، تركيا',
+			'en' => 'Cappadocia, Turkey',
+		),
+		'hero_slide_5'        => array(
+			'ar' => 'بالي، إندونيسيا',
+			'en' => 'Bali, Indonesia',
+		),
+		'hero_slides_label'   => array(
+			'ar' => 'التحكم في عرض صور الوجهات',
+			'en' => 'Destination slideshow controls',
+		),
+		/* translators: 1: slide number, 2: place name. */
+		'hero_go_to_slide'    => array(
+			'ar' => 'الصورة %1$s: %2$s',
+			'en' => 'Slide %1$s: %2$s',
+		),
+		'hero_pause'          => array(
+			'ar' => 'إيقاف عرض الصور مؤقتًا',
+			'en' => 'Pause slideshow',
+		),
+		'hero_play'           => array(
+			'ar' => 'تشغيل عرض الصور',
+			'en' => 'Play slideshow',
 		),
 		'view_offers'         => array(
 			'ar' => 'شاهد العروض',

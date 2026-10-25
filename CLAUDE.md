@@ -134,7 +134,7 @@ Each page exists in both languages and the translations are linked in Polylang.
 
 ### Home Sections
 
-1. **Hero:** cloud photo background, the tagline, a short subline, two CTAs: "Book on WhatsApp" and "View offers".
+1. **Hero:** crossfade slideshow of 5 destination photos (slow zoom, dark brand-blue overlay, caption, dots + pause/play), the tagline, a short subline, two CTAs: "Book on WhatsApp" and "View offers".
 2. **Latest offers:** the 6 newest offers in the current language + a "View all offers" link (hide the section if there are no offers).
 3. **Services:** a grid of the 6 services with inline SVG icons.
 4. **Why TA Tours:** since 2016, 21 branches across Egypt, personalized planning, competitive prices and exclusive deals.
@@ -181,7 +181,7 @@ Admin page **Tools → TA Tours Setup** (`manage_options` + nonce) with one butt
 
 Photos are downloaded manually from Unsplash (free license) into `assets/images/`:
 
-- `hero-clouds.jpg` — view above the clouds
+- `hero-1-wing.jpg` … `hero-5-bali.jpg` — Home hero slideshow (wing, Madinah, Maldives, Cappadocia, Bali), 1920px wide
 - `cta-wing.jpg` — airplane wing over clouds
 - `dest-maldives.jpg`, `dest-turkey.jpg`, `dest-bali.jpg`
 - `about-travel.jpg` — travel planning (map, passport)

@@ -525,7 +525,7 @@ function ta_image_srcset( $file, $width ) {
 	$name = pathinfo( $file, PATHINFO_FILENAME );
 	$set  = array();
 
-	foreach ( array( 160, 320, 480, 800, 1200 ) as $w ) {
+	foreach ( array( 160, 320, 480, 800, 1200, 1600 ) as $w ) {
 		$variant = 'sizes/' . $name . '-' . $w . '.webp';
 
 		if ( $w < $width && ta_image_exists( $variant ) ) {

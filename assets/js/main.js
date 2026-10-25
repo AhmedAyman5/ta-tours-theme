@@ -95,7 +95,7 @@
  * - data-reveal-stagger="<variant>" on a parent: its children reveal one after another.
  * - data-reveal-delay="<ms>" adds a fixed delay to one element.
  * - data-countup on an element whose text is the final number.
- * - data-parallax on the hero image.
+ * - data-parallax on the hero slides wrapper.
  *
  * The hidden start state lives in CSS under html.js, so content stays visible without JS.
  */
@@ -278,4 +278,196 @@
 	window.addEventListener( 'scroll', requestUpdate, { passive: true } );
 	window.addEventListener( 'resize', requestUpdate, { passive: true } );
 	update();
+}() );
+
+/**
+ * Home hero slideshow: crossfade every 6s with a slow zoom (CSS), dots and a
+ * pause/play button (WCAG 2.2.2).
+ *
+ * Slides 2-5 carry data-src/data-srcset. Nothing loads before the window load event
+ * and the web fonts, so slide 1 (the LCP) has the network to itself; after that only
+ * the next slide is fetched, one at a time, at low priority. The timer stops while the
+ * tab is hidden. With reduced motion nothing runs: slide 1 stays, the controls stay hidden.
+ */
+( function () {
+	'use strict';
+
+	var hero = document.querySelector( '[data-ta-hero]' );
+	var reduce = window.matchMedia( '(prefers-reduced-motion: reduce)' );
+
+	if ( ! hero || reduce.matches ) {
+		return;
+	}
+
+	var slides = hero.querySelectorAll( '[data-ta-slide]' );
+	var captions = hero.querySelectorAll( '[data-ta-caption]' );
+	var dots = hero.querySelectorAll( '[data-ta-hero-dot]' );
+	var controls = hero.querySelector( '[data-ta-hero-controls]' );
+	var toggle = hero.querySelector( '[data-ta-hero-toggle]' );
+	var INTERVAL = 6000;
+	var FADE = 1200; // Matches --ta-hero-fade in main.css.
+	var IDLE = 1000; // ms after load + fonts before the first extra photo is fetched.
+	var current = 0;
+	var timer = null;
+	var paused = false;
+	var started = false;
+
+	if ( slides.length < 2 || ! controls || ! toggle ) {
+		return;
+	}
+
+	function imageOf( i ) {
+		return slides[ i ].querySelector( 'img' );
+	}
+
+	function load( i ) {
+		var img = imageOf( i );
+
+		if ( img && img.hasAttribute( 'data-src' ) ) {
+			img.fetchPriority = 'low';
+			if ( img.getAttribute( 'data-srcset' ) ) {
+				img.srcset = img.getAttribute( 'data-srcset' );
+			}
+			img.src = img.getAttribute( 'data-src' );
+			img.removeAttribute( 'data-src' );
+			img.removeAttribute( 'data-srcset' );
+		}
+	}
+
+	// The slide after the current one, so it is ready by the time it is shown.
+	function loadNext() {
+		if ( started ) {
+			load( ( current + 1 ) % slides.length );
+		}
+	}
+
+	function start() {
+		started = true;
+		loadNext();
+	}
+
+	function isReady( i ) {
+		var img = imageOf( i );
+		return img && ! img.hasAttribute( 'data-src' ) && img.complete && img.naturalWidth > 0;
+	}
+
+	function show( next ) {
+		if ( next === current ) {
+			return;
+		}
+
+		var prev = slides[ current ];
+		var slide = slides[ next ];
+
+		prev.classList.remove( 'is-active' );
+
+		// The outgoing zoom keeps running while it fades out, then resets out of sight.
+		window.setTimeout( function () {
+			if ( ! prev.classList.contains( 'is-active' ) ) {
+				prev.classList.remove( 'is-zooming' );
+			}
+		}, FADE );
+
+		// Coming back before that reset: restart the zoom from scale(1).
+		if ( slide.classList.contains( 'is-zooming' ) ) {
+			slide.classList.remove( 'is-zooming' );
+			void slide.offsetWidth;
+		}
+		slide.classList.add( 'is-active', 'is-zooming' );
+
+		for ( var i = 0; i < slides.length; i++ ) {
+			if ( captions[ i ] ) {
+				captions[ i ].classList.toggle( 'is-active', i === next );
+				if ( i === next ) {
+					captions[ i ].removeAttribute( 'aria-hidden' );
+				} else {
+					captions[ i ].setAttribute( 'aria-hidden', 'true' );
+				}
+			}
+			if ( dots[ i ] ) {
+				if ( i === next ) {
+					dots[ i ].setAttribute( 'aria-current', 'true' );
+				} else {
+					dots[ i ].removeAttribute( 'aria-current' );
+				}
+			}
+		}
+
+		current = next;
+		loadNext();
+	}
+
+	function schedule() {
+		window.clearTimeout( timer );
+		timer = null;
+
+		if ( ! paused && ! document.hidden ) {
+			timer = window.setTimeout( advance, INTERVAL );
+		}
+	}
+
+	// Next slide whose photo has arrived; stays put if none has yet.
+	function advance() {
+		for ( var step = 1; step < slides.length; step++ ) {
+			var n = ( current + step ) % slides.length;
+
+			if ( isReady( n ) ) {
+				show( n );
+				break;
+			}
+		}
+		schedule();
+	}
+
+	function setPaused( value ) {
+		paused = value;
+		hero.classList.toggle( 'is-paused', value );
+		toggle.setAttribute( 'aria-label', toggle.getAttribute( value ? 'data-label-play' : 'data-label-pause' ) );
+		schedule();
+	}
+
+	toggle.addEventListener( 'click', function () {
+		setPaused( ! paused );
+	} );
+
+	Array.prototype.forEach.call( dots, function ( dot, i ) {
+		dot.addEventListener( 'click', function () {
+			load( i );
+			show( i );
+			schedule();
+		} );
+	} );
+
+	document.addEventListener( 'visibilitychange', schedule );
+
+	// Reduced motion switched on mid-visit: stop, like the pause button.
+	function onMotionChange( e ) {
+		if ( e.matches ) {
+			setPaused( true );
+		}
+	}
+
+	if ( reduce.addEventListener ) {
+		reduce.addEventListener( 'change', onMotionChange );
+	} else if ( reduce.addListener ) {
+		reduce.addListener( onMotionChange );
+	}
+
+	function afterLoad() {
+		var fonts = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+
+		fonts.then( function () {
+			window.setTimeout( start, IDLE );
+		} );
+	}
+
+	if ( 'complete' === document.readyState ) {
+		afterLoad();
+	} else {
+		window.addEventListener( 'load', afterLoad );
+	}
+
+	hero.classList.add( 'has-slideshow' );
+	slides[ 0 ].classList.add( 'is-zooming' );
+	schedule();
 }() );

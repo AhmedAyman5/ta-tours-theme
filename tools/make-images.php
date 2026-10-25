@@ -7,7 +7,7 @@
  *   php tools/make-images.php og /path/to/Gabriela-Regular.ttf /path/to/OpenSans.ttf
  *
  * "sizes" writes assets/images/sizes/{name}-{width}.webp for every JPG/PNG in
- * assets/images/ (widths smaller than the original only). ta_theme_image()
+ * assets/images/ (widths smaller than the original only; hero-* also gets 1600). ta_theme_image()
  * picks them up automatically as a srcset. Re-run after replacing a photo.
  *
  * @package ta-tours
@@ -53,7 +53,8 @@ if ( 'sizes' === $ta_cmd ) {
 		$src = ta_tool_load( $file );
 		$w   = imagesx( $src );
 
-		foreach ( $widths as $width ) {
+		// Full-bleed hero slides also get a 1600 step for large screens.
+		foreach ( str_starts_with( $name, 'hero-' ) ? array_merge( $widths, array( 1600 ) ) : $widths as $width ) {
 			if ( $width >= $w ) {
 				continue;
 			}
