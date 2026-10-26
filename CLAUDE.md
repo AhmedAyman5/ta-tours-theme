@@ -63,6 +63,7 @@ English. Use it as written.
 
 - **Phones:** `+201038736666`, `+201035428936`
 - **Landline:** `050 2508981` → `tel:+20502508981` (label AR «الهاتف الأرضي» / EN "Landline"; calls only, not WhatsApp)
+- **Saudi Arabia:** `+966 50 036 2156` → `tel:+966500362156` (label AR «رقم السعودية» / EN "Saudi Arabia"; calls only, not WhatsApp)
 - **WhatsApp:** `+201038736666` → link format `https://wa.me/201038736666?text=...` (URL-encode the text)
 - **Email:** `info@ta-tours.com`
 - **Address (AR):** المنصورة، 125 شارع قناة السويس، بجوار خير زمان، أعلى الصفوة للدواجن، الدور الثاني

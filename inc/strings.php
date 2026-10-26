@@ -1092,6 +1092,10 @@ function ta_strings() {
 			'ar' => 'الهاتف الأرضي',
 			'en' => 'Landline',
 		),
+		'saudi_phone'         => array(
+			'ar' => 'رقم السعودية',
+			'en' => 'Saudi Arabia',
+		),
 		'email'               => array(
 			'ar' => 'البريد الإلكتروني',
 			'en' => 'Email',

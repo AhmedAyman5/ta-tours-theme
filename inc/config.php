@@ -36,6 +36,11 @@ function ta_config( $key = null ) {
 				'display' => '050 2508981',
 				'tel'     => '+20502508981',
 			),
+			// Saudi Arabia number (calls only, not WhatsApp).
+			'saudi_phone' => array(
+				'display' => '+966 50 036 2156',
+				'tel'     => '+966500362156',
+			),
 			'whatsapp'  => '201038736666',
 			'email'     => 'info@ta-tours.com',
 			'address'   => array(

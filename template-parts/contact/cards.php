@@ -48,6 +48,14 @@ $ta_email = (string) ta_config( 'email' );
 							<bdi dir="ltr"><?php echo esc_html( $ta_landline['display'] ); ?></bdi>
 						</a>
 					</li>
+					<?php $ta_saudi_phone = ta_config( 'saudi_phone' ); ?>
+					<li>
+						<a href="<?php echo esc_url( ta_tel_url( $ta_saudi_phone['tel'] ), array( 'tel' ) ); ?>">
+							<?php echo ta_icon( 'phone' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+							<span><?php echo esc_html( ta_t( 'saudi_phone' ) ); ?>:</span>
+							<bdi dir="ltr"><?php echo esc_html( $ta_saudi_phone['display'] ); ?></bdi>
+						</a>
+					</li>
 				</ul>
 			</li>
 
